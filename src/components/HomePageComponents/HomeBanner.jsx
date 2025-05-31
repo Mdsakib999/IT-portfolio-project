@@ -2,9 +2,9 @@ import homeBanner from "../../assets/HomeBanner.png";
 
 const HomeBanner = () => {
 	return (
-		<div className="flex flex-col md:flex-row items-center justify-center md:justify-between py-10 bg-[#ffffff] text-center md:text-start">
+		<div className="flex flex-col md:flex-row items-center justify-center md:justify-between py-10 bg-[#ffffff] text-center md:text-start pt-28">
 			<div className="space-y-6">
-				<div className="space-y-2">
+				<div className="space-y-3">
 					<h1 className="text-2xl md:text-3xl font-bold">
 						Achieve your development goals
 					</h1>

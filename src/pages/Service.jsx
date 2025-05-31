@@ -5,13 +5,13 @@ import { AlcalineWorks } from "../components/ServicePageComponents/AlcalineWorks
 import { OfferedServices } from "../components/ServicePageComponents/OfferedServices";
 
 export const Service = () => {
-  return (
-    <div className="">
-      <ServiceBanner />
-      <OfferedServices />
-      <HireBest />
-      <Approach />
-      <AlcalineWorks />
-    </div>
-  );
+	return (
+		<div>
+			<ServiceBanner />
+			<OfferedServices />
+			<HireBest />
+			<Approach />
+			<AlcalineWorks />
+		</div>
+	);
 };
