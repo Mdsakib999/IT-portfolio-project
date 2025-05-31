@@ -7,7 +7,7 @@ export const ServiceBanner = () => {
       <div className="flex flex-col gap-8 md:w-1/2">
         <h1 className="text-5xl">
           <span className="font-inknut block mb-4">
-            Great
+            Great{" "}
             <span className="bg-gradient-to-b from-[var(--color-primary)] to-[var(--color-secondary)] bg-clip-text text-transparent">
               Product{" "}
             </span>
