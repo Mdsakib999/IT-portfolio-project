@@ -4,7 +4,7 @@ import Navbar from "./components/Navbar";
 
 const App = () => {
 	return (
-		<div className="max-w-7xl mx-auto">
+		<div className="max-w-7xl mx-auto font-roboto">
 			<Navbar />
 
 			<div className="min-h-screen px-4">
