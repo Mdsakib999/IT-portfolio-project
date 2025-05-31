@@ -2,6 +2,7 @@ import fintech from "../../assets/fintech.png";
 import edtech from "../../assets/edtech.jpg";
 import healthtech from "../../assets/healthtech.jpg";
 import automation from "../../assets/automation.webp";
+import { Slide } from "react-awesome-reveal";
 
 const IndustryExpertise = () => {
 	return (
@@ -28,13 +29,15 @@ const IndustryExpertise = () => {
 			<div className="mt-8 md:mt-12 space-y-12 md:space-y-16">
 				{/* Fintech */}
 				<div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6">
-					<div className="w-full md:w-1/2">
-						<img
-							className="w-full max-h-64 rounded-lg object-cover"
-							src={fintech}
-							alt="Fintech"
-						/>
-					</div>
+					<Slide className="w-full md:w-1/2">
+						<div>
+							<img
+								className="w-full max-h-64 rounded-lg object-cover"
+								src={fintech}
+								alt="Fintech"
+							/>
+						</div>
+					</Slide>
 					<div className="w-full md:w-1/2 mt-4 md:mt-0">
 						<h1 className="text-lg sm:text-xl font-bold font-serif">
 							<span className="font-sans">01</span> Fin
@@ -51,13 +54,16 @@ const IndustryExpertise = () => {
 
 				{/* Edtech */}
 				<div className="flex flex-col md:flex-row-reverse items-center justify-center gap-4 md:gap-6">
-					<div className="w-full md:w-1/2">
-						<img
-							className="w-full max-h-64 rounded-lg object-cover"
-							src={edtech}
-							alt="Edtech"
-						/>
-					</div>
+					<Slide className="w-full md:w-1/2" direction="right">
+						<div>
+							<img
+								className="w-full max-h-64 rounded-lg object-cover"
+								src={edtech}
+								alt="Edtech"
+							/>
+						</div>
+					</Slide>
+
 					<div className="w-full md:w-1/2 mt-4 md:mt-0">
 						<h1 className="text-lg sm:text-xl font-bold font-serif">
 							<span className="font-sans">02</span> Ed
@@ -74,13 +80,15 @@ const IndustryExpertise = () => {
 
 				{/* Healthtech */}
 				<div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6">
-					<div className="w-full md:w-1/2">
-						<img
-							className="w-full max-h-64 rounded-lg object-cover"
-							src={healthtech}
-							alt="Healthtech"
-						/>
-					</div>
+					<Slide className="w-full md:w-1/2">
+						<div>
+							<img
+								className="w-full max-h-64 rounded-lg object-cover"
+								src={healthtech}
+								alt="Healthtech"
+							/>
+						</div>
+					</Slide>
 					<div className="w-full md:w-1/2 mt-4 md:mt-0">
 						<h1 className="text-lg sm:text-xl font-bold font-serif">
 							<span className="font-sans">03</span> Health
@@ -96,13 +104,15 @@ const IndustryExpertise = () => {
 
 				{/* Process Automation */}
 				<div className="flex flex-col md:flex-row-reverse items-center justify-center gap-4 md:gap-6">
-					<div className="w-full md:w-1/2">
-						<img
-							className="w-full max-h-64 rounded-lg object-cover"
-							src={automation}
-							alt="Process Automation"
-						/>
-					</div>
+					<Slide className="w-full md:w-1/2" direction="right">
+						<div>
+							<img
+								className="w-full max-h-64 rounded-lg object-cover"
+								src={automation}
+								alt="Process Automation"
+							/>
+						</div>
+					</Slide>
 					<div className="w-full md:w-1/2 mt-4 md:mt-0">
 						<h1 className="text-lg sm:text-xl font-bold font-serif">
 							<span className="font-sans">04</span> Process

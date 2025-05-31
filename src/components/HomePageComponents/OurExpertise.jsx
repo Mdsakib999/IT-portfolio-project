@@ -4,6 +4,7 @@ import { SiDigitalocean } from "react-icons/si";
 import { FaShoppingCart } from "react-icons/fa";
 import { SiAntdesign } from "react-icons/si";
 import { SiJirasoftware } from "react-icons/si";
+import { Zoom } from "react-awesome-reveal";
 
 const services = [
 	{
@@ -49,13 +50,15 @@ const OurExpertise = () => {
 			</div>
 			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-16">
 				{services.map((service, index) => (
-					<div
-						key={index}
-						className="bg-[#F2F0F3] hover:bg-gray-100 flex flex-col items-center rounded-xl p-10 shadow shadow-purple-200"
-					>
-						<p>{service.icon}</p>
-						<p className="font-serif mt-3 text-lg">{service.text}</p>
-					</div>
+					<Zoom>
+						<div
+							key={index}
+							className="bg-[#F2F0F3] flex flex-col items-center rounded-xl p-10 shadow shadow-purple-200 hover:shadow-xl hover:shadow-purple-300 duration-300"
+						>
+							<p>{service.icon}</p>
+							<p className="font-serif mt-3 text-lg">{service.text}</p>
+						</div>
+					</Zoom>
 				))}
 			</div>
 		</div>

@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { HiMenu, HiX } from "react-icons/hi";
-import logo from "../assets/logo.svg";
 
 const navLinks = [
 	{ name: "Home", path: "/" },
@@ -35,11 +34,14 @@ const Navbar = () => {
 	}, []);
 
 	return (
-		<div className="fixed z-50 w-full bg-white shadow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+		<div className="fixed z-50 w-full bg-white shadow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 rounded-b-2xl">
 			<div className="flex items-center justify-between h-20">
 				{/* Logo */}
-				<Link to="/">
-					<img src={logo} alt="Logo" className="w-48" />
+				<Link to="/" className="text-2xl font-bold flex items-center">
+					<div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center mr-3">
+						<span className="text-white font-bold text-lg">E</span>
+					</div>
+					Exabyting
 				</Link>
 
 				{/* Desktop Links */}
