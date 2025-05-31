@@ -116,24 +116,6 @@ const IndustryExpertise = () => {
 					</div>
 				</div>
 			</div>
-
-			{/* Additional CSS for very small screens */}
-			<style jsx>{`
-				@media (max-width: 320px) {
-					h1 {
-						font-size: 1rem;
-					}
-					h2 {
-						font-size: 0.875rem;
-					}
-					p {
-						font-size: 0.75rem;
-					}
-					.max-h-64 {
-						max-height: 48px;
-					}
-				}
-			`}</style>
 		</div>
 	);
 };
