@@ -1,1 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Doto:wght@100..900&display=swap");
 @import "tailwindcss";
+
+@theme {
+  --color-primary: #57007b;
+  --color-secondary: #f76680;
+  --color-yellow: #ffc656;
+  --color-orange: #f16063;
+  --color-purple: #5e35b1;
+  --bg-primary: #5e35b1;
+
+  --font-inter: "Inter", sans-serif;
+  --font-inknut: "Inknut Antiqua", serif;
+  --font-doto: "Doto", sans-serif;
+}
