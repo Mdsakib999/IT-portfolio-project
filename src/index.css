@@ -6,21 +6,29 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #57007b;
-  --color-secondary: #f76680;
-  --color-yellow: #ffc656;
-  --color-orange: #f16063;
-  --color-purple: #5e35b1;
-  --bg-primary: #5e35b1;
+	--color-primary: #57007b;
+	--color-secondary: #f76680;
+	--color-yellow: #ffc656;
+	--color-orange: #f16063;
+	--color-purple: #5e35b1;
+	--bg-primary: #5e35b1;
 
-  --font-inter: "Inter", sans-serif;
-  --font-inknut: "Inknut Antiqua", serif;
-  --font-doto: "Doto", sans-serif;
-  --font-roboto: "Roboto", sans-serif;
+	--font-inter: "Inter", sans-serif;
+	--font-inknut: "Inknut Antiqua", serif;
+	--font-doto: "Doto", sans-serif;
+	--font-roboto: "Roboto", sans-serif;
 }
 .b {
-  border: 2px solid;
+	border: 2px solid;
 }
 .bb {
-  border: 2px solid red;
+	border: 2px solid red;
+}
+
+.scrollbar-hide {
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+	display: none;
 }

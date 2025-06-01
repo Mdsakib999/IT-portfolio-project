@@ -13,8 +13,8 @@ const App = () => {
 				<Outlet />
 			</div>
 
-			<Footer />
 			<ScrollToTopButton />
+			<Footer />
 		</div>
 	);
 };

@@ -13,7 +13,7 @@ const Work = () => {
 			<div className="absolute animate-pulse -bottom-10 left-10 w-20 h-20 bg-gradient-to-br from-[#DE4396] to-[#0D1C9F] rounded-full z-10" />
 
 			{/* Heading */}
-			<h1 className="text-3xl md:text-4xl flex flex-wrap items-center gap-1 font-bold space-x-1">
+			<h1 className="text-2xl md:text-4xl flex flex-wrap items-center gap-1 font-bold space-x-1">
 				<span>How</span>
 				<span className="inline-flex flex-col items-center">
 					<span className="w-full h-[2px] bg-gradient-to-br from-[#DE4396] to-[#0D1C9F] mb-1" />
@@ -36,7 +36,7 @@ const Work = () => {
 
 			{/* Process Tags */}
 			<Zoom>
-				<ul className="mt-10 w-full max-w-[90%] md:max-w-[80%] mx-auto border rounded-full flex flex-wrap items-center justify-between gap-4 px-8 py-3 bg-[#5E35B1] text-white hover:bg-purple-700 duration-300 text-base">
+				<ul className="mt-10 w-full md:max-w-[80%] mx-auto border rounded-full flex flex-wrap items-center justify-between gap-4 px-8 py-3 bg-[#5E35B1] text-white hover:bg-purple-700 duration-300 text-base">
 					<li className="text-sm md:text-base">Imagine</li>
 					<li className="text-sm md:text-base">Build</li>
 					<li className="text-sm md:text-base">Succeed</li>

@@ -1,13 +1,13 @@
-import { Rotate, Slide } from "react-awesome-reveal";
+import { Slide } from "react-awesome-reveal";
 import homeBanner from "../../assets/HomeBanner.png";
 
 const HomeBanner = () => {
 	return (
-		<div className="flex flex-col md:flex-row items-center justify-center md:justify-between py-10 bg-[#ffffff] text-center md:text-start pt-28">
-			<Slide direction="left">
+		<div className="scrollbar-hide overflow-x-scroll flex flex-col md:flex-row items-center justify-center md:justify-between py-10 bg-[#ffffff] text-center md:text-start pt-28">
+			<Slide className="w-1/2 md:w-full" direction="left">
 				<div className="space-y-6">
 					<div className="space-y-3">
-						<h1 className="text-2xl md:text-6xl font-bold">
+						<h1 className="text-2xl md:text-4xl lg:text-6xl font-bold">
 							Achieve your development goals
 						</h1>
 						<h2 className="text-xl md:text-2xl bg-gradient-to-br from-[#DE4396] to-[#0D1C9F] bg-clip-text text-transparent">
@@ -24,7 +24,7 @@ const HomeBanner = () => {
 					</button>
 				</div>
 			</Slide>
-			<Slide direction="right">
+			<Slide className="w-1/2 md:w-full" direction="right">
 				<div className="mt-10 md:mt-0">
 					<img src={homeBanner} alt="" />
 				</div>
