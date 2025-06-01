@@ -87,8 +87,8 @@ const IndustryExpertise = () => {
 					}) => (
 						<div
 							key={id}
-							className={`flex flex-col md:flex-row${
-								reverse ? "-reverse" : ""
+							className={`flex flex-col ${
+								reverse ? "md:flex-row-reverse" : "md:flex-row"
 							} items-center justify-center gap-4 md:gap-6`}
 						>
 							<Slide className="w-full md:w-1/2" direction={slideDirection}>
