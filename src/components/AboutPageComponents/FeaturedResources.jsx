@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import { Bar } from "../Shared/Bar";
+import { PrimaryButton } from "../Shared/PrimaryButton";
 
 export const FeaturedResources = () => {
   const resources = [
@@ -51,7 +52,7 @@ export const FeaturedResources = () => {
       </div>
 
       {/* Resources Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
         {resources.map((resource) => (
           <div
             key={resource.id}
@@ -76,8 +77,8 @@ export const FeaturedResources = () => {
                 </h4>
 
                 {/* Read More Button */}
-                <div className="flex items-center justify-between">
-                  <button className="flex items-center gap-2 text-purple-600 font-medium hover:text-purple-700 transition-colors duration-200">
+                <div className="flex flex-col lg:flex-row items-center justify-between">
+                  <button className="flex items-center gap-2 text-purple-600 font-medium hover:text-purple-700 transition-colors duration-200 whitespace-nowrap">
                     <span>Read More</span>
                     <ArrowRight
                       size={16}
@@ -96,10 +97,10 @@ export const FeaturedResources = () => {
 
       {/* View All Button */}
       <div className="text-center mt-12">
-        <button className="inline-flex items-center gap-2 bg-purple-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-purple-700 transition-all duration-200 hover:transform hover:scale-105 shadow-lg hover:shadow-xl">
+        <PrimaryButton className="inline-flex items-center gap-2 hover:bg-purple-700 transition-all duration-200 hover:transform hover:scale-105 shadow-lg hover:shadow-xl">
           <span>View All Resources</span>
           <ArrowRight size={18} />
-        </button>
+        </PrimaryButton>
       </div>
     </div>
   );

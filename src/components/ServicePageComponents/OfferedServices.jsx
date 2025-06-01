@@ -29,7 +29,7 @@ export const OfferedServices = () => {
 	const currentPage = Math.floor(currentIndex / itemsPerPage) + 1;
 
 	return (
-		<div className="min-h-screen bg-slate-100  px-4 relative overflow-hidden my-10 pb-10">
+		<div className="bg-slate-100 px-4 relative overflow-hidden my-10 py-4">
 			{/* Decorative Elements */}
 			<div className="absolute -top-10 left-10 w-20 h-20 bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-secondary)] rounded-full z-10" />
 			<div className="absolute -bottom-10 right-10 w-20 h-20 bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-secondary)] rounded-full z-10" />

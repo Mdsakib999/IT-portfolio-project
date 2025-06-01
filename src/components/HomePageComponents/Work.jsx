@@ -36,7 +36,7 @@ const Work = () => {
 
 			{/* Process Tags */}
 			<Zoom>
-				<ul className="mt-10 w-full md:max-w-[80%] mx-auto border rounded-full flex flex-wrap items-center justify-between gap-4 px-8 py-3 bg-[#5E35B1] text-white hover:bg-purple-700 duration-300 text-base">
+				<ul className="mt-10 w-full max-w-[90%] md:max-w-[80%] mx-auto border rounded-full flex flex-wrap items-center justify-between gap-4 px-8 py-3 bg-primary text-white hover:bg-purple-700 duration-300 text-base">
 					<li className="text-sm md:text-base">Imagine</li>
 					<li className="text-sm md:text-base">Build</li>
 					<li className="text-sm md:text-base">Succeed</li>
@@ -47,7 +47,7 @@ const Work = () => {
 			<div className="flex flex-wrap items-center justify-center gap-8 w-full max-w-[90%] md:max-w-[80%] mx-auto px-2 text-center mt-8 md:mt-12">
 				<div className="flex flex-col items-center gap-y-2 w-[90px]">
 					<Zoom>
-						<GiArchiveResearch size={30} className="text-[#5E35B1]" />
+						<GiArchiveResearch size={30} className="text-purple" />
 					</Zoom>
 					<h3 className="text-base font-semibold font-serif">Research</h3>
 				</div>

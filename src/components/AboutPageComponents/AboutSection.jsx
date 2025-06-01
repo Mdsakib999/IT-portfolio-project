@@ -1,4 +1,5 @@
 import { Bar } from "../Shared/Bar";
+import { PrimaryButton } from "../Shared/PrimaryButton";
 
 export const AboutSection = () => {
   return (
@@ -21,9 +22,7 @@ export const AboutSection = () => {
             company is dedicated to providing cutting-edge software services and
             empowering individuals through high-quality courses.
           </p>
-          <button className="bg-purple-600 text-white px-6 py-3 rounded-full text-sm font-medium shadow-md hover:bg-purple-700 transition">
-            More about us
-          </button>
+          <PrimaryButton>More about us</PrimaryButton>
         </div>
 
         {/* Right Content: Aim / Mission / Progress */}

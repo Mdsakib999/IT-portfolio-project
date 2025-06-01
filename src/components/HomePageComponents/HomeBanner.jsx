@@ -1,5 +1,6 @@
 import { Slide } from "react-awesome-reveal";
 import homeBanner from "../../assets/HomeBanner.png";
+import { PrimaryButton } from "../Shared/PrimaryButton";
 
 const HomeBanner = () => {
 	return (
