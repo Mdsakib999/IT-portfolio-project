@@ -13,7 +13,9 @@ export const Approach = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-8 ">
         {features.map((item) => (
           <div className="flex gap-4 p-6 border border-gray-400 rounded-lg  shadow-sm transition hover:shadow-md">
-            <div className={`w-30 h-14 rounded-lg ${item.gradient}`} />
+            <div
+              className={`w-30 h-8 md:w-30 md:h-14 md:rounded-lg ${item.gradient}`}
+            />
             <div>
               <h3 className="text-lg font-semibold">{item.title}</h3>
               <p className="text-sm text-gray-500 mt-1">{item.description}</p>

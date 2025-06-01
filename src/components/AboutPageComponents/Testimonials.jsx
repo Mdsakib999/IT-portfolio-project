@@ -53,16 +53,6 @@ export const Testimonials = () => {
     },
   ];
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % testimonials.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide(
-      (prev) => (prev - 1 + testimonials.length) % testimonials.length
-    );
-  };
-
   const goToSlide = (index) => {
     setCurrentSlide(index);
   };
@@ -84,9 +74,9 @@ export const Testimonials = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-6 py-16 bg-white">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 py-12 sm:py-16 bg-white">
       {/* Header Section */}
-      <div className="flex flex-col items-start mb-16">
+      <div className="flex flex-col items-start mb-12">
         <Bar />
         <h2 className="text-4xl font-bold text-gray-900 mb-2">
           Why customers love
@@ -94,98 +84,47 @@ export const Testimonials = () => {
         <h3 className="text-4xl font-bold text-gray-900">working with us</h3>
       </div>
 
-      {/* Testimonial Content */}
-      <div className="relative">
-        {/* Navigation Arrows */}
-        <button
-          onClick={prevSlide}
-          className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white rounded-full shadow-lg border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors duration-200"
-        >
-          <ChevronLeft size={20} className="text-gray-600" />
-        </button>
-
-        <button
-          onClick={nextSlide}
-          className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white rounded-full shadow-lg border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors duration-200"
-        >
-          <ChevronRight size={20} className="text-gray-600" />
-        </button>
-
-        {/* Main Content Area */}
-        <div className="mx-16">
-          {/* Quote and Text */}
-          <div className="text-center mb-12">
-            <Quote size={32} className="text-purple-600 mx-auto mb-6" />
-            <p className="text-xl text-gray-600 leading-relaxed max-w-4xl mx-auto">
-              {testimonials[currentSlide].text}
-            </p>
-          </div>
-
-          {/* Customer Avatars Row */}
-          <div className="flex justify-center items-center gap-8 mb-8">
-            {testimonials.map((testimonial, index) => {
-              const isActive = index === currentSlide;
-              const isAdjacent =
-                Math.abs(index - currentSlide) === 1 ||
-                (currentSlide === 0 && index === testimonials.length - 1) ||
-                (currentSlide === testimonials.length - 1 && index === 0);
-
-              return (
-                <div
-                  key={testimonial.id}
-                  className={`relative cursor-pointer transition-all duration-300 ${
-                    isActive
-                      ? "scale-125 z-10"
-                      : isAdjacent
-                      ? "scale-100 opacity-80"
-                      : "scale-75 opacity-40"
-                  }`}
-                  onClick={() => goToSlide(index)}
-                >
-                  <div
-                    className={`relative ${
-                      isActive ? "ring-4 ring-purple-400 ring-offset-2" : ""
-                    } rounded-full transition-all duration-300`}
-                  >
-                    <img
-                      src={testimonial.avatar}
-                      alt={testimonial.name}
-                      className="w-16 h-16 rounded-full object-cover"
-                    />
-                  </div>
-
-                  {/* Active customer info */}
-                  {isActive && (
-                    <div className="absolute top-20 left-1/2 transform -translate-x-1/2 text-center w-32">
-                      <StarRating rating={testimonial.rating} />
-                      <h4 className="font-semibold text-gray-900 text-sm mb-1">
-                        {testimonial.name}
-                      </h4>
-                      <p className="text-xs text-gray-500">
-                        {testimonial.role}
-                      </p>
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
+      {/* Main Testimonial Card */}
+      <div className="bg-gray-50 shadow-md rounded-xl p-8 text-center transition-all duration-300">
+        <div className="flex flex-col items-center gap-4">
+          <img
+            src={testimonials[currentSlide].avatar}
+            alt={testimonials[currentSlide].name}
+            className="w-20 h-20 sm:w-24 sm:h-24 rounded-full object-cover ring-4 ring-purple-400"
+          />
+          <StarRating rating={testimonials[currentSlide].rating} />
+          <h3 className="text-lg font-semibold text-gray-800">
+            {testimonials[currentSlide].name}
+          </h3>
+          <p className="text-sm text-gray-500 mb-4">
+            {testimonials[currentSlide].role}
+          </p>
+          <Quote size={28} className="text-purple-500 mb-2" />
+          <p className="text-gray-600 max-w-2xl text-base italic">
+            “{testimonials[currentSlide].text}”
+          </p>
         </div>
+      </div>
 
-        {/* Slide Indicators */}
-        <div className="flex justify-center gap-2 mt-[200px]">
-          {testimonials.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => goToSlide(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-200 ${
-                index === currentSlide
-                  ? "bg-purple-600 scale-125"
-                  : "bg-gray-300 hover:bg-gray-400"
-              }`}
+      {/* Avatar Selectors */}
+      <div className="flex justify-center items-center gap-4 mt-8 overflow-x-auto px-2 scrollbar-hide p-5">
+        {testimonials.map((testimonial, index) => (
+          <button
+            key={testimonial.id}
+            onClick={() => goToSlide(index)}
+            className={`md:w-18 md:h-18 h-12 rounded-full overflow-hidden border-2 transition-all duration-300 ${
+              index === currentSlide
+                ? "border-purple-500 scale-110"
+                : "border-gray-300 opacity-70 hover:opacity-100"
+            }`}
+          >
+            <img
+              src={testimonial.avatar}
+              alt={testimonial.name}
+              className="w-full h-full object-cover"
             />
-          ))}
-        </div>
+          </button>
+        ))}
       </div>
     </div>
   );
