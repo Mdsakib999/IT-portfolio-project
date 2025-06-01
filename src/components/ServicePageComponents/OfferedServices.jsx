@@ -34,7 +34,7 @@ export const OfferedServices = () => {
       <div className="absolute -top-10 left-10 w-20 h-20 bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-secondary)] rounded-full z-10" />
       <div className="absolute -bottom-10 right-10 w-20 h-20 bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-secondary)] rounded-full z-10" />
 
-      <div className="max-w-7xl mx-auto mt-20 md:mt-0">
+      <div className="mt-20 md:mt-0">
         {/* Header */}
         <Bar />
         <div className="text-center mb-16">

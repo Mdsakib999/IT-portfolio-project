@@ -42,7 +42,7 @@ export const FeaturedResources = () => {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto px-6 py-16 bg-gray-50">
+    <div className="px-6 py-16 bg-gray-50">
       {/* Header Section */}
       <div className="flex flex-col items-start justify-start mb-4">
         <Bar />

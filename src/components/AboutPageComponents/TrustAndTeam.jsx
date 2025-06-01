@@ -5,7 +5,7 @@ export const TrustAndTeam = () => {
   return (
     <div className="overflow-hidden my-20">
       {/* First Section - Leading Companies Trust Us */}
-      <div className="relative max-w-7xl mx-auto px-6 py-16">
+      <div className="relative px-6 py-16">
         {/* Decorative Elements */}
         <div className="absolute top-0 left-36 w-32 h-16 bg-gradient-to-br from-purple-600 to-pink-500 rounded-b-full opacity-80"></div>
 
@@ -64,7 +64,7 @@ export const TrustAndTeam = () => {
       </div>
 
       {/* Second Section - Meet the People */}
-      <div className="relative max-w-7xl mx-auto px-6 py-16">
+      <div className="relative px-6 py-16">
         {/* Decorative Elements for Second Section */}
         <div className="absolute bottom-0 right-0 w-48 h-24 bg-gradient-to-br from-purple-600 to-pink-500 rounded-t-full opacity-80"></div>
         <div className="absolute bottom-10 right-20 w-16 h-16 bg-gradient-to-br from-yellow-400 to-orange-300 rounded-full opacity-40"></div>
