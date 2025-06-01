@@ -50,11 +50,8 @@ const OurExpertise = () => {
 			</div>
 			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-16">
 				{services.map((service, index) => (
-					<Zoom>
-						<div
-							key={index}
-							className="bg-[#F2F0F3] flex flex-col items-center rounded-xl p-10 shadow shadow-purple-200 hover:shadow-xl hover:shadow-purple-300 duration-300"
-						>
+					<Zoom key={index}>
+						<div className="bg-[#F2F0F3] flex flex-col items-center rounded-xl p-10 shadow shadow-purple-200 hover:shadow-xl hover:shadow-purple-300 duration-300">
 							<p>{service.icon}</p>
 							<p className="font-serif mt-3 text-lg">{service.text}</p>
 						</div>

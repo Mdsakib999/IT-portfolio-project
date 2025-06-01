@@ -103,7 +103,7 @@ export const OfferedServices = () => {
           <div className="flex justify-center items-center gap-6">
             <button
               onClick={prevSlide}
-              className="flex items-center justify-center w-12 h-12 bg-white rounded-full shadow-lg hover:shadow-xl border border-gray-100 hover:border-purple-300 transition-all duration-300 group"
+              className="cursor-pointer flex items-center justify-center w-12 h-12 bg-white rounded-full shadow-lg hover:shadow-xl border border-gray-100 hover:border-purple-300 transition-all duration-300 group"
               disabled={currentIndex === 0}
             >
               <ChevronLeft
@@ -133,7 +133,7 @@ export const OfferedServices = () => {
 
             <button
               onClick={nextSlide}
-              className="flex items-center justify-center w-12 h-12 bg-white rounded-full shadow-lg hover:shadow-xl border border-gray-100 hover:border-purple-300 transition-all duration-300 group"
+              className="cursor-pointer flex items-center justify-center w-12 h-12 bg-white rounded-full shadow-lg hover:shadow-xl border border-gray-100 hover:border-purple-300 transition-all duration-300 group"
               disabled={currentIndex + itemsPerPage >= servicesData.length}
             >
               <ChevronRight
