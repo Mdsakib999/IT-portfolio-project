@@ -7,7 +7,7 @@ const HomeBanner = () => {
 			<Slide direction="left">
 				<div className="space-y-6">
 					<div className="space-y-3">
-						<h1 className="text-2xl md:text-3xl font-bold">
+						<h1 className="text-2xl md:text-6xl font-bold">
 							Achieve your development goals
 						</h1>
 						<h2 className="text-xl md:text-2xl bg-gradient-to-br from-[#DE4396] to-[#0D1C9F] bg-clip-text text-transparent">
