@@ -3,6 +3,7 @@ import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import "./index.css";
 import ScrollToTop from "./Utils/ScrollToTop";
+import ScrollToTopButton from "./components/ScrollToTopButton";
 
 const App = () => {
   return (
@@ -12,7 +13,7 @@ const App = () => {
       <div className="min-h-screen px-4">
         <Outlet />
       </div>
-
+      <ScrollToTopButton />
       <Footer />
     </div>
   );
