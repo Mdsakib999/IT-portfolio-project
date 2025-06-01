@@ -14,7 +14,7 @@ const StatBox = ({ icon: Icon, end, suffix, label }) => {
 
   return (
     <div ref={ref} className="flex flex-col items-center min-w-[120px]">
-      <Icon size={40} className="text-[#5E35B1]" />
+      <Icon size={40} className="text-purple" />
       <div className="text-center mt-5">
         {inView ? (
           <CountUp key={Date.now()} start={0} end={end} delay={0}>
