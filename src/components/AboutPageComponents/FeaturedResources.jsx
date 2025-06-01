@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import { Bar } from "../Shared/Bar";
+import { PrimaryButton } from "../Shared/PrimaryButton";
 
 export const FeaturedResources = () => {
   const resources = [
@@ -96,10 +97,10 @@ export const FeaturedResources = () => {
 
       {/* View All Button */}
       <div className="text-center mt-12">
-        <button className="inline-flex items-center gap-2 bg-purple-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-purple-700 transition-all duration-200 hover:transform hover:scale-105 shadow-lg hover:shadow-xl">
+        <PrimaryButton className="inline-flex items-center gap-2 hover:bg-purple-700 transition-all duration-200 hover:transform hover:scale-105 shadow-lg hover:shadow-xl">
           <span>View All Resources</span>
           <ArrowRight size={18} />
-        </button>
+        </PrimaryButton>
       </div>
     </div>
   );

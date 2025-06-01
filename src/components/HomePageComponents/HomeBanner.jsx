@@ -1,5 +1,6 @@
 import { Rotate, Slide } from "react-awesome-reveal";
 import homeBanner from "../../assets/HomeBanner.png";
+import { PrimaryButton } from "../Shared/PrimaryButton";
 
 const HomeBanner = () => {
   return (
@@ -19,9 +20,9 @@ const HomeBanner = () => {
             business flexibility and facilitate your business growth like never
             before.
           </p>
-          <button className="cursor-pointer border rounded-full px-8 py-2.5 bg-primary hover:bg-purple-900 duration-300 text-white tracking-widest">
+          <PrimaryButton className="cursor-pointer text-white tracking-widest">
             Learn More
-          </button>
+          </PrimaryButton>
         </div>
       </Slide>
       <Slide direction="right">
