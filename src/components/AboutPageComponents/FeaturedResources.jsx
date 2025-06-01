@@ -51,7 +51,7 @@ export const FeaturedResources = () => {
       </div>
 
       {/* Resources Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
         {resources.map((resource) => (
           <div
             key={resource.id}
@@ -76,8 +76,8 @@ export const FeaturedResources = () => {
                 </h4>
 
                 {/* Read More Button */}
-                <div className="flex items-center justify-between">
-                  <button className="flex items-center gap-2 text-purple-600 font-medium hover:text-purple-700 transition-colors duration-200">
+                <div className="flex flex-col lg:flex-row items-center justify-between">
+                  <button className="flex items-center gap-2 text-purple-600 font-medium hover:text-purple-700 transition-colors duration-200 whitespace-nowrap">
                     <span>Read More</span>
                     <ArrowRight
                       size={16}

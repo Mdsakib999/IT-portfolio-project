@@ -1,9 +1,7 @@
-import React from "react";
-
 export const TimelineCard = ({ step, position }) => {
   return (
     <div
-      className={`relative w-72 p-4 bg-white rounded-xl shadow-md border ${
+      className={`relative w-64 sm:w-80 p-4 bg-white rounded-xl shadow-md border ${
         position === "top" ? "mb-6" : "mt-6"
       }`}
     >

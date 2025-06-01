@@ -36,8 +36,9 @@ export const TrustAndTeam = () => {
           {/* Right Content - Video/Image */}
           <div className="relative">
             {/* Background Decorative Shape */}
-            <div className="absolute -top-8 -right-8 w-80 h-80 bg-gradient-to-bl from-purple-400 via-pink-400 to-yellow-300 rounded-3xl opacity-60 transform rotate-12"></div>
-            <div className="absolute -bottom-4 -right-12 w-32 h-32 bg-gradient-to-br from-purple-600 to-pink-500 rounded-b-full opacity-60"></div>
+            {/* <div className="absolute -top-8 -right-8 w-80 h-80 bg-gradient-to-bl from-purple-400 via-pink-400 to-yellow-300 rounded-3xl opacity-60 transform rotate-12"></div>
+            <div className="absolute -bottom-4 -right-12 w-48 h-48 bg-gradient-to-br from-purple-600 to-pink-500 rounded-b-full opacity-40"></div> */}
+            <div className="absolute -bottom-8 -right-5 w-96 h-96 bg-gradient-to-br from-purple-600 to-pink-500 rounded-full opacity-80 animate-pulse"></div>
 
             {/* Main Image Container */}
             <div className="relative bg-white rounded-2xl shadow-2xl overflow-hidden">

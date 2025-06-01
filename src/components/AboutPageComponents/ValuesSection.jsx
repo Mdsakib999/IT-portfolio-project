@@ -4,7 +4,7 @@ import { Bar } from "../Shared/Bar";
 
 export const ValuesSection = () => {
   return (
-    <section className="py-16 px-4 md:px-20 bg-white text-gray-800">
+    <section className="md:py-16 px-4 md:px-20 bg-white text-gray-800">
       {/* Header */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12">
         <div className="flex flex-col items-start justify-start">

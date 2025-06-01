@@ -49,16 +49,16 @@ export const AlcalineWorks = () => {
 
       {/* Mobile/Tablet Timeline Layout */}
       <div className="lg:hidden relative w-full py-8 px-4 bg-[#f9f9fc]">
-        <div className="absolute left-5 top-8 bottom-8 w-[2px] bg-pink-400 z-0" />
+        <div className="absolute left-2 top-10 bottom-8 w-[2px] bg-pink-400 z-0" />
 
-        <div className="relative z-10 space-y-10 pl-10">
+        <div className="relative z-10 space-y-8 ml-2">
           {timelineSteps.map((step) => (
             <div key={step.id} className="relative flex items-start">
               {/* Circle */}
-              <div className="absolute -left-[9px] top-2 w-4 h-4 bg-pink-400 rounded-full" />
+              <div className="absolute -left-[9px] top-16 w-4 h-4 mr-4 bg-pink-400 rounded-full" />
               {/* Horizontal line */}
-              <div className="absolute -left-4 top-4 w-4 h-[2px] bg-pink-400" />
-              <div className="flex-1">
+              <div className="absolute -left-4 top-18 w-4 h-[2px] bg-pink-400" />
+              <div className="flex-1 ml-2">
                 <TimelineCard step={step} position="left" />
               </div>
             </div>

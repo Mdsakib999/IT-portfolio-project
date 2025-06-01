@@ -2,19 +2,20 @@ import { Outlet } from "react-router-dom";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import "./index.css";
+import ScrollToTop from "./Utils/ScrollToTop";
 
 const App = () => {
-	return (
-		<div className="max-w-7xl mx-auto font-serif">
-			<Navbar />
+  return (
+    <div className="max-w-7xl mx-auto font-serif">
+      <Navbar />
+      <ScrollToTop />
+      <div className="min-h-screen px-4">
+        <Outlet />
+      </div>
 
-			<div className="min-h-screen px-4">
-				<Outlet />
-			</div>
-
-			<Footer />
-		</div>
-	);
+      <Footer />
+    </div>
+  );
 };
 
 export default App;
