@@ -6,6 +6,8 @@ import Contact from "../pages/Contact/Contact";
 import { Service } from "../pages/Service/Service";
 import SignUp from "../pages/Auth/SignUp";
 import SignIn from "../pages/Auth/SignIn";
+import Pricing from "../components/ServicePageComponents/Pricing";
+import CheckOut from "../components/CheckOut";
 
 const router = createBrowserRouter([
 	{
@@ -28,6 +30,14 @@ const router = createBrowserRouter([
 			{
 				path: "/contact",
 				element: <Contact />,
+			},
+			{
+				path: "/pricing",
+				element: <Pricing />,
+			},
+			{
+				path: "/checkout",
+				element: <CheckOut />,
 			},
 			{
 				path: "/signin",

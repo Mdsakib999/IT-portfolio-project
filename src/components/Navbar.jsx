@@ -1,12 +1,17 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { HiMenu, HiX } from "react-icons/hi";
+import { useAuth } from "../provider/AuthProvider";
+import { FaUserCircle } from "react-icons/fa";
+import toast from "react-hot-toast";
+import { RiLogoutCircleRLine } from "react-icons/ri";
 
 const navLinks = [
 	{ name: "Home", path: "/" },
 	{ name: "About", path: "/about" },
-	{ name: "Contact", path: "/contact" }, // Moved Contact to nav links
+	{ name: "Pricing", path: "/pricing" },
 	{ name: "Services", path: "/service" },
+	{ name: "Contact", path: "/contact" },
 ];
 
 const Navbar = () => {
@@ -16,11 +21,9 @@ const Navbar = () => {
 	const userMenuRef = useRef(null);
 	const location = useLocation();
 	const navigate = useNavigate();
+	const { user, logout } = useAuth();
 
-	// Simulated user role (replace with actual auth logic)
-	const [role, setRole] = useState("user"); // Can be "user" or "guest"
-	const user =
-		role === "user" ? { name: "John Doe", email: "john@example.com" } : null;
+	console.log("USER=>", user);
 
 	// Close menus when route changes
 	useEffect(() => {
@@ -46,14 +49,15 @@ const Navbar = () => {
 	}, []);
 
 	// Sign out functionality
-	const handleSignOut = () => {
-		setRole("guest"); // Simulate sign out
+	const handleSignOut = async () => {
+		await logout();
 		setUserMenuOpen(false);
-		navigate("/"); // Redirect to home after sign out
+		toast.success(<h1 className="font-serif">logged out successfully</h1>);
+		navigate("/signin");
 	};
 
 	return (
-		<div className="fixed z-50 w-full bg-white shadow max-w-7xl mx-auto px-2 sm:px-4 lg:px-8 rounded-b-2xl min-w-[280px]">
+		<div className="fixed z-50 w-full bg-white shadow max-w-7xl mx-auto px-2 sm:px-4 lg:px-8 rounded-b-2xl min-w-[280px] font-serif">
 			<div className="flex items-center justify-between h-20">
 				{/* Logo */}
 				<Link
@@ -91,9 +95,10 @@ const Navbar = () => {
 						<div ref={userMenuRef}>
 							<button
 								onClick={() => setUserMenuOpen(!userMenuOpen)}
-								className="flex items-center text-sm font-medium text-gray-700 hover:text-purple"
+								className="flex items-center gap-x-2 text-sm font-medium text-gray-700 hover:text-purple cursor-pointer"
 							>
-								{user.name}
+								<FaUserCircle size={28} />
+								{user?.name || user?.displayName}
 								<svg
 									className={`ml-1 h-4 w-4 transform ${
 										userMenuOpen ? "rotate-180" : ""
@@ -112,15 +117,16 @@ const Navbar = () => {
 							</button>
 							{userMenuOpen && (
 								<div className="absolute top-10 right-0 bg-white shadow-lg rounded-lg p-4 w-48">
-									<p className="text-sm font-medium text-gray-700">
-										{user.name}
+									<p className="text-sm font-medium text-gray-700 cursor-pointer">
+										{user?.name || user?.displayName}
 									</p>
 									<p className="text-xs text-gray-500 mb-3">{user.email}</p>
 									<button
 										onClick={handleSignOut}
-										className="w-full text-left text-sm font-medium text-gray-700 hover:bg-gray-100 px-3 py-2 rounded-md"
+										className="flex items-center gap-x-2 w-full text-left text-sm font-medium text-gray-700 hover:bg-red-500 duration-300 hover:text-white px-3 py-2 rounded-md cursor-pointer"
 									>
-										Sign Out
+										<RiLogoutCircleRLine />
+										<span>Sign Out</span>
 									</button>
 								</div>
 							)}
@@ -128,12 +134,12 @@ const Navbar = () => {
 					) : (
 						<div className="flex items-center gap-3">
 							<Link to="/signin">
-								<button className="cursor-pointer border rounded-full px-3 py-1.5 text-sm bg-primary hover:bg-purple-900 text-white tracking-wider transition-colors duration-300">
+								<button className="cursor-pointer border rounded-full px-5 py-2 text-sm text-white bg-primary hover:bg-white hover:text-purple-900 border-purple-900 tracking-wider transition-colors duration-300">
 									Sign In
 								</button>
 							</Link>
 							<Link to="/signup">
-								<button className="cursor-pointer border rounded-full px-3 py-1.5 text-sm bg-primary hover:bg-purple-900 text-white tracking-wider transition-colors duration-300">
+								<button className="cursor-pointer border rounded-full px-5 py-2 text-sm text-white bg-primary hover:bg-white hover:text-purple-900 border-purple-900 tracking-wider transition-colors duration-300">
 									Sign Up
 								</button>
 							</Link>
@@ -183,25 +189,26 @@ const Navbar = () => {
 						{user ? (
 							<div>
 								<p className="text-sm font-medium text-gray-700 px-3 py-2">
-									{user.name}
+									{user?.name || user?.displayName}
 								</p>
 								<p className="text-xs text-gray-500 px-3 mb-3">{user.email}</p>
 								<button
 									onClick={handleSignOut}
-									className="w-full text-left text-sm font-medium text-gray-700 hover:bg-gray-100 px-3 py-2 rounded-md"
+									className="flex items-center gap-x-2 w-full text-left text-sm font-medium text-gray-700 hover:bg-red-500 duration-300 hover:text-white px-3 py-2 rounded-md cursor-pointer"
 								>
-									Sign Out
+									<RiLogoutCircleRLine />
+									<span>Sign Out</span>
 								</button>
 							</div>
 						) : (
 							<div className="space-y-3">
 								<Link to="/signin" onClick={() => setMenuOpen(false)}>
-									<button className="w-full cursor-pointer border rounded-full px-3 py-2 text-sm bg-primary hover:bg-purple-900 text-white tracking-wider transition-colors duration-300">
+									<button className="w-full cursor-pointer border rounded-full px-5 py-2 text-sm bg-primary hover:bg-purple-900 text-white tracking-wider transition-colors duration-300">
 										Sign In
 									</button>
 								</Link>
 								<Link to="/signup" onClick={() => setMenuOpen(false)}>
-									<button className="w-full cursor-pointer border rounded-full px-3 py-2 text-sm bg-primary hover:bg-purple-900 text-white tracking-wider transition-colors duration-300 mt-3 md:mt-0">
+									<button className="w-full cursor-pointer border rounded-full px-5 py-2 text-sm bg-primary hover:bg-purple-900 text-white tracking-wider transition-colors duration-300 mt-3 md:mt-0">
 										Sign Up
 									</button>
 								</Link>

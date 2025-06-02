@@ -76,6 +76,7 @@ const AuthProvider = ({ children }) => {
 				try {
 					const result = await axiosInstance.get(`auth/${currentUser.uid}`);
 					const userData = result.data;
+					console.log("userData", userData);
 					setUser(userData);
 					setRole(userData.role);
 				} catch (err) {
