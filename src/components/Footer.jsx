@@ -72,7 +72,7 @@ const Footer = () => {
 					{/* Company Info */}
 					<div>
 						<div className="flex items-center mb-4">
-							<div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center mr-3">
+							<div className="w-8 h-8 bg-purple-800 rounded-lg flex items-center justify-center mr-3">
 								<span className="text-white font-bold text-lg">E</span>
 							</div>
 							<span className="text-xl font-semibold text-gray-800">
@@ -149,7 +149,10 @@ const Footer = () => {
 				{/* Copyright */}
 				<div className="border-t border-gray-200 mt-8 pt-6 text-center">
 					<p className="text-gray-500 text-sm">
-						© <span className="font-sans font-bold">{new Date().getFullYear()}</span>{" "}
+						©{" "}
+						<span className="font-sans font-bold">
+							{new Date().getFullYear()}
+						</span>{" "}
 						Copyright by{" "}
 						<span className="bg-gradient-to-b from-[var(--color-primary)] to-[var(--color-secondary)] bg-clip-text text-transparent font-medium">
 							SM IT Developers
