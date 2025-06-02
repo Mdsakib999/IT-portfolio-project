@@ -1,10 +1,10 @@
+import { toast } from "react-hot-toast";
+import { FcGoogle } from "react-icons/fc";
 import { useState, useEffect } from "react";
+import axiosInstance from "../../Utils/axios";
 import { useForm } from "react-hook-form";
 import { FiMail, FiLock, FiEye, FiEyeOff } from "react-icons/fi";
-import { toast } from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { FcGoogle } from "react-icons/fc";
-import axiosInstance from "../../Utils/axios";
 import { useAuth } from "../../provider/AuthProvider";
 
 const SignIn = () => {
@@ -17,9 +17,13 @@ const SignIn = () => {
 		formState: { errors },
 		getValues,
 	} = useForm();
-	const { signIn, googleSignIn, user, forgotPassword } = useAuth;
+
+	const { signIn, googleSignIn, user, forgotPassword } = useAuth();
+
 	const navigate = useNavigate();
+
 	const location = useLocation();
+
 	const from = location.state?.from?.pathname || "/";
 
 	useEffect(() => {
@@ -77,7 +81,7 @@ const SignIn = () => {
 	const saveUserToDB = async (userData) => {
 		try {
 			const { data } = await axiosInstance.post("/auth/register", userData);
-			// console.log("User saved to DB: ", data);
+			console.log("User saved to DB: ", data);
 			localStorage.setItem("user", JSON.stringify(data));
 			return data;
 		} catch (error) {

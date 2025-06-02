@@ -32,7 +32,7 @@ const SignUp = () => {
 	const saveUserToDB = async (userData) => {
 		try {
 			const { data } = await axiosInstance.post("/auth/register", userData);
-			// console.log("User saved to DB: ", data);
+			console.log("User saved to DB: ", data);
 			localStorage.setItem("user", JSON.stringify(data));
 			return data;
 		} catch (error) {
