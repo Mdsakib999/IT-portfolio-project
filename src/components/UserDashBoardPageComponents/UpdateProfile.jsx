@@ -4,7 +4,6 @@ import { useAuth } from "../../provider/AuthProvider";
 
 export const UpdateProfile = () => {
   const { user } = useAuth();
-  console.log(user);
   const [editMode, setEditMode] = useState(false);
   const {
     register,

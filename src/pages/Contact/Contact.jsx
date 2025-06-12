@@ -12,6 +12,7 @@ import {
 } from "react-icons/fa";
 import { MdSubject } from "react-icons/md";
 import { Slide } from "react-awesome-reveal";
+import axiosInstance from "../../Utils/axios";
 
 const Contact = () => {
   const {
@@ -25,18 +26,17 @@ const Contact = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const onSubmit = async (data) => {
-    setIsSubmitting(true);
-    console.log(data);
-
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    reset();
-
-    // Reset success message after 3 seconds
-    setTimeout(() => setIsSubmitted(false), 3000);
+    try {
+      setIsSubmitting(true);
+      const res = await axiosInstance.post("contact", data);
+      setIsSubmitted(true);
+      reset();
+      setTimeout(() => setIsSubmitted(false), 3000);
+    } catch (error) {
+      console.error("Submission error:", error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [

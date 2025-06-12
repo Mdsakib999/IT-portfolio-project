@@ -10,7 +10,15 @@ import Pricing from "../components/ServicePageComponents/Pricing";
 import CheckOut from "../components/CheckOut";
 import { Dashboard } from "../pages/Dashboard/Dashboard";
 import PrivateRoute from "./PrivateRoute";
-import { UpdateProfile } from "../pages/UserDashBoardPageComponents/UpdateProfile";
+import { UpdateProfile } from "../components/UserDashBoardPageComponents/UpdateProfile";
+import { OrderHistory } from "../components/UserDashBoardPageComponents/OrderHistory";
+import { ManageService } from "../components/AdminDashBoardPageComponents/ManageService";
+import { CustomPlan } from "../components/AdminDashBoardPageComponents/CustomPlan";
+import { HireRequest } from "../components/AdminDashBoardPageComponents/HireRequest";
+import { ContactMessageRequest } from "../components/AdminDashBoardPageComponents/ContactMessageRequest";
+import { ManageUsers } from "../components/AdminDashBoardPageComponents/ManageUsers";
+import { ManageOrders } from "../components/AdminDashBoardPageComponents/ManageOrders";
+import { AdminRoute } from "./AdminRoute";
 
 const router = createBrowserRouter([
   {
@@ -50,65 +58,69 @@ const router = createBrowserRouter([
         path: "/signup",
         element: <SignUp />,
       },
-      // User Dashboard
+    ],
+  },
+  // User Dashboard
+  {
+    path: "/dashboard",
+    element: (
+      <PrivateRoute>
+        <Dashboard />
+      </PrivateRoute>
+    ),
+    children: [
       {
-        path: "/dashboard",
-        element: (
-          <PrivateRoute>
-            <Dashboard />
-          </PrivateRoute>
-        ),
-        children: [
-          {
-            path: "",
-            element: <UpdateProfile />,
-          },
-        ],
+        path: "",
+        element: <UpdateProfile />,
+      },
+      {
+        path: "order",
+        element: <OrderHistory />,
       },
     ],
   },
 
   // Admin Dashboard
-  //   {
-  //     path: "/dashboard",
-  //     element: (
-  //       <PrivateRoute>
-  //         <AdminRoute>
-  //           <Dashboard />
-  //         </AdminRoute>
-  //       </PrivateRoute>
-  //     ),
-  //     children: [
-  //       {
-  //         path: "",
-  //         element: <UpdateProfile />,
-  //       },
-  //       {
-  //         path: "statistics",
-  //         element: <Statistics />,
-  //       },
-  //       {
-  //         path: "manage-users",
-  //         element: <ManageUsers />,
-  //       },
-  //       {
-  //         path: "add-books",
-  //         element: <AddBooks />,
-  //       },
-  //       {
-  //         path: "manage-category",
-  //         element: <AddCategory />,
-  //       },
-  //       {
-  //         path: "manage-books",
-  //         element: <ManageBooks />,
-  //       },
-  //       {
-  //         path: "manage-orders",
-  //         element: <ManageOrders />,
-  //       },
-  //     ],
-  //   },
+  {
+    path: "/dashboard",
+    element: (
+      <PrivateRoute>
+        <AdminRoute>
+          <Dashboard />
+        </AdminRoute>
+      </PrivateRoute>
+    ),
+    children: [
+      {
+        path: "",
+        element: <UpdateProfile />,
+      },
+      {
+        path: "manage-users",
+        element: <ManageUsers />,
+      },
+      {
+        path: "manage-service",
+        element: <ManageService />,
+      },
+      {
+        path: "manage-orders",
+        element: <ManageOrders />,
+      },
+      {
+        path: "custom-plan",
+        element: <CustomPlan />,
+      },
+      {
+        path: "hire-request",
+        element: <HireRequest />,
+      },
+      {
+        path: "contact-message-request",
+        element: <ContactMessageRequest />,
+      },
+    ],
+  },
 ]);
 
 export default router;

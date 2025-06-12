@@ -24,8 +24,6 @@ const Navbar = () => {
   const navigate = useNavigate();
   const { user, logout } = useAuth();
 
-  console.log("USER=>", user);
-
   // Close menus when route changes
   useEffect(() => {
     setMenuOpen(false);
