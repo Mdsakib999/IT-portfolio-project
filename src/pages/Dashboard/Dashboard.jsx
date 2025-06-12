@@ -6,7 +6,7 @@ export const Dashboard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className="flex min-h-screen relative  max-w-7xl mx-auto">
+    <div className="flex min-h-screen relative  max-w-7xl mx-auto pt-18">
       {/* Mobile toggle */}
       {!sidebarOpen && (
         <button
@@ -36,7 +36,7 @@ export const Dashboard = () => {
       )}
 
       {/* Main content */}
-      <div className="w-full p-4 mt-14 sm:mt-0">
+      <div className="w-full">
         <Outlet />
       </div>
     </div>

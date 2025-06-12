@@ -4,7 +4,7 @@ import { useAuth } from "../../provider/AuthProvider";
 
 export const UpdateProfile = () => {
   const { user } = useAuth();
-  // console.log(user);
+  console.log(user);
   const [editMode, setEditMode] = useState(false);
   const {
     register,
@@ -32,9 +32,9 @@ export const UpdateProfile = () => {
     <div className="max-w-7xl mx-auto rounded-lg p-6 mt-6 lg:mt-0">
       <div className="relative">
         <img
-          src="https://miro.medium.com/v2/resize:fit:5120/1*42ebJizcUtZBNIZPmmMZ5Q.jpeg"
+          src="https://t4.ftcdn.net/jpg/04/17/28/93/360_F_417289346_hrs0D4Lo8dSv3aWDqkQpRB0U9PbtFX6n.jpg"
           alt="Banner"
-          className="rounded-t-2xl h-48 w-full object-cover"
+          className="rounded-t-2xl h-64 w-full object-cover"
         />
 
         {/* Avatar and Name Container */}
