@@ -3,9 +3,11 @@ import {
   FaSignOutAlt,
   FaTimes,
   FaUsers,
-  FaBook,
   FaClipboardList,
   FaHistory,
+  FaTools,
+  FaUserTie,
+  FaEnvelopeOpenText,
 } from "react-icons/fa";
 import { IoIosStats } from "react-icons/io";
 import { MdLibraryAdd } from "react-icons/md";
@@ -22,34 +24,34 @@ export const DashBoardLeftNav = ({ closeSidebar }) => {
       path: "/dashboard",
     },
     {
-      label: "Statistics",
-      icon: <IoIosStats size={20} />,
-      path: "/dashboard/statistics",
-    },
-    {
       label: "Manage Users",
       icon: <FaUsers size={20} />,
       path: "/dashboard/manage-users",
     },
     {
-      label: "Add Book",
+      label: "Manage Service",
       icon: <MdLibraryAdd size={20} />,
-      path: "/dashboard/add-books",
-    },
-    {
-      label: "Manage Category",
-      icon: <MdLibraryAdd size={20} />,
-      path: "/dashboard/manage-category",
-    },
-    {
-      label: "Manage Books",
-      icon: <FaBook size={20} />,
-      path: "/dashboard/manage-books",
+      path: "/dashboard/manage-service",
     },
     {
       label: "Manage Orders",
       icon: <FaClipboardList size={20} />,
       path: "/dashboard/manage-orders",
+    },
+    {
+      label: "Custom-Plan",
+      icon: <FaTools size={20} />,
+      path: "/dashboard/custom-plan",
+    },
+    {
+      label: "Hire Request",
+      icon: <FaUserTie size={20} />,
+      path: "/dashboard/hire-request",
+    },
+    {
+      label: "Contact Message Request",
+      icon: <FaEnvelopeOpenText size={20} />,
+      path: "/dashboard/contact-message-request",
     },
   ];
 
