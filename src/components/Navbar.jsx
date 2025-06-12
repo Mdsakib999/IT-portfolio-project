@@ -115,12 +115,12 @@ const Navbar = () => {
                 </svg>
               </button>
               {userMenuOpen && (
-                <div className="absolute top-10 right-0 bg-white shadow-lg rounded-lg p-4 w-48">
+                <div className="absolute top-10 right-0 bg-white shadow-lg rounded-lg p-4 w-60">
                   <p className="text-sm font-medium text-gray-700 cursor-pointer">
                     {user?.name || user?.displayName}
                   </p>
                   <p className="text-xs text-gray-500 mb-3">{user.email}</p>
-                  <Link to="/dashboard">
+                  <Link className="w-full" to="/dashboard">
                     <PrimaryButton>Dashboard</PrimaryButton>
                   </Link>
                   <button

@@ -2,7 +2,7 @@ import { TiTick } from "react-icons/ti";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { MdCancel } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Pricing = () => {
 	const [selectedPlan, setSelectedPlan] = useState(2);
@@ -15,54 +15,10 @@ const Pricing = () => {
 		formState: { errors },
 	} = useForm();
 
-	const pricingPlans = [
-		{
-			id: 1,
-			name: "Starter",
-			price: "$49.99",
-			period: "per month",
-			features: [
-				"Basic Website Development",
-				"Email Support",
-				"1 Domain Included",
-				"5GB Storage",
-				"Basic Analytics",
-			],
-			isPopular: false,
-		},
-		{
-			id: 2,
-			name: "Professional",
-			price: "$99.99",
-			period: "per month",
-			features: [
-				"Advanced Web Development",
-				"24/7 Priority Support",
-				"5 Domains Included",
-				"50GB Storage",
-				"Advanced Analytics",
-				"SEO Optimization",
-				"Mobile App Development",
-			],
-			isPopular: true,
-		},
-		{
-			id: 3,
-			name: "Enterprise",
-			price: "$199.99",
-			period: "per month",
-			features: [
-				"Custom Solutions",
-				"Dedicated Account Manager",
-				"Unlimited Domains",
-				"500GB Storage",
-				"Real-time Analytics",
-				"Complete Digital Marketing",
-				"Cloud Infrastructure",
-			],
-			isPopular: false,
-		},
-	];
+	const {state} =useLocation()
+	console.log(state)
+
+	const pricingPlans = state?.plans || []
 
 	const handleCardSelect = (planId) => {
 		setSelectedPlan(planId);
@@ -138,21 +94,14 @@ const Pricing = () => {
 									selectedPlan === plan.id ? "text-white" : "text-gray-800"
 								}`}
 							>
-								{plan.name}
+								{plan.title}
 							</h1>
 							<p
 								className={`text-3xl md:text-4xl font-bold ${
 									selectedPlan === plan.id ? "text-white" : "text-purple-500"
 								}`}
 							>
-								{plan.price}
-							</p>
-							<p
-								className={`text-sm md:text-base ${
-									selectedPlan === plan.id ? "text-white/90" : "text-gray-600"
-								}`}
-							>
-								{plan.period}
+								{plan.price}/<span className="text-sm">Month</span>
 							</p>
 						</div>
 
