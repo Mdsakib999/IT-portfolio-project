@@ -74,7 +74,7 @@ const AuthProvider = ({ children }) => {
 
 			if (currentUser) {
 				try {
-					const result = await axiosInstance.get(`auth/${currentUser.uid}`);
+					const result = await axiosInstance.get(`auth/${currentUser?.uid}`);
 					const userData = result.data;
 					console.log("userData", userData);
 					setUser(userData);
