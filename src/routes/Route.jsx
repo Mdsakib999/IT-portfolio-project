@@ -19,6 +19,8 @@ import { ContactMessageRequest } from "../components/AdminDashBoardPageComponent
 import { ManageUsers } from "../components/AdminDashBoardPageComponents/ManageUsers";
 import { ManageOrders } from "../components/AdminDashBoardPageComponents/ManageOrders";
 import { AdminRoute } from "./AdminRoute";
+import { CustomPlanOrder } from "../components/UserDashBoardPageComponents/CustomPlanOrder";
+import { AddService } from "../components/AdminDashBoardPageComponents/AddService";
 
 const router = createBrowserRouter([
   {
@@ -77,6 +79,10 @@ const router = createBrowserRouter([
         path: "order",
         element: <OrderHistory />,
       },
+      {
+        path: "custom-plan-order",
+        element: <CustomPlanOrder />,
+      },
     ],
   },
 
@@ -98,6 +104,10 @@ const router = createBrowserRouter([
       {
         path: "manage-users",
         element: <ManageUsers />,
+      },
+      {
+        path: "add-service",
+        element: <AddService />,
       },
       {
         path: "manage-service",

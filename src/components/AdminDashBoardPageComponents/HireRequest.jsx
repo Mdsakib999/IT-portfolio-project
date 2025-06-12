@@ -18,6 +18,8 @@ export const HireRequest = () => {
   const [filtered, setFiltered] = useState([]);
   const [statusFilter, setStatusFilter] = useState("");
   const [search, setSearch] = useState("");
+  const [selectedDescription, setSelectedDescription] = useState("");
+  const [showModal, setShowModal] = useState(false);
   const [page, setPage] = useState(1);
   const itemsPerPage = 10;
 
@@ -261,8 +263,23 @@ export const HireRequest = () => {
 
                 <div className="mb-4">
                   <div className="flex items-start gap-2 text-gray-700">
-                    <FileText className="w-4 h-4 mt-0.5 text-gray-400" />
-                    <p className="text-sm leading-relaxed">{req.description}</p>
+                    <FileText className="w-5 h-5 mt-1 text-gray-400 shrink-0" />
+                    <p className="text-gray-700 leading-relaxed">
+                      {req.description.length > 100
+                        ? `${req.description.slice(0, 100)}... `
+                        : req.description}
+                      {req.description.length > 100 && (
+                        <button
+                          onClick={() => {
+                            setSelectedDescription(req.description);
+                            setShowModal(true);
+                          }}
+                          className="text-indigo-600 font-medium hover:underline ml-1"
+                        >
+                          Read More
+                        </button>
+                      )}
+                    </p>
                   </div>
                 </div>
 
@@ -299,6 +316,30 @@ export const HireRequest = () => {
                 </div>
               </div>
             ))}
+          </div>
+        )}
+        {showModal && (
+          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
+            <div className="relative bg-white w-full max-w-2xl mx-4 md:mx-0 p-6 md:p-8 rounded-2xl shadow-xl transition-all duration-300 ease-out animate-fade-in">
+              {/* Close Button */}
+              <button
+                onClick={() => setShowModal(false)}
+                className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-2xl"
+                aria-label="Close Modal"
+              >
+                &times;
+              </button>
+
+              {/* Modal Content */}
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">
+                Full Description
+              </h2>
+              <div className="max-h-[60vh] overflow-y-auto pr-1">
+                <p className="text-gray-700 leading-relaxed whitespace-pre-line">
+                  {selectedDescription}
+                </p>
+              </div>
+            </div>
           </div>
         )}
 

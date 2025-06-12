@@ -34,6 +34,11 @@ export const DashBoardLeftNav = ({ closeSidebar }) => {
       path: "/dashboard/manage-service",
     },
     {
+      label: "Add Service",
+      icon: <MdLibraryAdd size={20} />,
+      path: "/dashboard/add-service",
+    },
+    {
       label: "Manage Orders",
       icon: <FaClipboardList size={20} />,
       path: "/dashboard/manage-orders",
@@ -65,6 +70,11 @@ export const DashBoardLeftNav = ({ closeSidebar }) => {
       label: "Order History",
       icon: <FaHistory size={20} />,
       path: "/dashboard/order",
+    },
+    {
+      label: "Custom Plan Order",
+      icon: <IoIosStats size={20} />,
+      path: "/dashboard/custom-plan-order",
     },
   ];
 
