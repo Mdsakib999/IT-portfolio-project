@@ -10,7 +10,6 @@ import { PrimaryButton } from "./Shared/PrimaryButton";
 const navLinks = [
   { name: "Home", path: "/" },
   { name: "About", path: "/about" },
-  { name: "Pricing", path: "/pricing" },
   { name: "Services", path: "/service" },
   { name: "Contact", path: "/contact" },
 ];
@@ -24,13 +23,11 @@ const Navbar = () => {
   const navigate = useNavigate();
   const { user, logout } = useAuth();
 
-  // Close menus when route changes
   useEffect(() => {
     setMenuOpen(false);
     setUserMenuOpen(false);
   }, [location]);
 
-  // Close menus when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {

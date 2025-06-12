@@ -72,20 +72,20 @@ const AuthProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
 
-      if (currentUser) {
-        try {
-          const result = await axiosInstance.get(`auth/${currentUser?.uid}`);
-          const userData = result.data;
-          setUser(userData);
-          setRole(userData.role);
-        } catch (err) {
-          console.error("Failed to fetch user data:", err);
-        }
-      } else {
-        localStorage.removeItem("user");
-      }
-      setLoading(false);
-    });
+			if (currentUser) {
+				try {
+					const result = await axiosInstance.get(`auth/${currentUser?.uid}`);
+					const userData = result.data;
+					setUser(userData);
+					setRole(userData.role);
+				} catch (err) {
+					console.error("Failed to fetch user data:", err);
+				}
+			} else {
+				localStorage.removeItem("user");
+			}
+			setLoading(false);
+		});
 
     return () => {
       unsubscribe();

@@ -11,7 +11,11 @@ export const OfferedServices = () => {
   const navigate = useNavigate();
 
   const handleLearnMore = (service) => {
-    navigate("/pricing", { state: { plans: service.plan } });
+    navigate("/pricing", { state: { 
+		plans: service.plan, 
+		serviceName: service?.title,
+		serviceId: services.find(s => s?.title === service?.title)?._id 
+	} });
   };
 
   const nextSlide = () => {
