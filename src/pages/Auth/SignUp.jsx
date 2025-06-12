@@ -32,7 +32,6 @@ const SignUp = () => {
 	const saveUserToDB = async (userData) => {
 		try {
 			const { data } = await axiosInstance.post("/auth/register", userData);
-			console.log("User saved to DB: ", data);
 			localStorage.setItem("user", JSON.stringify(data));
 			return data;
 		} catch (error) {
@@ -80,6 +79,12 @@ const SignUp = () => {
 				toast.error(
 					<h1 className="font-serif">
 						Password should be at least 6 characters
+					</h1>
+				);
+			} else if (error.code === "auth/popup-closed-by-user") {
+				toast.error(
+					<h1 className="font-serif">
+						Auth popup-closed-by-user
 					</h1>
 				);
 			} else {
@@ -259,7 +264,7 @@ const SignUp = () => {
 						<button
 							type="button"
 							onClick={handleGoogleSignUp}
-							className="cursor-pointer w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-lg shadow-sm bg-white text-sm font-medium bg-gradient-to-br from-[#DE4396] to-[#0D1C9F] bg-clip-text text-transparent hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black"
+							className={`${isLoading?"cursor-not-allowed":"cursor-pointer"}  w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-lg shadow-sm bg-white text-sm font-medium bg-gradient-to-br from-[#DE4396] to-[#0D1C9F] bg-clip-text text-transparent hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black`}
 							disabled={isLoading}
 						>
 							<FcGoogle className="h-5 w-5" />
