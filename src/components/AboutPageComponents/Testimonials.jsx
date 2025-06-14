@@ -87,19 +87,30 @@ export const Testimonials = () => {
       {/* Main Testimonial Card */}
       <div className="bg-gray-50 shadow-md rounded-xl p-8 text-center transition-all duration-300">
         <div className="flex flex-col items-center gap-4">
-          <img
-            src={testimonials[currentSlide].avatar}
-            alt={testimonials[currentSlide].name}
-            className="w-20 h-20 sm:w-24 sm:h-24 rounded-full object-cover ring-4 ring-purple-400"
-          />
+          {/* Top Section: Avatar + Name/Role */}
+          <div className="flex items-center gap-4">
+            <img
+              src={testimonials[currentSlide].avatar}
+              alt={testimonials[currentSlide].name}
+              className="w-16 h-16  rounded-full object-cover ring-4 ring-purple-400"
+            />
+            <div className="text-left">
+              <h3 className="text-lg font-semibold text-gray-800">
+                {testimonials[currentSlide].name}
+              </h3>
+              <p className="text-sm text-gray-500">
+                {testimonials[currentSlide].role}
+              </p>
+            </div>
+          </div>
+
+          {/* Rating */}
           <StarRating rating={testimonials[currentSlide].rating} />
-          <h3 className="text-lg font-semibold text-gray-800">
-            {testimonials[currentSlide].name}
-          </h3>
-          <p className="text-sm text-gray-500 mb-4">
-            {testimonials[currentSlide].role}
-          </p>
+
+          {/* Quote Icon */}
           <Quote size={28} className="text-purple-500 mb-2" />
+
+          {/* Testimonial Text */}
           <p className="text-gray-600 max-w-2xl text-base italic">
             “{testimonials[currentSlide].text}”
           </p>
@@ -112,7 +123,7 @@ export const Testimonials = () => {
           <button
             key={testimonial.id}
             onClick={() => goToSlide(index)}
-            className={`md:w-18 md:h-18 h-12 rounded-full overflow-hidden border-2 transition-all duration-300 ${
+            className={`md:w-16 md:h-16 h-12 rounded-full overflow-hidden border-2 transition-all duration-300 ${
               index === currentSlide
                 ? "border-purple-500 scale-110"
                 : "border-gray-300 opacity-70 hover:opacity-100"

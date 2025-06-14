@@ -3,7 +3,7 @@ import backgroundImage from "/assets/office-image.png";
 
 export const AboutBanner = () => {
   return (
-    <section className="relative h-screen w-full">
+    <section className="relative h-[50vh] w-full">
       {/* Background image */}
       <img
         src={backgroundImage}
@@ -12,7 +12,7 @@ export const AboutBanner = () => {
       />
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black/60 flex items-center justify-center px-4">
+      <div className="absolute inset-0 bg-black/10 flex items-center justify-center px-4">
         <div className="text-center text-white max-w-2xl">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-snug md:leading-tight mb-6">
             Implementing <br className="hidden sm:block" />

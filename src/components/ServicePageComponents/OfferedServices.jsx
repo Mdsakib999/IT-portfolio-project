@@ -11,11 +11,13 @@ export const OfferedServices = () => {
   const navigate = useNavigate();
 
   const handleLearnMore = (service) => {
-    navigate("/pricing", { state: { 
-		plans: service.plan, 
-		serviceName: service?.title,
-		serviceId: services.find(s => s?.title === service?.title)?._id 
-	} });
+    navigate("/pricing", {
+      state: {
+        plans: service.plan,
+        serviceName: service?.title,
+        serviceId: services.find((s) => s?.title === service?.title)?._id,
+      },
+    });
   };
 
   const nextSlide = () => {
@@ -40,7 +42,7 @@ export const OfferedServices = () => {
   const currentPage = Math.floor(currentIndex / itemsPerPage) + 1;
 
   return (
-    <div className="bg-slate-100 px-4 relative overflow-hidden my-10 py-4">
+    <div className="bg-slate-50 px-4 relative overflow-hidden my-10 py-4">
       {/* Decorative Elements */}
       <div className="absolute -top-10 left-10 w-20 h-20 bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-secondary)] rounded-full z-10" />
       <div className="absolute -bottom-10 right-10 w-20 h-20 bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-secondary)] rounded-full z-10" />
@@ -159,13 +161,6 @@ export const OfferedServices = () => {
                 }`}
               />
             </button>
-          </div>
-          {/* Page Counter */}
-          <div className="text-center mt-6">
-            <span className="text-sm text-gray-500 bg-white px-4 py-2 rounded-full shadow-sm">
-              {String(currentPage).padStart(2, "0")} /{" "}
-              {String(totalPages).padStart(2, "0")}
-            </span>
           </div>
         </div>
       </div>

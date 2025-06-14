@@ -69,8 +69,8 @@ const Contact = () => {
           {/* Contact Info Card */}
           <Slide className="w-full lg:w-2/5">
             <div>
-              <div className="bg-white rounded-2xl sm:rounded-3xl shadow-xl border border-purple-100 p-4 sm:p-6 lg:p-8 h-full">
-                <div className="text-center mb-6 sm:mb-8">
+              <div className="bg-white rounded-2xl sm:rounded-3xl shadow-xl border border-purple-100 p-4 sm:p-6 lg:p-7 h-full">
+                <div className="text-center mb-6 sm:mb-4">
                   <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-[#DE4396] to-[#0D1C9F] rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
                     <FaCommentDots className="text-white text-xl sm:text-2xl" />
                   </div>
@@ -82,13 +82,13 @@ const Contact = () => {
                   </p>
                 </div>
 
-                <div className="space-y-4 sm:space-y-6">
+                <div className="space-y-4 sm:space-y-0">
                   {contactInfo.map((info, index) => {
                     const IconComponent = info.icon;
                     return (
                       <div
                         key={index}
-                        className="flex items-center gap-3 sm:gap-4 p-3 rounded-xl hover:bg-purple-50 transition-all duration-300 group"
+                        className="flex items-center gap-3 sm:gap-4 rounded-xl hover:bg-purple-50 transition-all duration-300 group p-1 "
                       >
                         <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-[#DE4396] to-[#0D1C9F] rounded-full flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300">
                           <IconComponent className="text-white text-sm sm:text-base" />

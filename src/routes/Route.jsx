@@ -21,6 +21,7 @@ import { ManageOrders } from "../components/AdminDashBoardPageComponents/ManageO
 import { AdminRoute } from "./AdminRoute";
 import { CustomPlanOrder } from "../components/UserDashBoardPageComponents/CustomPlanOrder";
 import { AddService } from "../components/AdminDashBoardPageComponents/AddService";
+import { HireEliteRequest } from "../components/UserDashBoardPageComponents/HireEliteRequest";
 
 const router = createBrowserRouter([
   {
@@ -82,6 +83,10 @@ const router = createBrowserRouter([
       {
         path: "custom-plan-order",
         element: <CustomPlanOrder />,
+      },
+      {
+        path: "hire-elite-request",
+        element: <HireEliteRequest />,
       },
     ],
   },
