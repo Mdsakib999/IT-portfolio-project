@@ -17,7 +17,6 @@ const Pricing = () => {
   } = useForm();
 
   const { state } = useLocation();
-  console.log("state", state)
 
   const pricingPlans = state?.plans || [];
 
