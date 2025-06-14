@@ -53,7 +53,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="fixed left-1/2 transform -translate-x-1/2 z-50 bg-white shadow max-w-7xl px-2 sm:px-4 lg:px-8 rounded-b-2xl min-w-[280px] font-serif w-full">
+    <div className="fixed z-50 w-full bg-white shadow max-w-7xl mx-auto px-2 sm:px-4 lg:px-8 rounded-b-2xl min-w-[280px] font-serif">
       <div className="flex items-center justify-between h-20">
         {/* Logo */}
         <Link
