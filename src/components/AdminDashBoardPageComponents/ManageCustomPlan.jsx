@@ -12,6 +12,8 @@ import {
 } from "lucide-react";
 import axios from "../../Utils/axios";
 import { toast } from "react-hot-toast";
+import { formatDate } from "../../Utils/formatDate";
+import { PlanActionButtons } from "../Shared/PlanActionButtons";
 
 export const CustomPlan = () => {
   const [plans, setPlans] = useState([]);
@@ -256,22 +258,20 @@ export const CustomPlan = () => {
                         </div>
                         <div className="flex items-center gap-2 text-sm text-gray-500">
                           <Calendar className="w-4 h-4" />
-                          Submitted{" "}
-                          {new Date(plan.createdAt).toLocaleDateString(
-                            "en-US",
-                            {
-                              year: "numeric",
-                              month: "long",
-                              day: "numeric",
-                              hour: "2-digit",
-                              minute: "2-digit",
-                            }
-                          )}
+                          Submitted {formatDate(plan.createdAt)}
                         </div>
                       </div>
+
+                      {/* Action Buttons */}
+                      {plan.status === "pending" && (
+                        <PlanActionButtons
+                          planId={plan._id}
+                          updatingPlan={updatingPlan}
+                          onStatusChange={handleStatusChange}
+                        />
+                      )}
                     </div>
                   </div>
-
                   {/* Card Body */}
                   <div className="p-6">
                     <div className="grid md:grid-cols-2 gap-6">
@@ -344,42 +344,6 @@ export const CustomPlan = () => {
                         </div>
                       </div>
                     </div>
-
-                    {/* Action Buttons */}
-                    {plan.status === "pending" && (
-                      <div className="mt-6 pt-6 border-t border-gray-200">
-                        <div className="flex gap-3 sm:justify-end">
-                          <button
-                            onClick={() =>
-                              handleStatusChange(plan._id, "rejected")
-                            }
-                            disabled={updatingPlan === plan._id}
-                            className="flex items-center justify-center gap-2 px-6 py-2.5 bg-white border border-red-300 text-red-700 font-semibold rounded-xl hover:bg-red-50 hover:border-red-400 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
-                          >
-                            {updatingPlan === plan._id ? (
-                              <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-red-600"></div>
-                            ) : (
-                              <XCircle className="w-4 h-4" />
-                            )}
-                            Reject
-                          </button>
-                          <button
-                            onClick={() =>
-                              handleStatusChange(plan._id, "approved")
-                            }
-                            disabled={updatingPlan === plan._id}
-                            className="flex items-center justify-center gap-2 px-6 py-2.5 bg-emerald-600 text-white font-semibold rounded-xl hover:bg-emerald-700 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
-                          >
-                            {updatingPlan === plan._id ? (
-                              <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
-                            ) : (
-                              <CheckCircle className="w-4 h-4" />
-                            )}
-                            Approve
-                          </button>
-                        </div>
-                      </div>
-                    )}
                   </div>
                 </div>
               );

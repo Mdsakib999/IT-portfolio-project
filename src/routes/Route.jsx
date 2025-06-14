@@ -13,7 +13,7 @@ import PrivateRoute from "./PrivateRoute";
 import { UpdateProfile } from "../components/UserDashBoardPageComponents/UpdateProfile";
 import { OrderHistory } from "../components/UserDashBoardPageComponents/OrderHistory";
 import { ManageService } from "../components/AdminDashBoardPageComponents/ManageService";
-import { CustomPlan } from "../components/AdminDashBoardPageComponents/CustomPlan";
+import { CustomPlan } from "../components/AdminDashBoardPageComponents/ManageCustomPlan";
 import { HireRequest } from "../components/AdminDashBoardPageComponents/HireRequest";
 import { ContactMessageRequest } from "../components/AdminDashBoardPageComponents/ContactMessageRequest";
 import { ManageUsers } from "../components/AdminDashBoardPageComponents/ManageUsers";

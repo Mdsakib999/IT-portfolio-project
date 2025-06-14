@@ -12,6 +12,7 @@ import {
   Calendar,
 } from "lucide-react";
 import axiosInstance from "../../Utils/axios";
+import { formatDate } from "../../Utils/formatDate";
 
 export const HireRequest = () => {
   const [requests, setRequests] = useState([]);
@@ -286,13 +287,7 @@ export const HireRequest = () => {
                 <div className="flex items-center justify-between pt-4 border-t border-gray-100">
                   <div className="flex items-center gap-2 text-xs text-gray-500">
                     <Calendar className="w-4 h-4" />
-                    {new Date(req.createdAt).toLocaleDateString("en-US", {
-                      month: "short",
-                      day: "numeric",
-                      year: "numeric",
-                      hour: "2-digit",
-                      minute: "2-digit",
-                    })}
+                    {formatDate(req.createdAt)}
                   </div>
 
                   {req.status === "pending" && (

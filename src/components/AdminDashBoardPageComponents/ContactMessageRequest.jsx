@@ -12,6 +12,7 @@ import {
   FiFilter,
 } from "react-icons/fi";
 import { toast } from "react-hot-toast";
+import { formatDate } from "../../Utils/formatDate";
 
 export const ContactMessageRequest = () => {
   const [messages, setMessages] = useState([]);
@@ -262,13 +263,7 @@ export const ContactMessageRequest = () => {
                 <div className="bg-gray-50 px-6 py-4 flex items-center justify-between border-t border-gray-100">
                   <div className="flex items-center gap-2 text-sm text-gray-500">
                     <FiClock className="w-4 h-4" />
-                    {new Date(msg.createdAt).toLocaleDateString("en-US", {
-                      month: "short",
-                      day: "numeric",
-                      year: "numeric",
-                      hour: "2-digit",
-                      minute: "2-digit",
-                    })}
+                    {formatDate(msg.createdAt)}
                   </div>
 
                   {!msg.responded && (
