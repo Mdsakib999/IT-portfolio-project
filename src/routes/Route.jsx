@@ -13,7 +13,7 @@ import PrivateRoute from "./PrivateRoute";
 import { UpdateProfile } from "../components/UserDashBoardPageComponents/UpdateProfile";
 import { OrderHistory } from "../components/UserDashBoardPageComponents/OrderHistory";
 import { ManageService } from "../components/AdminDashBoardPageComponents/ManageService";
-import { CustomPlan } from "../components/AdminDashBoardPageComponents/CustomPlan";
+import { CustomPlan } from "../components/AdminDashBoardPageComponents/ManageCustomPlan";
 import { HireRequest } from "../components/AdminDashBoardPageComponents/HireRequest";
 import { ContactMessageRequest } from "../components/AdminDashBoardPageComponents/ContactMessageRequest";
 import { ManageUsers } from "../components/AdminDashBoardPageComponents/ManageUsers";
@@ -21,6 +21,8 @@ import { ManageOrders } from "../components/AdminDashBoardPageComponents/ManageO
 import { AdminRoute } from "./AdminRoute";
 import SuccessPage from "../pages/SuccessPage";
 import CancelPage from "../pages/CancelPage";
+import { CustomPlanOrder } from "../components/UserDashBoardPageComponents/CustomPlanOrder";
+import { AddService } from "../components/AdminDashBoardPageComponents/AddService";
 
 const router = createBrowserRouter([
   {
@@ -87,6 +89,10 @@ const router = createBrowserRouter([
         path: "order",
         element: <OrderHistory />,
       },
+      {
+        path: "custom-plan-order",
+        element: <CustomPlanOrder />,
+      },
     ],
   },
 
@@ -108,6 +114,10 @@ const router = createBrowserRouter([
       {
         path: "manage-users",
         element: <ManageUsers />,
+      },
+      {
+        path: "add-service",
+        element: <AddService />,
       },
       {
         path: "manage-service",

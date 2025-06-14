@@ -1,6 +1,5 @@
 import {
   FaUser,
-  FaSignOutAlt,
   FaTimes,
   FaUsers,
   FaClipboardList,
@@ -34,6 +33,11 @@ export const DashBoardLeftNav = ({ closeSidebar }) => {
       path: "/dashboard/manage-service",
     },
     {
+      label: "Add Service",
+      icon: <MdLibraryAdd size={20} />,
+      path: "/dashboard/add-service",
+    },
+    {
       label: "Manage Orders",
       icon: <FaClipboardList size={20} />,
       path: "/dashboard/manage-orders",
@@ -65,6 +69,11 @@ export const DashBoardLeftNav = ({ closeSidebar }) => {
       label: "Order History",
       icon: <FaHistory size={20} />,
       path: "/dashboard/order",
+    },
+    {
+      label: "Custom Plan Order",
+      icon: <IoIosStats size={20} />,
+      path: "/dashboard/custom-plan-order",
     },
   ];
 
@@ -106,17 +115,6 @@ export const DashBoardLeftNav = ({ closeSidebar }) => {
               </Link>
             );
           })}
-
-          <button
-            className="flex items-center gap-3 text-red-600 hover:text-red-800 hover:bg-red-100 px-3 py-2 rounded-md transition w-full cursor-pointer"
-            onClick={() => {
-              // console.log("Logout");
-              closeSidebar();
-            }}
-          >
-            <FaSignOutAlt size={20} />
-            <span>Logout</span>
-          </button>
         </nav>
       </div>
     </aside>

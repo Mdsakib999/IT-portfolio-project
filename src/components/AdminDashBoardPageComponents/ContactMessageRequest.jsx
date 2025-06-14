@@ -12,12 +12,15 @@ import {
   FiFilter,
 } from "react-icons/fi";
 import { toast } from "react-hot-toast";
+import { formatDate } from "../../Utils/formatDate";
 
 export const ContactMessageRequest = () => {
   const [messages, setMessages] = useState([]);
   const [sortOrder, setSortOrder] = useState("desc");
   const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState("");
+  const [selectedDescription, setSelectedDescription] = useState("");
+  const [showModal, setShowModal] = useState(false);
   const [page, setPage] = useState(1);
   const itemsPerPage = 8;
 
@@ -235,9 +238,24 @@ export const ContactMessageRequest = () => {
                   </div>
 
                   <div className="mb-4">
-                    <p className="text-gray-700 leading-relaxed bg-gray-50 p-4 rounded-xl border-l-4 border-indigo-400">
-                      {msg.message}
-                    </p>
+                    <div className="flex items-start gap-2 text-gray-700">
+                      <p className="text-gray-700 leading-relaxed">
+                        {msg.message.length > 100
+                          ? `${msg.message.slice(0, 100)}... `
+                          : msg.message}
+                        {msg.message.length > 100 && (
+                          <button
+                            onClick={() => {
+                              setSelectedDescription(msg.message);
+                              setShowModal(true);
+                            }}
+                            className="text-indigo-600 font-medium hover:underline ml-1"
+                          >
+                            Read More
+                          </button>
+                        )}
+                      </p>
+                    </div>
                   </div>
                 </div>
 
@@ -245,13 +263,7 @@ export const ContactMessageRequest = () => {
                 <div className="bg-gray-50 px-6 py-4 flex items-center justify-between border-t border-gray-100">
                   <div className="flex items-center gap-2 text-sm text-gray-500">
                     <FiClock className="w-4 h-4" />
-                    {new Date(msg.createdAt).toLocaleDateString("en-US", {
-                      month: "short",
-                      day: "numeric",
-                      year: "numeric",
-                      hour: "2-digit",
-                      minute: "2-digit",
-                    })}
+                    {formatDate(msg.createdAt)}
                   </div>
 
                   {!msg.responded && (
@@ -266,6 +278,30 @@ export const ContactMessageRequest = () => {
                 </div>
               </div>
             ))}
+          </div>
+        )}
+        {showModal && (
+          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
+            <div className="relative bg-white w-full max-w-2xl mx-4 md:mx-0 p-6 md:p-8 rounded-2xl shadow-xl transition-all duration-300 ease-out animate-fade-in">
+              {/* Close Button */}
+              <button
+                onClick={() => setShowModal(false)}
+                className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-2xl"
+                aria-label="Close Modal"
+              >
+                &times;
+              </button>
+
+              {/* Modal Content */}
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">
+                Full Description
+              </h2>
+              <div className="max-h-[60vh] overflow-y-auto pr-1">
+                <p className="text-gray-700 leading-relaxed whitespace-pre-line">
+                  {selectedDescription}
+                </p>
+              </div>
+            </div>
           </div>
         )}
 

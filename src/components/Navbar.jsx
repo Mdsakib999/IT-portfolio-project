@@ -122,7 +122,7 @@ const Navbar = () => {
                   </Link>
                   <button
                     onClick={handleSignOut}
-                    className="flex items-center gap-x-2 w-full text-left text-sm font-medium text-gray-700 hover:bg-red-500 duration-300 hover:text-white px-3 py-2 rounded-md cursor-pointer"
+                    className="flex items-center gap-x-2 w-full text-left text-sm font-medium text-gray-700 hover:bg-red-500 duration-300 hover:text-white px-3 py-2 rounded-md cursor-pointer mt-3"
                   >
                     <RiLogoutCircleRLine />
                     <span>Sign Out</span>
@@ -135,11 +135,6 @@ const Navbar = () => {
               <Link to="/signin">
                 <button className="cursor-pointer border rounded-full px-5 py-2 text-sm text-white bg-primary hover:bg-white hover:text-purple-900 border-purple-900 tracking-wider transition-colors duration-300">
                   Sign In
-                </button>
-              </Link>
-              <Link to="/signup">
-                <button className="cursor-pointer border rounded-full px-5 py-2 text-sm text-white bg-primary hover:bg-white hover:text-purple-900 border-purple-900 tracking-wider transition-colors duration-300">
-                  Sign Up
                 </button>
               </Link>
             </div>
@@ -207,11 +202,6 @@ const Navbar = () => {
                 <Link to="/signin" onClick={() => setMenuOpen(false)}>
                   <button className="w-full cursor-pointer border rounded-full px-5 py-2 text-sm bg-primary hover:bg-purple-900 text-white tracking-wider transition-colors duration-300">
                     Sign In
-                  </button>
-                </Link>
-                <Link to="/signup" onClick={() => setMenuOpen(false)}>
-                  <button className="w-full cursor-pointer border rounded-full px-5 py-2 text-sm bg-primary hover:bg-purple-900 text-white tracking-wider transition-colors duration-300 mt-3 md:mt-0">
-                    Sign Up
                   </button>
                 </Link>
               </div>

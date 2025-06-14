@@ -3,11 +3,16 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { MdCancel } from "react-icons/md";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useService } from "../../provider/ServiceProvider";
+import { useAuth } from "../../provider/AuthProvider";
+import toast from "react-hot-toast";
 
 const Pricing = () => {
   const [selectedPlan, setSelectedPlan] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
+  const { user } = useAuth();
+  const { createCustomPlan } = useService();
 
   const {
     register,
@@ -42,9 +47,23 @@ const Pricing = () => {
     }
   };
 
-  const onSubmit = (data) => {
-    console.log("Form submitted:", data);
-    closeModal();
+  const onSubmit = async (formData) => {
+    try {
+      const payload = {
+        name: formData.name,
+        email: formData.email,
+        service: formData.service,
+        description: formData.requirements || "No description provided",
+        proposedPrice: Number(formData.budget),
+      };
+
+      await createCustomPlan(user._id, payload);
+      toast.success("Custom plan request submitted!");
+      closeModal();
+      reset();
+    } catch (error) {
+      toast.error("Failed to submit custom plan.");
+    }
   };
 
   const getEffectiveSelectedPlan = () => {
@@ -52,7 +71,13 @@ const Pricing = () => {
   };
 
   const handleCheckout = (plan) => {
-    navigate("/checkout", { state: { plan, serviceName: state?.serviceName, serviceId: state?.serviceId } });
+    navigate("/checkout", {
+      state: {
+        plan,
+        serviceName: state?.serviceName,
+        serviceId: state?.serviceId,
+      },
+    });
   };
 
   return (

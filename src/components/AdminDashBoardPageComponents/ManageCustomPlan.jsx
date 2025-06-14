@@ -9,12 +9,11 @@ import {
   FileText,
   Calendar,
   Search,
-  ArrowUpDown,
-  ArrowUp,
-  ArrowDown,
 } from "lucide-react";
 import axios from "../../Utils/axios";
 import { toast } from "react-hot-toast";
+import { formatDate } from "../../Utils/formatDate";
+import { PlanActionButtons } from "../Shared/PlanActionButtons";
 
 export const CustomPlan = () => {
   const [plans, setPlans] = useState([]);
@@ -26,6 +25,8 @@ export const CustomPlan = () => {
   const [sortBy, setSortBy] = useState("createdAt");
   const [sortOrder, setSortOrder] = useState("desc");
   const [currentPage, setCurrentPage] = useState(1);
+  const [selectedDescription, setSelectedDescription] = useState("");
+  const [showModal, setShowModal] = useState(false);
   const [itemsPerPage] = useState(5);
 
   useEffect(() => {
@@ -94,23 +95,6 @@ export const CustomPlan = () => {
     }
   };
 
-  const handleSort = (field) => {
-    if (sortBy === field) {
-      setSortOrder(sortOrder === "asc" ? "desc" : "asc");
-    } else {
-      setSortBy(field);
-      setSortOrder("asc");
-    }
-  };
-
-  const getSortIcon = (field) => {
-    if (sortBy !== field) return <ArrowUpDown className="w-4 h-4" />;
-    return sortOrder === "asc" ? (
-      <ArrowUp className="w-4 h-4" />
-    ) : (
-      <ArrowDown className="w-4 h-4" />
-    );
-  };
   const getStatusConfig = (status) => {
     switch (status) {
       case "approved":
@@ -174,9 +158,9 @@ export const CustomPlan = () => {
                 color: "text-emerald-600",
               },
               {
-                label: "Filtered Results",
-                value: filteredAndSortedPlans.length,
-                color: "text-purple-600",
+                label: "Rejected",
+                value: plans.filter((p) => p.status === "rejected").length,
+                color: "text-red-600",
               },
             ].map((stat, index) => (
               <div key={index} className="bg-gray-50 rounded-xl p-4">
@@ -274,22 +258,20 @@ export const CustomPlan = () => {
                         </div>
                         <div className="flex items-center gap-2 text-sm text-gray-500">
                           <Calendar className="w-4 h-4" />
-                          Submitted{" "}
-                          {new Date(plan.createdAt).toLocaleDateString(
-                            "en-US",
-                            {
-                              year: "numeric",
-                              month: "long",
-                              day: "numeric",
-                              hour: "2-digit",
-                              minute: "2-digit",
-                            }
-                          )}
+                          Submitted {formatDate(plan.createdAt)}
                         </div>
                       </div>
+
+                      {/* Action Buttons */}
+                      {plan.status === "pending" && (
+                        <PlanActionButtons
+                          planId={plan._id}
+                          updatingPlan={updatingPlan}
+                          onStatusChange={handleStatusChange}
+                        />
+                      )}
                     </div>
                   </div>
-
                   {/* Card Body */}
                   <div className="p-6">
                     <div className="grid md:grid-cols-2 gap-6">
@@ -344,53 +326,55 @@ export const CustomPlan = () => {
                         </h3>
                         <div className="bg-white/70 rounded-xl p-4 border border-gray-100">
                           <p className="text-gray-700 leading-relaxed">
-                            {plan.description}
+                            {plan.description.length > 100
+                              ? `${plan.description.slice(0, 100)}... `
+                              : plan.description}
+                            {plan.description.length > 100 && (
+                              <button
+                                onClick={() => {
+                                  setSelectedDescription(plan.description);
+                                  setShowModal(true);
+                                }}
+                                className="text-indigo-600 font-medium hover:underline ml-1"
+                              >
+                                Read More
+                              </button>
+                            )}
                           </p>
                         </div>
                       </div>
                     </div>
-
-                    {/* Action Buttons */}
-                    {plan.status === "pending" && (
-                      <div className="mt-6 pt-6 border-t border-gray-200">
-                        <div className="flex gap-3 sm:justify-end">
-                          <button
-                            onClick={() =>
-                              handleStatusChange(plan._id, "rejected")
-                            }
-                            disabled={updatingPlan === plan._id}
-                            className="flex items-center justify-center gap-2 px-6 py-2.5 bg-white border border-red-300 text-red-700 font-semibold rounded-xl hover:bg-red-50 hover:border-red-400 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
-                          >
-                            {updatingPlan === plan._id ? (
-                              <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-red-600"></div>
-                            ) : (
-                              <XCircle className="w-4 h-4" />
-                            )}
-                            Reject
-                          </button>
-                          <button
-                            onClick={() =>
-                              handleStatusChange(plan._id, "approved")
-                            }
-                            disabled={updatingPlan === plan._id}
-                            className="flex items-center justify-center gap-2 px-6 py-2.5 bg-emerald-600 text-white font-semibold rounded-xl hover:bg-emerald-700 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
-                          >
-                            {updatingPlan === plan._id ? (
-                              <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
-                            ) : (
-                              <CheckCircle className="w-4 h-4" />
-                            )}
-                            Approve
-                          </button>
-                        </div>
-                      </div>
-                    )}
                   </div>
                 </div>
               );
             })}
           </div>
         )}
+        {showModal && (
+          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
+            <div className="relative bg-white w-full max-w-2xl mx-4 md:mx-0 p-6 md:p-8 rounded-2xl shadow-xl transition-all duration-300 ease-out animate-fade-in">
+              {/* Close Button */}
+              <button
+                onClick={() => setShowModal(false)}
+                className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-2xl"
+                aria-label="Close Modal"
+              >
+                &times;
+              </button>
+
+              {/* Modal Content */}
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">
+                Full Description
+              </h2>
+              <div className="max-h-[60vh] overflow-y-auto pr-1">
+                <p className="text-gray-700 leading-relaxed whitespace-pre-line">
+                  {selectedDescription}
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* Results Info */}
         <div className="flex justify-between items-center my-6">
           <div className="text-sm text-gray-600">
