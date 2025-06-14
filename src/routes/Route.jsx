@@ -19,6 +19,8 @@ import { ContactMessageRequest } from "../components/AdminDashBoardPageComponent
 import { ManageUsers } from "../components/AdminDashBoardPageComponents/ManageUsers";
 import { ManageOrders } from "../components/AdminDashBoardPageComponents/ManageOrders";
 import { AdminRoute } from "./AdminRoute";
+import SuccessPage from "../pages/SuccessPage";
+import CancelPage from "../pages/CancelPage";
 import { CustomPlanOrder } from "../components/UserDashBoardPageComponents/CustomPlanOrder";
 import { AddService } from "../components/AdminDashBoardPageComponents/AddService";
 
@@ -51,6 +53,14 @@ const router = createBrowserRouter([
       {
         path: "/checkout",
         element: <CheckOut />,
+      },
+      {
+        path: "/success",
+        element: <SuccessPage/>
+      },
+      {
+        path: "/cancel",
+        element: <CancelPage />,
       },
       {
         path: "/signin",

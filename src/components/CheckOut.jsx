@@ -1,26 +1,22 @@
 import { useState } from "react";
-import { useForm } from "react-hook-form";
 import { TiTick } from "react-icons/ti";
-import { MdLock, MdCreditCard, MdArrowBack } from "react-icons/md";
-import { Link, useLocation } from "react-router-dom";
+import { MdLock } from "react-icons/md";
+import { useLocation } from "react-router-dom";
+import { loadStripe } from "@stripe/stripe-js";
+import {
+  Elements,
+} from "@stripe/react-stripe-js";
+import PaymentForm from "./PaymentForm";
+
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
 
 const CheckOut = () => {
   const [isProcessing, setIsProcessing] = useState(false);
-  const { register, handleSubmit } = useForm();
   const { state } = useLocation();
 
   const plan = state?.plan;
   const serviceName = state?.serviceName;
   console.log("plan, serviceName=>", plan, serviceName, state?.serviceId);
-
-  const onSubmit = async (data) => {
-    setIsProcessing(true);
-    setTimeout(() => {
-      console.log("Payment submitted:", { plan, paymentData: data });
-      alert(`Payment processed successfully for ${plan.name} plan!`);
-      setIsProcessing(false);
-    }, 2000);
-  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-28 px-4">
@@ -44,10 +40,16 @@ const CheckOut = () => {
               <div className="flex justify-between items-center mb-4">
                 <div>
                   <h3 className="text-lg font-bold text-black mb-1">
-                    Service: <span className="text-lg font-bold bg-gradient-to-br from-[#DE4396] to-[#0D1C9F] bg-clip-text text-transparent">{serviceName}</span>
+                    Service:{" "}
+                    <span className="text-lg font-bold bg-gradient-to-br from-[#DE4396] to-[#0D1C9F] bg-clip-text text-transparent">
+                      {serviceName}
+                    </span>
                   </h3>
                   <h3 className="text-lg font-bold text-black mb-1">
-                    Plan: <span className="text-lg font-bold bg-gradient-to-br from-[#DE4396] to-[#0D1C9F] bg-clip-text text-transparent">{plan.title}</span>
+                    Plan:{" "}
+                    <span className="text-lg font-bold bg-gradient-to-br from-[#DE4396] to-[#0D1C9F] bg-clip-text text-transparent">
+                      {plan.title}
+                    </span>
                   </h3>
                 </div>
                 <div></div>
@@ -97,113 +99,14 @@ const CheckOut = () => {
                 Secure Payment
               </h2>
             </div>
-
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-              {/* Personal Information */}
-              <div className="space-y-4">
-                <h3 className="font-semibold text-gray-800">
-                  Personal Information
-                </h3>
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      First Name
-                    </label>
-                    <input
-                      {...register("firstName")}
-                      type="text"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
-                      placeholder="Enter your first name"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Last Name
-                    </label>
-                    <input
-                      {...register("lastName")}
-                      type="text"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
-                      placeholder="Enter your last name"
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Email Address
-                  </label>
-                  <input
-                    {...register("email")}
-                    type="email"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
-                    placeholder="Enter your email address"
-                  />
-                </div>
-              </div>
-
-              {/* Payment Information */}
-              <div className="space-y-4">
-                <h3 className="font-semibold text-gray-800 flex items-center gap-2">
-                  <MdCreditCard size={20} />
-                  Payment Information
-                </h3>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Card Number
-                  </label>
-                  <input
-                    {...register("cardNumber")}
-                    type="text"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
-                    placeholder="1234 5678 9012 3456"
-                  />
-                </div>
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Expiry Date
-                    </label>
-                    <input
-                      {...register("expiryDate")}
-                      type="text"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
-                      placeholder="MM/YY"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      CVC/CVV
-                    </label>
-                    <input
-                      {...register("cvc")}
-                      type="text"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
-                      placeholder="123"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              {/* Submit Button */}
-              <button
-                type="submit"
-                disabled={isProcessing}
-                className={`w-full py-4 rounded-xl font-semibold text-white cursor-pointer ${
-                  isProcessing
-                    ? "bg-gray-400 cursor-not-allowed"
-                    : "bg-gradient-to-r from-[#DE4396] to-[#0D1C9F] hover:shadow-lg hover:scale-105"
-                }`}
-              >
-                {isProcessing ? (
-                  <div className="flex items-center justify-center gap-2">
-                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                    Processing Payment...
-                  </div>
-                ) : (
-                  "Proceed to Payment"
-                )}
-              </button>
-            </form>
+            <Elements stripe={stripePromise}>
+              <PaymentForm
+                plan={plan}
+                serviceId={state?.serviceId}
+                isProcessing={isProcessing}
+                setIsProcessing={setIsProcessing}
+              />
+            </Elements>
           </div>
         </div>
       </div>
