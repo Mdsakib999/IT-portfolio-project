@@ -64,7 +64,7 @@ export const OfferedServices = () => {
 
               return (
                 <div
-                  key={service.id}
+                  key={index}
                   className={`group relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 ${
                     isCenter
                       ? "lg:scale-105 border-2 border-purple-200"
