@@ -88,7 +88,7 @@ export const OfferedServices = () => {
 
                     {/* Description */}
                     <p className="text-gray-600 leading-relaxed text-sm">
-                      {service.description}
+                      {service.description.slice(0,70)}...
                     </p>
 
                     {/* Hover Arrow */}

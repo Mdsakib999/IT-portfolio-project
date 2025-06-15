@@ -7,10 +7,22 @@ import axiosInstance from "../Utils/axios";
 import { MdCreditCard } from "react-icons/md";
 import toast from "react-hot-toast";
 
-const PaymentForm = ({ plan, serviceId, setIsProcessing, isProcessing }) => {
+const PaymentForm = ({
+  customPlanId,   
+  plan,
+  serviceId,
+  serviceName,
+  amount,
+  description,
+  setIsProcessing,
+  isProcessing,
+ }) => {
   const { user } = useAuth();
   const navigate = useNavigate();
-  console.log(user?.name, user?.email)
+  console.log(user?.name, user?.email);
+  console.log("plan, serviceId, serviceName, amount, description ->", 
+    plan, serviceId, serviceName, amount, description
+  );
 
   const {
     register,
@@ -44,6 +56,7 @@ const PaymentForm = ({ plan, serviceId, setIsProcessing, isProcessing }) => {
     expiry: false,
     cvc: false,
   });
+
   const [cardTouched, setCardTouched] = useState({
     number: false,
     expiry: false,
@@ -55,12 +68,16 @@ const PaymentForm = ({ plan, serviceId, setIsProcessing, isProcessing }) => {
 
     try {
       const res = await axiosInstance.post("/payment/create-payment-intent", {
-        serviceId,
-        planId: plan?._id,
+        customPlanId,
+        serviceId, 
+        planId: plan?._id || null,
+        serviceName,
         name: data.name,
         email: data.email,
-        amount: plan.price,
+        amount: plan?.price || amount,
+        description: description,
       });
+
       console.log("result: =>", res);
       const { clientSecret } = res.data;
 

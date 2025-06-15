@@ -14,7 +14,7 @@ export const HireBest = () => {
   const [loading, setLoading] = useState(false);
   const { user } = useAuth();
 
-  const userId = user._id;
+  const userId = user?._id;
 
   const handleChange = (e) => {
     const { name, value } = e.target;

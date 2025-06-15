@@ -28,7 +28,7 @@ export const ManageOrders = () => {
   const fetchOrders = async () => {
     try {
       setLoading(true);
-      const response = await axiosInstance.get("/orders");
+      const response = await axiosInstance.get("/order/all-order");
       setOrders(response.data);
       setError("");
     } catch (err) {
@@ -42,7 +42,7 @@ export const ManageOrders = () => {
   // Update order status
   const updateOrderStatus = async (orderId, newStatus) => {
     try {
-      await axiosInstance.patch(`/orders/${orderId}`, { status: newStatus });
+      await axiosInstance.patch(`/order/${orderId}`, { status: newStatus });
       setOrders(
         orders.map((order) =>
           order._id === orderId ? { ...order, status: newStatus } : order
@@ -58,7 +58,7 @@ export const ManageOrders = () => {
   const deleteOrder = async (orderId) => {
     if (window.confirm("Are you sure you want to delete this order?")) {
       try {
-        await axiosInstance.delete(`/orders/${orderId}`);
+        await axiosInstance.delete(`/order/${orderId}`);
         setOrders(orders.filter((order) => order._id !== orderId));
       } catch (err) {
         setError("Failed to delete order");

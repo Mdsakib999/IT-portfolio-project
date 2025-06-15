@@ -227,6 +227,8 @@ const Pricing = () => {
                 <input
                   {...register("name", { required: "Name is required" })}
                   type="text"
+                  defaultValue={user?.name}
+                  readOnly
                   className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
                   placeholder="Enter your full name"
                 />
@@ -250,6 +252,8 @@ const Pricing = () => {
                     },
                   })}
                   type="email"
+                  readOnly
+                  defaultValue={user?.email}
                   className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
                   placeholder="Enter your email"
                 />
