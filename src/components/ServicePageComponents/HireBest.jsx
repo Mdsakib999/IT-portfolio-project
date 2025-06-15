@@ -19,6 +19,8 @@ export const HireBest = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    service: "",
+    number: "",
     description: "",
   });
   const [loading, setLoading] = useState(false);
@@ -31,7 +33,7 @@ export const HireBest = () => {
   };
 
   const handleSubmit = async () => {
-    const { description } = formData;
+    const { service, number, description } = formData;
 
     if (!description) {
       Swal.fire({
@@ -48,6 +50,8 @@ export const HireBest = () => {
       const response = await axiosInstance.post("/hire-requests/create", {
         name: user.name,
         email: user.email,
+        service,
+        number,
         description,
         id: userId,
       });
@@ -58,7 +62,13 @@ export const HireBest = () => {
         text: "Hire request submitted successfully!",
       });
 
-      setFormData({ name: user.name, email: user.email, description: "" });
+      setFormData({
+        name: user.name,
+        email: user.email,
+        service: "",
+        number: "",
+        description: "",
+      });
       setShowModal(false);
     } catch (error) {
       console.error(error);
@@ -290,6 +300,34 @@ export const HireBest = () => {
                       value={user.email}
                       onChange={handleChange}
                       readOnly
+                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:outline-none transition-colors"
+                    />
+                  </div>
+                  {/* service */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Service
+                    </label>
+                    <input
+                      name="service"
+                      type="text"
+                      placeholder="e.g. Web Development"
+                      value={formData.service}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:outline-none transition-colors"
+                    />
+                  </div>
+                  {/* contact Number */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Contact Number
+                    </label>
+                    <input
+                      name="number"
+                      type="tel"
+                      placeholder="e.g. 123-456-7890"
+                      value={formData.number}
+                      onChange={handleChange}
                       className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:outline-none transition-colors"
                     />
                   </div>
