@@ -19,7 +19,6 @@ export const ManageOrders = () => {
   const [selectedOrder, setSelectedOrder] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [error, setError] = useState("");
-  console.log(orders);
   // Fetch orders from API
   useEffect(() => {
     fetchOrders();

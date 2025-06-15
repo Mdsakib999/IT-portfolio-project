@@ -19,7 +19,6 @@ import axiosInstance from "../../Utils/axios";
 export const HireEliteRequest = () => {
   const [requests, setRequests] = useState([]);
   const [loading, setLoading] = useState(false);
-  console.log(requests);
   const { user } = useAuth();
   const userId = user?._id;
 
