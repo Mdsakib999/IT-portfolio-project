@@ -49,10 +49,7 @@ export const CustomPlanOrder = () => {
     }
   }, [userId, fetchCustomPlans]);
 
-  console.log("CUSTOM plans", customPlans);
-
   const handleCheckout = (plan) => {
-    console.log(plan);
     navigate("/checkout", {
       state: {
         customPlanId: plan._id,

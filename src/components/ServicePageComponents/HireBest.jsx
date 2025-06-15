@@ -253,30 +253,31 @@ export const HireBest = () => {
 
       {/* Enhanced Modal */}
       {showModal && (
-        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-          <div className="relative bg-white w-full max-w-2xl rounded-3xl shadow-2xl overflow-hidden">
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-2 sm:p-4 overflow-y-auto">
+          <div className="relative bg-white w-full max-w-2xl rounded-3xl shadow-2xl overflow-hidden max-h-screen">
             {/* Modal Header */}
-            <div className="bg-gradient-to-r from-purple-600 to-blue-600 p-6 text-white">
+            <div className="bg-gradient-to-r from-purple-600 to-blue-600 p-6 sm:p-8 text-white relative">
               <button
                 onClick={() => setShowModal(false)}
-                className="absolute top-4 right-4 text-white/80 hover:text-white text-2xl hover:bg-white/20 rounded-full w-8 h-8 flex items-center justify-center transition-all"
+                className="absolute top-4 right-4 text-white/80 hover:text-white text-xl hover:bg-white/20 rounded-full w-8 h-8 flex items-center justify-center transition-all"
               >
                 <X className="w-5 h-5" />
               </button>
 
-              <h2 className="text-3xl font-bold mb-2">
+              <h2 className="text-2xl sm:text-3xl font-bold mb-1">
                 Let's Build Something Amazing
               </h2>
-              <p className="text-purple-100">
+              <p className="text-purple-100 text-sm sm:text-base">
                 Tell us about your project and we'll match you with the perfect
                 talent
               </p>
             </div>
 
             {/* Modal Body */}
-            <div className="p-8">
+            <div className="p-4 sm:p-8 overflow-y-auto">
               <div className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {/* Name */}
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Your Name
@@ -287,9 +288,10 @@ export const HireBest = () => {
                       value={user.name}
                       onChange={handleChange}
                       readOnly
-                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:outline-none transition-colors"
+                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:outline-none transition"
                     />
                   </div>
+                  {/* Email */}
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Email Address
@@ -300,10 +302,10 @@ export const HireBest = () => {
                       value={user.email}
                       onChange={handleChange}
                       readOnly
-                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:outline-none transition-colors"
+                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:outline-none transition"
                     />
                   </div>
-                  {/* service */}
+                  {/* Service */}
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Service
@@ -314,10 +316,10 @@ export const HireBest = () => {
                       placeholder="e.g. Web Development"
                       value={formData.service}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:outline-none transition-colors"
+                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:outline-none transition"
                     />
                   </div>
-                  {/* contact Number */}
+                  {/* Contact Number */}
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Contact Number
@@ -328,11 +330,12 @@ export const HireBest = () => {
                       placeholder="e.g. 123-456-7890"
                       value={formData.number}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:outline-none transition-colors"
+                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:outline-none transition"
                     />
                   </div>
                 </div>
 
+                {/* Description */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     Project Description
@@ -342,10 +345,11 @@ export const HireBest = () => {
                     placeholder="Describe your project, timeline, budget, and specific requirements..."
                     value={formData.description}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:outline-none transition-colors min-h-[120px] resize-none"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:outline-none min-h-[120px] resize-none transition"
                   />
                 </div>
 
+                {/* Note */}
                 <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-4 rounded-xl">
                   <p className="text-sm text-gray-600 flex items-center gap-2">
                     <CheckCircle className="w-4 h-4 text-green-500" />
@@ -354,6 +358,7 @@ export const HireBest = () => {
                   </p>
                 </div>
 
+                {/* Submit Button */}
                 <button
                   onClick={handleSubmit}
                   disabled={loading}

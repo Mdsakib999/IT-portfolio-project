@@ -25,7 +25,6 @@ export const HireRequest = () => {
   const [showModal, setShowModal] = useState(false);
   const [page, setPage] = useState(1);
   const itemsPerPage = 10;
-  console.log(requests);
 
   // Fetch all requests
   useEffect(() => {

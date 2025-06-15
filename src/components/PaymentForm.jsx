@@ -2,13 +2,19 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../provider/AuthProvider";
 import { useForm } from "react-hook-form";
-import { CardCvcElement, CardExpiryElement, CardNumberElement, useElements, useStripe } from "@stripe/react-stripe-js";
+import {
+  CardCvcElement,
+  CardExpiryElement,
+  CardNumberElement,
+  useElements,
+  useStripe,
+} from "@stripe/react-stripe-js";
 import axiosInstance from "../Utils/axios";
 import { MdCreditCard } from "react-icons/md";
 import toast from "react-hot-toast";
 
 const PaymentForm = ({
-  customPlanId,   
+  customPlanId,
   plan,
   serviceId,
   serviceName,
@@ -16,13 +22,9 @@ const PaymentForm = ({
   description,
   setIsProcessing,
   isProcessing,
- }) => {
+}) => {
   const { user } = useAuth();
   const navigate = useNavigate();
-  console.log(user?.name, user?.email);
-  console.log("plan, serviceId, serviceName, amount, description ->", 
-    plan, serviceId, serviceName, amount, description
-  );
 
   const {
     register,
@@ -69,7 +71,7 @@ const PaymentForm = ({
     try {
       const res = await axiosInstance.post("/payment/create-payment-intent", {
         customPlanId,
-        serviceId, 
+        serviceId,
         planId: plan?._id || null,
         serviceName,
         name: data.name,
@@ -78,7 +80,6 @@ const PaymentForm = ({
         description: description,
       });
 
-      console.log("result: =>", res);
       const { clientSecret } = res.data;
 
       const cardNumberElement = elements.getElement(CardNumberElement);
@@ -94,11 +95,12 @@ const PaymentForm = ({
           },
         }
       );
-      console.log("paymentIntent--->", paymentIntent);
 
       if (error) {
-        console.log("error=>", error)
-        toast.error(<h1 className="font-serif text-center">{error?.message}</h1>)
+        console.log("error=>", error);
+        toast.error(
+          <h1 className="font-serif text-center">{error?.message}</h1>
+        );
         setIsProcessing(false);
         navigate("/cancel");
       } else if (paymentIntent.status === "succeeded") {
@@ -106,7 +108,7 @@ const PaymentForm = ({
         navigate(`/success?payment_intent=${paymentIntent?.id}`);
       }
     } catch (error) {
-      console.log("error=>", error)
+      console.log("error=>", error);
       setIsProcessing(false);
     }
   };

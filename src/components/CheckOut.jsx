@@ -11,20 +11,11 @@ const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
 const CheckOut = () => {
   const [isProcessing, setIsProcessing] = useState(false);
   const { state } = useLocation();
-  console.log(state);
 
   // TODO
   let plan = state?.plan;
 
   let serviceName = state?.serviceName;
-  console.log(
-    "plan, serviceName=>",
-    plan,
-    serviceName,
-    state?.serviceId,
-    state?.amount,
-    state?.description
-  );
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-28 px-4">

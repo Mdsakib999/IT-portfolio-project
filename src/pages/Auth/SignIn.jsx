@@ -79,10 +79,8 @@ const SignIn = () => {
   };
 
   const saveUserToDB = async (userData) => {
-    console.log("Saving user to DB: ", userData);
     try {
       const { data } = await axiosInstance.post("/auth/register", userData);
-      console.log("User saved to DB: ", data);
       localStorage.setItem("user", JSON.stringify(data));
       return data;
     } catch (error) {

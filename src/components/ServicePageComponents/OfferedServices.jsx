@@ -9,6 +9,11 @@ export const OfferedServices = () => {
   const [itemsPerPage] = useState(3);
   const { services } = useService();
   const navigate = useNavigate();
+  const [activeIndex, setActiveIndex] = useState(null);
+
+  const toggleActive = (index) => {
+    setActiveIndex((prev) => (prev === index ? null : index));
+  };
 
   const handleLearnMore = (service) => {
     navigate("/pricing", {
@@ -65,52 +70,82 @@ export const OfferedServices = () => {
               return (
                 <div
                   key={index}
-                  className={`group relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 ${
-                    isCenter
-                      ? "lg:scale-105 border-2 border-purple-200"
-                      : "hover:scale-105"
-                  }`}
+                  onClick={() => toggleActive(index)}
+                  className={`group relative bg-white rounded-2xl p-8 shadow-lg transition-all duration-500 transform 
+    ${isCenter ? "lg:scale-105 border-2 border-purple-200" : ""}
+    ${activeIndex === index ? "shadow-2xl -translate-y-2" : ""}
+    hover:shadow-2xl hover:-translate-y-2 cursor-pointer`}
                 >
                   {/* Card Background Gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div
+                    className={`absolute inset-0 bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl transition-opacity duration-300 ${
+                      activeIndex === index
+                        ? "opacity-100"
+                        : "opacity-0 group-hover:opacity-100"
+                    }`}
+                  ></div>
 
                   {/* Content */}
                   <div className="relative z-10">
                     {/* Icon */}
                     <div
-                      className={`inline-flex items-center justify-center w-16 h-16 bg-purple-200 px-2 rounded-xl mb-6 group-hover:scale-110 transition-transform duration-300`}
+                      className={`inline-flex items-center justify-center w-16 h-16 bg-purple-200 px-2 rounded-xl mb-6 transition-transform duration-300 
+    ${activeIndex === index ? "scale-110" : "group-hover:scale-110"}`}
                     >
                       <img src={service?.image} alt="" />
                     </div>
 
                     {/* Title */}
-                    <h3 className="text-xl font-bold text-gray-800 mb-4 group-hover:text-purple-600 transition-colors duration-300">
+                    <h3
+                      className={`text-xl font-bold mb-4 transition-colors duration-300 ${
+                        activeIndex === index
+                          ? "text-purple-600"
+                          : "text-gray-800 group-hover:text-purple-600"
+                      }`}
+                    >
                       {service.title}
                     </h3>
 
                     {/* Description */}
                     <p className="text-gray-600 leading-relaxed text-sm">
-                      {service.description.slice(0,70)}...
+                      {service.description.slice(0, 70)}...
                     </p>
 
                     {/* Hover Arrow */}
                     <div
-                      className="mt-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                      onClick={() => handleLearnMore(service)}
-                      style={{ cursor: "pointer" }}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleLearnMore(service);
+                      }}
+                      className={`mt-6 transition-opacity duration-300 ${
+                        activeIndex === index
+                          ? "opacity-100"
+                          : "opacity-0 group-hover:opacity-100"
+                      }`}
                     >
                       <div className="inline-flex items-center text-purple-600 font-medium">
                         Learn More
                         <ChevronRight
                           size={16}
-                          className="ml-1 transform group-hover:translate-x-1 transition-transform duration-300"
+                          className={`ml-1 transform transition-transform duration-300 ${
+                            activeIndex === index
+                              ? "translate-x-1"
+                              : "group-hover:translate-x-1"
+                          }`}
                         />
                       </div>
                     </div>
                   </div>
 
                   {/* Decorative Corner */}
-                  <div className="absolute top-4 right-4 w-8 h-8 bg-gradient-to-br from-purple-100 to-pink-100 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div
+                    className={`absolute top-4 right-4 w-8 h-8 bg-gradient-to-br from-purple-100 to-pink-100 rounded-full transition-opacity duration-300 
+    ${
+      activeIndex === index
+        ? "opacity-100"
+        : "opacity-0 group-hover:opacity-100"
+    }`}
+                  ></div>
                 </div>
               );
             })}

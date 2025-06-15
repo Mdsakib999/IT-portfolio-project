@@ -42,7 +42,6 @@ export const ManageService = () => {
     deletePlan,
   } = useService();
 
-  console.log(services);
   // UI State
   const [showServiceModal, setShowServiceModal] = useState(false);
   const [editingService, setEditingService] = useState(null);

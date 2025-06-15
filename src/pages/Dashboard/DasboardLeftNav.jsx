@@ -88,7 +88,7 @@ export const DashBoardLeftNav = ({ closeSidebar }) => {
       </button>
 
       <div className="flex flex-col gap-6 mt-10 sm:mt-0">
-        <h2 className="text-2xl font-bold text-center text-white">
+        <h2 className="text-2xl font-bold text-center">
           {isAdmin ? "Admin" : "User"} Dashboard
         </h2>
 
