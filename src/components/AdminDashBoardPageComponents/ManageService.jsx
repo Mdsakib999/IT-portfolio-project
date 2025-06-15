@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useService } from "../../provider/ServiceProvider";
+import Swal from "sweetalert2";
 
 // Move Modal component outside to prevent re-creation on every render
 const Modal = ({ isOpen, onClose, title, children }) => {
@@ -70,14 +71,22 @@ export const ManageService = () => {
     setShowServiceModal(false);
   };
 
-  // SweetAlert-like confirmation dialog
   const showConfirmDialog = (title, text, onConfirm) => {
-    const result = window.confirm(`${title}\n\n${text}`);
-    if (result) {
-      onConfirm();
-    }
+    Swal.fire({
+      title: title,
+      text: text,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, confirm it!",
+      cancelButtonText: "Cancel",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        onConfirm();
+      }
+    });
   };
-
   // Handle service operations
   const handleServiceSubmit = async () => {
     try {
@@ -129,7 +138,7 @@ export const ManageService = () => {
   const handleDeleteService = async (service) => {
     showConfirmDialog(
       "Delete Service",
-      `Are you sure you want to delete "${service.name}"? This action cannot be undone.`,
+      `Are you sure you want to delete "${service.title}"? This action cannot be undone.`,
       async () => {
         try {
           await deleteService(service._id);

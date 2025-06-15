@@ -207,7 +207,7 @@ export const AddService = () => {
           </div>
           {/* Main Form */}
           <div className="bg-white/5 backdrop-blur-xl rounded-3xl border border-white/10 shadow-2xl overflow-hidden">
-            <div className="bg-gradient-to-r from-purple-600 to-pink-600 px-8 py-8">
+            <div className="bg-gradient-to-b from-[var(--color-primary)] to-[var(--color-secondary)] px-8 py-8">
               <h2 className="text-2xl font-bold text-white flex items-center gap-3">
                 <Zap className="w-6 h-6" />
                 Service Details
@@ -233,7 +233,7 @@ export const AddService = () => {
                       onChange={handleInputChange}
                       onFocus={() => setFocusedField("title")}
                       onBlur={() => setFocusedField(null)}
-                      className={`w-full px-6 py-4 border rounded-2xl placeholder-gray-400 focus:ring-2 focus:ring-purple-500 transition-all duration-300 bg-white ${
+                      className={`w-full px-6 py-4 border rounded-2xl placeholder-gray-400 focus:ring-2 focus:ring-primary transition-all duration-300 bg-white ${
                         errors.title
                           ? "border-red-400 bg-red-50"
                           : focusedField === "title"
@@ -243,7 +243,7 @@ export const AddService = () => {
                       placeholder="Enter your service title"
                     />
                     {focusedField === "title" && (
-                      <div className="absolute -top-1 -right-1 w-3 h-3 bg-purple-500 rounded-full animate-pulse" />
+                      <div className="absolute -top-1 -right-1 w-3 h-3 bg-primary rounded-full animate-pulse" />
                     )}
                   </div>
                   {errors.title && (
@@ -267,7 +267,7 @@ export const AddService = () => {
                       onChange={handleInputChange}
                       onFocus={() => setFocusedField("image")}
                       onBlur={() => setFocusedField(null)}
-                      className={`w-full px-6 py-4 border rounded-2xl placeholder-gray-400 focus:ring-2 focus:ring-purple-500 transition-all duration-300 bg-white ${
+                      className={`w-full px-6 py-4 border rounded-2xl placeholder-gray-400 focus:ring-2 focus:ring-primary transition-all duration-300 bg-white ${
                         errors.image
                           ? "border-red-400 bg-red-50"
                           : focusedField === "image"
@@ -277,7 +277,7 @@ export const AddService = () => {
                       placeholder="Enter the URL of your service image"
                     />
                     {focusedField === "image" && (
-                      <div className="absolute -top-1 -right-1 w-3 h-3 bg-purple-500 rounded-full animate-pulse" />
+                      <div className="absolute -top-1 -right-1 w-3 h-3 bg-primary rounded-full animate-pulse" />
                     )}
                   </div>
                   {errors.image && (
@@ -302,7 +302,7 @@ export const AddService = () => {
                     onFocus={() => setFocusedField("description")}
                     onBlur={() => setFocusedField(null)}
                     rows={4}
-                    className={`w-full px-6 py-4 border rounded-2xl placeholder-gray-400 focus:ring-2 focus:ring-purple-500 transition-all duration-300 resize-none bg-white ${
+                    className={`w-full px-6 py-4 border rounded-2xl placeholder-gray-400 focus:ring-2 focus:ring-primary transition-all duration-300 resize-none bg-white ${
                       errors.description
                         ? "border-red-400 bg-red-50"
                         : focusedField === "description"
@@ -312,7 +312,7 @@ export const AddService = () => {
                     placeholder="Describe your service in detail..."
                   />
                   {focusedField === "description" && (
-                    <div className="absolute -top-1 -right-1 w-3 h-3 bg-purple-500 rounded-full animate-pulse" />
+                    <div className="absolute -top-1 -right-1 w-3 h-3 bg-primary rounded-full animate-pulse" />
                   )}
                 </div>
                 {errors.description && (
@@ -326,7 +326,7 @@ export const AddService = () => {
               {/* Plans */}
               <div className="space-y-6">
                 <div className="flex items-center gap-3">
-                  <Star className="w-6 h-6 text-purple-500" />
+                  <Star className="w-6 h-6 text-primary" />
                   <h3 className="text-xl font-bold">Service Plans *</h3>
                 </div>
 
@@ -362,7 +362,7 @@ export const AddService = () => {
                           onChange={(e) =>
                             handlePlanChange(planIndex, "title", e.target.value)
                           }
-                          className={`w-full px-4 py-3 border rounded-xl placeholder-gray-400 focus:ring-2 focus:ring-purple-500 bg-white transition-all ${
+                          className={`w-full px-4 py-3 border rounded-xl placeholder-gray-400 focus:ring-2 focus:ring-primary bg-white transition-all ${
                             errors[`plan_${planIndex}_title`]
                               ? "border-red-400 bg-red-50"
                               : "border-gray-300"
@@ -397,7 +397,7 @@ export const AddService = () => {
                                 e.target.value
                               )
                             }
-                            className={`w-full pl-8 pr-4 py-3 border rounded-xl placeholder-gray-400 focus:ring-2 focus:ring-purple-500 bg-white transition-all ${
+                            className={`w-full pl-8 pr-4 py-3 border rounded-xl placeholder-gray-400 focus:ring-2 focus:ring-primary bg-white transition-all ${
                               errors[`plan_${planIndex}_price`]
                                 ? "border-red-400 bg-red-50"
                                 : "border-gray-300"
@@ -430,7 +430,7 @@ export const AddService = () => {
                                   e.target.value
                                 )
                               }
-                              className="flex-1 px-4 py-3 border border-gray-300 rounded-xl placeholder-gray-400 focus:ring-2 focus:ring-purple-500 bg-white transition-all"
+                              className="flex-1 px-4 py-3 border border-gray-300 rounded-xl placeholder-gray-400 focus:ring-2 focus:ring-primary bg-white transition-all"
                               placeholder={`Feature ${featureIndex + 1}`}
                             />
                             {plan.features.length > 1 && (
@@ -480,7 +480,7 @@ export const AddService = () => {
                   type="button"
                   onClick={handleSubmit}
                   disabled={isSubmitting || loading}
-                  className="flex-1 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 py-4 px-8 rounded-2xl font-bold text-lg text-white shadow-md focus:ring-4 focus:ring-purple-300 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3 group"
+                  className="flex-1 bg-gradient-to-b from-[var(--color-primary)] to-[var(--color-secondary)] py-4 px-8 rounded-2xl font-bold text-lg text-white shadow-md focus:ring-4 focus:ring-purple-300 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3 group"
                 >
                   {isSubmitting || loading ? (
                     <>

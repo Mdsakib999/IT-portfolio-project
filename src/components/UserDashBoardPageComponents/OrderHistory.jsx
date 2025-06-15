@@ -193,13 +193,13 @@ export const OrderHistory = () => {
                     {/* Service Plan */}
                     <td className="px-4 py-3">
                       <div className="text-sm text-gray-900">
-                        {order.plan?.title || 'N/A'}
+                        {order.plan?.title || order?.planName}
                       </div>
                     </td>
                     {/* Service Type */}
                     <td className="px-4 py-3">
                       <div className="text-sm text-gray-900">
-                        {order.service?.title || 'N/A'}
+                        {order.service?.title || order?.serviceName}
                       </div>
                     </td>
                     {/* Amount */}

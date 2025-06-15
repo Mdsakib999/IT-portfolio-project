@@ -10,6 +10,8 @@ import {
   Mail,
   FileText,
   Calendar,
+  Phone,
+  Sparkles,
 } from "lucide-react";
 import axiosInstance from "../../Utils/axios";
 import { formatDate } from "../../Utils/formatDate";
@@ -23,6 +25,7 @@ export const HireRequest = () => {
   const [showModal, setShowModal] = useState(false);
   const [page, setPage] = useState(1);
   const itemsPerPage = 10;
+  console.log(requests);
 
   // Fetch all requests
   useEffect(() => {
@@ -234,26 +237,39 @@ export const HireRequest = () => {
             {paginated.map((req) => (
               <div
                 key={req._id}
-                className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md hover:border-gray-200 transition-all duration-200"
+                className="group bg-white rounded-3xl p-8 shadow-sm border border-gray-100 hover:shadow-xl hover:border-indigo-100 transition-all duration-300 hover:-translate-y-1"
               >
-                <div className="flex items-start justify-between mb-4">
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center text-white font-semibold text-lg">
-                      {req.name.charAt(0)}
+                {/* Header with Avatar and Status */}
+                <div className="flex items-start justify-between mb-6">
+                  <div className="flex items-center gap-4">
+                    <div className="relative">
+                      <div className="w-16 h-16 bg-gradient-to-tr from-indigo-500 via-purple-500 to-pink-500 rounded-2xl flex items-center justify-center text-white font-bold text-xl shadow-lg">
+                        {req.name.charAt(0)}
+                      </div>
+                      <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-white rounded-full flex items-center justify-center shadow-md">
+                        <div className="w-3 h-3 bg-green-400 rounded-full"></div>
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="text-lg font-semibold text-gray-900">
+
+                    <div className="space-y-1">
+                      <h3 className="text-xl font-bold text-gray-900 group-hover:text-indigo-600 transition-colors">
                         {req.name}
                       </h3>
-                      <div className="flex items-center gap-1 text-sm text-gray-500">
+                      <div className="flex items-center gap-2 text-gray-600">
                         <Mail className="w-4 h-4" />
-                        {req.email}
+                        <span className="text-sm font-medium">{req.email}</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-gray-600">
+                        <Phone className="w-4 h-4" />
+                        <span className="text-sm font-medium">
+                          {req.number}
+                        </span>
                       </div>
                     </div>
                   </div>
 
                   <div
-                    className={`flex items-center gap-2 px-3 py-1.5 rounded-full border text-sm font-medium ${getStatusColor(
+                    className={`flex items-center gap-2 px-4 py-2 rounded-2xl text-sm font-semibold shadow-sm ${getStatusColor(
                       req.status
                     )}`}
                   >
@@ -262,48 +278,93 @@ export const HireRequest = () => {
                   </div>
                 </div>
 
-                <div className="mb-4">
-                  <div className="flex items-start gap-2 text-gray-700">
-                    <FileText className="w-5 h-5 mt-1 text-gray-400 shrink-0" />
-                    <p className="text-gray-700 leading-relaxed">
-                      {req.description.length > 100
-                        ? `${req.description.slice(0, 100)}... `
-                        : req.description}
-                      {req.description.length > 100 && (
-                        <button
-                          onClick={() => {
-                            setSelectedDescription(req.description);
-                            setShowModal(true);
-                          }}
-                          className="text-indigo-600 font-medium hover:underline ml-1"
-                        >
-                          Read More
-                        </button>
-                      )}
-                    </p>
+                {/* Service Highlight */}
+                <div className="mb-6">
+                  <div className="inline-flex items-center gap-3 bg-gradient-to-r from-indigo-50 to-purple-50 px-5 py-3 rounded-2xl border border-indigo-100">
+                    <div className="w-8 h-8 bg-white rounded-xl flex items-center justify-center shadow-sm">
+                      <Sparkles className="w-4 h-4 text-indigo-500" />
+                    </div>
+                    <span className="font-semibold text-indigo-700">
+                      {req.service}
+                    </span>
                   </div>
                 </div>
 
-                <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-                  <div className="flex items-center gap-2 text-xs text-gray-500">
-                    <Calendar className="w-4 h-4" />
-                    {formatDate(req.createdAt)}
+                {/* Description */}
+                <div className="mb-6">
+                  <div className="bg-gray-50 rounded-2xl p-5 border border-gray-100">
+                    <div className="flex items-start gap-3">
+                      <div className="w-8 h-8 bg-white rounded-xl flex items-center justify-center shadow-sm mt-1">
+                        <FileText className="w-4 h-4 text-gray-500" />
+                      </div>
+                      <div className="flex-1">
+                        <h4 className="font-semibold text-gray-900 mb-2">
+                          Description
+                        </h4>
+                        <p className="text-gray-700 leading-relaxed">
+                          {req.description.length > 100
+                            ? `${req.description.slice(0, 100)}...`
+                            : req.description}
+                        </p>
+                        {req.description.length > 100 && (
+                          <button
+                            onClick={() => {
+                              setSelectedDescription(req.description);
+                              setShowModal(true);
+                            }}
+                            className="inline-flex items-center gap-1 mt-3 text-indigo-600 font-semibold hover:text-indigo-700 transition-colors"
+                          >
+                            Read Full Description
+                            <svg
+                              className="w-4 h-4"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M9 5l7 7-7 7"
+                              />
+                            </svg>
+                          </button>
+                        )}
+                      </div>
+                    </div>
                   </div>
+                </div>
 
+                {/* Footer with Date and Actions */}
+                {/* Date Submitted */}
+                <div className="flex items-center gap-3 text-gray-600">
+                  <div className="w-9 h-9 bg-gray-100 rounded-xl flex items-center justify-center">
+                    <Calendar className="w-4 h-4 text-gray-500" />
+                  </div>
+                  <div>
+                    <span className="text-sm font-medium">Submitted</span>
+                    <div className="text-sm font-semibold text-gray-900">
+                      {formatDate(req.createdAt)}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3 mt-4 justify-end">
+                  {/* Action Buttons */}
                   {req.status === "pending" && (
-                    <div className="flex gap-2">
+                    <div className="flex gap-3">
                       <button
                         onClick={() => handleStatusChange(req._id, "approved")}
-                        className="flex items-center gap-1 bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+                        className="flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white px-5 py-2.5 rounded-2xl font-semibold text-sm transition-all duration-200 hover:shadow-md hover:scale-105 active:scale-95"
                       >
-                        <CheckCircle className="w-4 h-4" />
+                        <CheckCircle className="w-5 h-5" />
                         Approve
                       </button>
                       <button
                         onClick={() => handleStatusChange(req._id, "rejected")}
-                        className="flex items-center gap-1 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+                        className="flex items-center gap-2 bg-red-500 hover:bg-red-600 text-white px-5 py-2.5 rounded-2xl font-semibold text-sm transition-all duration-200 hover:shadow-md hover:scale-105 active:scale-95"
                       >
-                        <XCircle className="w-4 h-4" />
+                        <XCircle className="w-5 h-5" />
                         Reject
                       </button>
                     </div>

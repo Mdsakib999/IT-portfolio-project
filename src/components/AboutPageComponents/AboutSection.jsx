@@ -3,7 +3,7 @@ import { PrimaryButton } from "../Shared/PrimaryButton";
 
 export const AboutSection = () => {
   return (
-    <section className="py-16 px-4 md:px-20 bg-white text-gray-800">
+    <section className="py-5 px-4 md:px-20 bg-white text-gray-800">
       <div className="flex items-start justify-start">
         <Bar />
       </div>
