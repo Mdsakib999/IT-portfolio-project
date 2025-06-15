@@ -117,7 +117,7 @@ const SuccessPage = () => {
                     Service:
                 </span>
                 <span className="font-semibold text-gray-800">
-                    {order.service?.title}
+                    {order.service?.title || order?.serviceName}
                 </span>
               </div>
 
@@ -126,7 +126,7 @@ const SuccessPage = () => {
                     Plan:
                 </span>
                 <span className="font-semibold text-gray-800">
-                    {order.plan?.title}
+                    {order.plan?.title || order?.planName}
                 </span>
               </div>
 

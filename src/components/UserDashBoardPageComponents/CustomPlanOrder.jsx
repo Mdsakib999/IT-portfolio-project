@@ -15,6 +15,7 @@ import axiosInstance from "../../Utils/axios";
 import { useAuth } from "../../provider/AuthProvider";
 import Loading from "../../Utils/Loading";
 import { formatDate } from "../../Utils/formatDate";
+import { useNavigate } from "react-router-dom";
 
 export const CustomPlanOrder = () => {
   const [customPlans, setCustomPlans] = useState([]);
@@ -23,6 +24,7 @@ export const CustomPlanOrder = () => {
   const [selectedDescription, setSelectedDescription] = useState("");
   const [showModal, setShowModal] = useState(false);
   const { user } = useAuth();
+  const navigate = useNavigate();
   const userId = user?._id;
 
   const fetchCustomPlans = useCallback(async () => {
@@ -46,6 +48,22 @@ export const CustomPlanOrder = () => {
       fetchCustomPlans();
     }
   }, [userId, fetchCustomPlans]);
+
+  console.log("CUSTOM plans", customPlans);
+
+  const handleCheckout = (plan) => {
+    console.log(plan);
+    navigate("/checkout", {
+      state: {
+        customPlanId: plan._id,
+        plan: "custom plan",
+        serviceName: plan?.service,
+        serviceId: "",
+        amount: plan?.proposedPrice,
+        description: plan?.description,
+      },
+    });
+  };
 
   const getStatusIcon = (status) => {
     switch (status) {
@@ -192,11 +210,20 @@ export const CustomPlanOrder = () => {
                       <span className="capitalize">{plan.status}</span>
                     </div>
                     <div className="flex gap-3">
-                      {plan.status === "pending" && (
-                        <button className="px-4 py-2 text-red-600 border border-red-200 rounded-lg hover:bg-red-50 transition-colors font-medium">
-                          Cancel Request
+                      {plan.status === "approved" &&
+                      plan.paymentStatus === "pending" ? (
+                        <button
+                          onClick={() => handleCheckout(plan)}
+                          className="cursor-pointer px-4 py-2 text-purple-600 border border-purple-200 rounded-lg hover:bg-purple-50 transition-colors font-semibold"
+                        >
+                          Pay Now
                         </button>
-                      )}
+                      ) : plan.status === "approved" &&
+                        plan.paymentStatus === "paid" ? (
+                        <span className="text-green-100 font-semibold border px-5 py-2 bg-green-700 rounded-md font-inknut">
+                          Paid
+                        </span>
+                      ) : null}
                     </div>
                   </div>
 
@@ -259,7 +286,7 @@ export const CustomPlanOrder = () => {
                                     setSelectedDescription(plan.description);
                                     setShowModal(true);
                                   }}
-                                  className="text-indigo-600 font-medium hover:underline ml-1"
+                                  className="cursor-pointer text-indigo-600 font-medium hover:underline ml-1"
                                 >
                                   Read More
                                 </button>
@@ -303,7 +330,7 @@ export const CustomPlanOrder = () => {
         <div className="mt-8 text-center">
           <button
             onClick={fetchCustomPlans}
-            className="px-6 py-3 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors font-medium text-gray-700"
+            className="cursor-pointer px-6 py-3 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors font-medium text-gray-700"
           >
             Refresh Orders
           </button>
