@@ -177,41 +177,39 @@ export const CustomPlan = () => {
       {/* Content */}
       <div className="max-w-7xl mx-auto px-6 py-8">
         {/* Search and Filter Controls */}
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 mb-8">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
-            {/* Search */}
-            <div className="md:col-span-4">
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Search Plans
-              </label>
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
-                <input
-                  type="text"
-                  placeholder="Search by name, email, service..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
-                />
-              </div>
+        <div className="bg-white rounded-2xl shadow-md border border-gray-100 p-6 mb-8 flex flex-col md:flex-row md:items-end justify-between gap-6">
+          {/* Search */}
+          <div className="w-full md:w-1/2">
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Search Plans
+            </label>
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+              <input
+                type="text"
+                placeholder="Search by name, email, service..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-300 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-300 transition duration-200"
+              />
             </div>
+          </div>
 
-            {/* Status Filter */}
-            <div className="md:col-span-2">
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Status
-              </label>
-              <select
-                value={statusFilter}
-                onChange={(e) => setStatusFilter(e.target.value)}
-                className="w-full px-3 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
-              >
-                <option value="all">All Status</option>
-                <option value="pending">Pending</option>
-                <option value="approved">Approved</option>
-                <option value="rejected">Rejected</option>
-              </select>
-            </div>
+          {/* Status Filter */}
+          <div className="w-full md:w-1/2">
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Status
+            </label>
+            <select
+              value={statusFilter}
+              onChange={(e) => setStatusFilter(e.target.value)}
+              className="w-full md:w-2/3 px-4 py-2.5 rounded-xl border border-gray-300 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-300 transition duration-200"
+            >
+              <option value="all">All Status</option>
+              <option value="pending">Pending</option>
+              <option value="approved">Approved</option>
+              <option value="rejected">Rejected</option>
+            </select>
           </div>
         </div>
 

@@ -3,7 +3,7 @@ import { Bar } from "../Shared/Bar";
 
 export const TrustAndTeam = () => {
   return (
-    <div className="overflow-hidden my-20">
+    <div className="overflow-hidden my-20 max-w-7xl mx-auto">
       {/* First Section - Leading Companies Trust Us */}
       <div className="relative max-w-7xl mx-auto px-6 py-16">
         {/* Decorative Elements */}

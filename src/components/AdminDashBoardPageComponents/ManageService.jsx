@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { useService } from "../../provider/ServiceProvider";
 import Swal from "sweetalert2";
+import { PrimaryButton } from "../Shared/PrimaryButton";
+import Loading from "../../Utils/Loading";
 
-// Move Modal component outside to prevent re-creation on every render
 const Modal = ({ isOpen, onClose, title, children }) => {
   if (!isOpen) return null;
 
@@ -199,11 +200,7 @@ export const ManageService = () => {
   };
 
   if (loading) {
-    return (
-      <div className="flex justify-center items-center min-h-96">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
-      </div>
-    );
+    return <Loading />;
   }
 
   return (
@@ -227,10 +224,10 @@ export const ManageService = () => {
             return (
               <div
                 key={service._id}
-                className="group relative bg-gradient-to-br from-white via-gray-50 to-gray-100 border-0 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden transform hover:-translate-y-2"
+                className="group relative bg-gradient-to-br from-white via-gray-50 to-gray-100 border-0 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden transform hover:-translate-y-2 "
               >
                 {/* Decorative gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 via-blue-500/5 to-indigo-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-primary to-secondary opacity-0 group-hover:opacity-70 transition-opacity duration-500"></div>
 
                 {/* Animated border effect */}
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-purple-500 via-blue-500 to-indigo-500 opacity-0 group-hover:opacity-20 blur-sm transition-opacity duration-500"></div>
@@ -251,7 +248,7 @@ export const ManageService = () => {
                     </div>
 
                     <div className="flex-1 min-w-0">
-                      <h3 className="font-bold text-xl text-gray-900 mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-600 group-hover:to-indigo-600 transition-all duration-300">
+                      <h3 className="font-bold text-xl text-gray-900 mb-2 group-hover:text-white group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-600 group-hover:to-indigo-600 transition-all duration-300">
                         {service.title}
                       </h3>
 
@@ -271,7 +268,7 @@ export const ManageService = () => {
                   {/* Description */}
                   {service.description && (
                     <div className="flex-1 mb-6">
-                      <p className="text-gray-600 text-sm leading-relaxed line-clamp-3 group-hover:text-gray-700 transition-colors duration-300">
+                      <p className="text-gray-600 text-sm leading-relaxed line-clamp-3 group-hover:text-white transition-colors duration-300">
                         {service.description}
                       </p>
                     </div>
@@ -279,9 +276,9 @@ export const ManageService = () => {
 
                   {/* Action Buttons */}
                   <div className="flex gap-3 mt-auto">
-                    <button
+                    <PrimaryButton
                       onClick={() => handleEditService(service)}
-                      className="flex-1 relative overflow-hidden bg-gradient-to-r from-blue-500 to-blue-600 text-white px-4 py-3 rounded-xl font-semibold text-sm shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 group/btn"
+                      className="flex-1 relative overflow-hidden"
                     >
                       <span className="relative z-10 flex items-center justify-center gap-2">
                         <svg
@@ -300,7 +297,7 @@ export const ManageService = () => {
                         Edit
                       </span>
                       <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-700 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
-                    </button>
+                    </PrimaryButton>
 
                     <button
                       onClick={() => handleDeleteService(service)}

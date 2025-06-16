@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../../provider/AuthProvider";
 import axiosInstance from "../../Utils/axios";
-import { 
-  FiCheckCircle, 
-  FiClock, 
-  FiCreditCard, 
+import {
+  FiCheckCircle,
+  FiClock,
+  FiCreditCard,
   FiCalendar,
   FiFileText,
   FiDollarSign,
@@ -12,8 +12,9 @@ import {
   FiLoader,
   FiShoppingBag,
   FiPackage,
-  FiX
-} from 'react-icons/fi';
+  FiX,
+} from "react-icons/fi";
+import { formatDate } from "../../Utils/formatDate";
 
 export const OrderHistory = () => {
   const { user } = useAuth();
@@ -38,66 +39,61 @@ export const OrderHistory = () => {
     }
   }, [user?._id]);
 
-  const formatDate = (dateString) => {
-    return new Date(dateString).toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit'
-    });
-  };
-
   const getStatusConfig = (status) => {
     const statusConfig = {
-      completed: { 
-        color: 'bg-green-100 text-green-800', 
+      completed: {
+        color: "bg-green-100 text-green-800",
         icon: FiCheckCircle,
-        iconColor: 'text-green-600'
+        iconColor: "text-green-600",
       },
-      pending: { 
-        color: 'bg-yellow-100 text-yellow-800', 
+      pending: {
+        color: "bg-yellow-100 text-yellow-800",
         icon: FiClock,
-        iconColor: 'text-yellow-600'
+        iconColor: "text-yellow-600",
       },
-      cancelled: { 
-        color: 'bg-red-100 text-red-800', 
+      cancelled: {
+        color: "bg-red-100 text-red-800",
         icon: FiX,
-        iconColor: 'text-red-600'
+        iconColor: "text-red-600",
       },
     };
-    
+
     return statusConfig[status.toLowerCase()] || statusConfig.pending;
   };
 
   const getPaymentStatusConfig = (paymentStatus) => {
     const statusConfig = {
-      succeeded: { 
-        color: 'bg-green-100 text-green-800', 
+      succeeded: {
+        color: "bg-green-100 text-green-800",
         icon: FiCheckCircle,
-        iconColor: 'text-green-600'
+        iconColor: "text-green-600",
       },
-      pending: { 
-        color: 'bg-yellow-100 text-yellow-800', 
+      pending: {
+        color: "bg-yellow-100 text-yellow-800",
         icon: FiClock,
-        iconColor: 'text-yellow-600'
+        iconColor: "text-yellow-600",
       },
-      failed: { 
-        color: 'bg-red-100 text-red-800', 
+      failed: {
+        color: "bg-red-100 text-red-800",
         icon: FiX,
-        iconColor: 'text-red-600'
+        iconColor: "text-red-600",
       },
     };
-    
+
     return statusConfig[paymentStatus.toLowerCase()] || statusConfig.pending;
   };
 
-  const StatusBadge = ({ status, type = 'order' }) => {
-    const config = type === 'payment' ? getPaymentStatusConfig(status) : getStatusConfig(status);
+  const StatusBadge = ({ status, type = "order" }) => {
+    const config =
+      type === "payment"
+        ? getPaymentStatusConfig(status)
+        : getStatusConfig(status);
     const Icon = config.icon;
-    
+
     return (
-      <span className={`inline-flex items-center gap-1 px-2 py-1 rounded text-xs font-medium ${config.color}`}>
+      <span
+        className={`inline-flex items-center gap-1 px-2 py-1 rounded text-xs font-medium ${config.color}`}
+      >
         <Icon className={`w-3 h-3 ${config.iconColor}`} />
         {status.charAt(0).toUpperCase() + status.slice(1)}
       </span>
@@ -134,7 +130,9 @@ export const OrderHistory = () => {
         {allOrders?.length === 0 ? (
           <div className="bg-gray-50 rounded-lg p-8 text-center">
             <FiPackage className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-            <h3 className="text-lg font-medium text-gray-900 mb-2">No orders yet</h3>
+            <h3 className="text-lg font-medium text-gray-900 mb-2">
+              No orders yet
+            </h3>
             <p className="text-gray-500 mb-4">
               Your orders will appear here once you place them.
             </p>
@@ -215,7 +213,10 @@ export const OrderHistory = () => {
                     </td>
                     {/* Payment Status */}
                     <td className="px-4 py-3 whitespace-nowrap">
-                      <StatusBadge status={order.paymentStatus || 'pending'} type="payment" />
+                      <StatusBadge
+                        status={order.paymentStatus || "pending"}
+                        type="payment"
+                      />
                     </td>
                     {/* Date & Time */}
                     <td className="px-4 py-3 whitespace-nowrap">
