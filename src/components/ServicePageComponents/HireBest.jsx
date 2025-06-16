@@ -13,6 +13,7 @@ import {
 import axiosInstance from "../../Utils/axios";
 import Swal from "sweetalert2";
 import { useAuth } from "../../provider/AuthProvider";
+import { PrimaryButton } from "../Shared/PrimaryButton";
 
 export const HireBest = () => {
   const [showModal, setShowModal] = useState(false);
@@ -181,7 +182,7 @@ export const HireBest = () => {
                 </button>
 
                 {/* Pulsing Ring Effect */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-pink-500 to-blue-500 animate-ping opacity-20"></div>
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-pink-500 to-blue-500 animate-ping opacity-20 pointer-events-none"></div>
               </div>
 
               <p className="text-sm text-gray-400 mt-4">
@@ -205,10 +206,10 @@ export const HireBest = () => {
       </div>
       {/* Enhanced Modal */}
       {showModal && (
-        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-2 sm:p-4 overflow-y-auto">
-          <div className="relative bg-white w-full max-w-2xl rounded-3xl shadow-2xl overflow-hidden max-h-screen">
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 sm:p-4 overflow-y-auto">
+          <div className="relative bg-white w-full max-w-4xl rounded-3xl shadow-2xl overflow-auto scrollbar-hide max-h-screen">
             {/* Modal Header */}
-            <div className="bg-gradient-to-r from-purple-600 to-blue-600 p-6 sm:p-8 text-white relative">
+            <div className="bg-gradient-to-bl from-primary to-secondary p-3 rounded-t-3xl sm:rounded-t-3xl flex flex-col items-center justify-center text-white relative">
               <button
                 onClick={() => setShowModal(false)}
                 className="absolute top-4 right-4 text-white/80 hover:text-white text-xl hover:bg-white/20 rounded-full w-8 h-8 flex items-center justify-center transition-all"
@@ -226,7 +227,7 @@ export const HireBest = () => {
             </div>
 
             {/* Modal Body */}
-            <div className="p-4 sm:p-8 overflow-y-auto">
+            <div className="p-4 overflow-y-auto">
               <div className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {/* Name */}
@@ -311,10 +312,10 @@ export const HireBest = () => {
                 </div>
 
                 {/* Submit Button */}
-                <button
+                <PrimaryButton
                   onClick={handleSubmit}
                   disabled={loading}
-                  className="w-full py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold text-lg rounded-xl hover:from-purple-700 hover:to-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 hover:scale-[1.02] hover:shadow-lg"
+                  className="w-full py-4 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 hover:scale-[1.02] hover:shadow-lg"
                 >
                   {loading ? (
                     <span className="flex items-center justify-center gap-2">
@@ -327,7 +328,7 @@ export const HireBest = () => {
                       Get My Dream Team
                     </span>
                   )}
-                </button>
+                </PrimaryButton>
               </div>
             </div>
           </div>
