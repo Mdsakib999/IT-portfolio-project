@@ -360,19 +360,19 @@ export const ManageService = () => {
         isOpen={showServiceModal}
         onClose={resetServiceForm}
         title={"Edit Service"}
-        className="max-w-7xl"
+        className="w-full max-w-7xl mx-4 sm:mx-6 lg:mx-8"
       >
-        <div className="relative bg-gradient-to-br from-white via-gray-50 to-blue-50/30 rounded-2xl w-screen md:w-auto">
+        <div className="relative bg-gradient-to-br from-white via-gray-50 to-blue-50/30 rounded-2xl overflow-hidden">
           {/* Decorative background elements */}
-          <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-purple-200/20 to-blue-200/20 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-indigo-200/20 to-purple-200/20 rounded-full blur-2xl"></div>
+          <div className="absolute top-0 right-0 w-16 h-16 sm:w-24 sm:h-24 lg:w-32 lg:h-32 bg-gradient-to-br from-purple-200/20 to-blue-200/20 rounded-full blur-2xl lg:blur-3xl"></div>
+          <div className="absolute bottom-0 left-0 w-12 h-12 sm:w-16 sm:h-16 lg:w-24 lg:h-24 bg-gradient-to-tr from-indigo-200/20 to-purple-200/20 rounded-full blur-xl lg:blur-2xl"></div>
 
-          <div className="relative space-y-8 p-6">
+          <div className="relative space-y-6 sm:space-y-8 p-4 sm:p-6 max-h-[90vh] overflow-y-auto">
             {/* Header Section */}
-            <div className="text-center pb-6 border-b border-gradient-to-r from-transparent via-gray-200 to-transparent">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-2xl shadow-lg mb-4">
+            <div className="text-center pb-4 sm:pb-6 border-b border-gradient-to-r from-transparent via-gray-200 to-transparent">
+              <div className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-2xl shadow-lg mb-3 sm:mb-4">
                 <svg
-                  className="w-8 h-8 text-white"
+                  className="w-6 h-6 sm:w-8 sm:h-8 text-white"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -385,10 +385,10 @@ export const ManageService = () => {
                   />
                 </svg>
               </div>
-              <h2 className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
+              <h2 className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent px-2">
                 {editingService ? "Edit Service" : "Create New Service"}
               </h2>
-              <p className="text-gray-600 mt-2">
+              <p className="text-gray-600 mt-2 text-sm sm:text-base px-2">
                 {editingService
                   ? "Update your service details and manage plans"
                   : "Add a new service to your portfolio"}
@@ -396,11 +396,11 @@ export const ManageService = () => {
             </div>
 
             {/* Service Details Section */}
-            <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/50 w-screen md:w-auto">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center">
+            <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-4 sm:p-6 shadow-lg border border-white/50">
+              <div className="flex items-center gap-3 mb-4 sm:mb-6">
+                <div className="w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center flex-shrink-0">
                   <svg
-                    className="w-4 h-4 text-white"
+                    className="w-3 h-3 sm:w-4 sm:h-4 text-white"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -413,13 +413,13 @@ export const ManageService = () => {
                     />
                   </svg>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-800">
+                <h3 className="text-lg sm:text-xl font-semibold text-gray-800">
                   Service Details
                 </h3>
               </div>
 
-              <div className="space-y-6">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <div className="space-y-4 sm:space-y-6">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
                   <div className="space-y-2">
                     <label className="block text-sm font-semibold text-gray-700 mb-2">
                       Service Name *
@@ -434,7 +434,7 @@ export const ManageService = () => {
                             title: e.target.value,
                           }))
                         }
-                        className="w-full bg-white/80 backdrop-blur-sm border-2 border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-purple-500 focus:ring-4 focus:ring-purple-500/20 transition-all duration-300 placeholder-gray-400"
+                        className="w-full bg-white/80 backdrop-blur-sm border-2 border-gray-200 rounded-xl px-3 py-2.5 sm:px-4 sm:py-3 focus:outline-none focus:border-purple-500 focus:ring-4 focus:ring-purple-500/20 transition-all duration-300 placeholder-gray-400 text-sm sm:text-base"
                         placeholder="Enter service name..."
                         required
                       />
@@ -456,7 +456,7 @@ export const ManageService = () => {
                             image: e.target.value,
                           }))
                         }
-                        className="w-full bg-white/80 backdrop-blur-sm border-2 border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-purple-500 focus:ring-4 focus:ring-purple-500/20 transition-all duration-300 placeholder-gray-400"
+                        className="w-full bg-white/80 backdrop-blur-sm border-2 border-gray-200 rounded-xl px-3 py-2.5 sm:px-4 sm:py-3 focus:outline-none focus:border-purple-500 focus:ring-4 focus:ring-purple-500/20 transition-all duration-300 placeholder-gray-400 text-sm sm:text-base"
                         placeholder="https://example.com/image.jpg"
                       />
                       <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-purple-500/10 to-indigo-500/10 opacity-0 focus-within:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
@@ -477,8 +477,8 @@ export const ManageService = () => {
                           description: e.target.value,
                         }))
                       }
-                      rows={4}
-                      className="w-full bg-white/80 backdrop-blur-sm border-2 border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-purple-500 focus:ring-4 focus:ring-purple-500/20 transition-all duration-300 placeholder-gray-400 resize-none"
+                      rows={3}
+                      className="w-full bg-white/80 backdrop-blur-sm border-2 border-gray-200 rounded-xl px-3 py-2.5 sm:px-4 sm:py-3 focus:outline-none focus:border-purple-500 focus:ring-4 focus:ring-purple-500/20 transition-all duration-300 placeholder-gray-400 resize-none text-sm sm:text-base"
                       placeholder="Describe your service in detail..."
                     />
                     <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-purple-500/10 to-indigo-500/10 opacity-0 focus-within:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
@@ -489,12 +489,12 @@ export const ManageService = () => {
 
             {/* Plans Section - Only show when editing */}
             {editingService && (
-              <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/50 w-screen md:w-auto">
-                <div className="flex items-center justify-between mb-6">
+              <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-4 sm:p-6 shadow-lg border border-white/50">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4 sm:mb-6">
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 bg-gradient-to-br from-green-500 to-teal-600 rounded-lg flex items-center justify-center">
+                    <div className="w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-br from-green-500 to-teal-600 rounded-lg flex items-center justify-center flex-shrink-0">
                       <svg
-                        className="w-4 h-4 text-white"
+                        className="w-3 h-3 sm:w-4 sm:h-4 text-white"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -507,13 +507,13 @@ export const ManageService = () => {
                         />
                       </svg>
                     </div>
-                    <h3 className="text-xl font-semibold text-gray-800">
+                    <h3 className="text-lg sm:text-xl font-semibold text-gray-800">
                       Service Plans
                     </h3>
                   </div>
-                  <div className="flex items-center gap-2 bg-gradient-to-r from-green-100 to-teal-100 px-4 py-2 rounded-full">
+                  <div className="flex items-center gap-2 bg-gradient-to-r from-green-100 to-teal-100 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full">
                     <div className="w-2 h-2 bg-gradient-to-r from-green-500 to-teal-500 rounded-full animate-pulse"></div>
-                    <span className="text-sm font-semibold text-green-700">
+                    <span className="text-xs sm:text-sm font-semibold text-green-700">
                       {editingPlans.length} plan
                       {editingPlans.length !== 1 ? "s" : ""}
                     </span>
@@ -521,10 +521,10 @@ export const ManageService = () => {
                 </div>
 
                 {editingPlans.length === 0 ? (
-                  <div className="text-center py-12 bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl border-2 border-dashed border-gray-300">
-                    <div className="w-16 h-16 bg-gradient-to-br from-gray-300 to-gray-400 rounded-2xl mx-auto mb-4 flex items-center justify-center">
+                  <div className="text-center py-8 sm:py-12 bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl border-2 border-dashed border-gray-300">
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-gray-300 to-gray-400 rounded-2xl mx-auto mb-3 sm:mb-4 flex items-center justify-center">
                       <svg
-                        className="w-8 h-8 text-white"
+                        className="w-6 h-6 sm:w-8 sm:h-8 text-white"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -537,27 +537,27 @@ export const ManageService = () => {
                         />
                       </svg>
                     </div>
-                    <p className="text-gray-500 font-medium">
+                    <p className="text-gray-500 font-medium text-sm sm:text-base">
                       No plans found for this service
                     </p>
-                    <p className="text-gray-400 text-sm mt-1">
+                    <p className="text-gray-400 text-xs sm:text-sm mt-1 px-4">
                       Create plans to offer different service packages
                     </p>
                   </div>
                 ) : (
-                  <div className="space-y-6 max-h-96 overflow-y-auto custom-scrollbar w-screen md:w-auto">
+                  <div className="space-y-4 sm:space-y-6 max-h-80 sm:max-h-96 overflow-y-auto custom-scrollbar">
                     {editingPlans.map((plan, planIndex) => (
                       <div
                         key={plan._id || planIndex}
-                        className="relative bg-gradient-to-br from-white to-gray-50 rounded-2xl p-6 shadow-md border-2 border-gray-100 hover:border-purple-200 transition-all duration-300 group"
+                        className="relative bg-gradient-to-br from-white to-gray-50 rounded-2xl p-4 sm:p-6 shadow-md border-2 border-gray-100 hover:border-purple-200 transition-all duration-300 group"
                       >
                         {/* Plan header */}
-                        <div className="flex justify-between items-start mb-6">
+                        <div className="flex flex-col sm:flex-row justify-between items-start gap-4 mb-4 sm:mb-6">
                           <div className="flex items-center gap-3">
-                            <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-lg flex items-center justify-center text-white font-bold text-sm">
+                            <div className="w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-lg flex items-center justify-center text-white font-bold text-xs sm:text-sm flex-shrink-0">
                               {planIndex + 1}
                             </div>
-                            <h4 className="text-lg font-semibold text-gray-800">
+                            <h4 className="text-base sm:text-lg font-semibold text-gray-800">
                               Plan #{planIndex + 1}
                             </h4>
                           </div>
@@ -565,7 +565,7 @@ export const ManageService = () => {
                             onClick={() =>
                               handleDeletePlan(plan._id, planIndex)
                             }
-                            className="flex items-center gap-2 text-red-500 hover:text-red-700 hover:bg-red-50 px-3 py-2 rounded-lg transition-all duration-300 text-sm font-medium"
+                            className="flex items-center gap-2 text-red-500 hover:text-red-700 hover:bg-red-50 px-3 py-2 rounded-lg transition-all duration-300 text-xs sm:text-sm font-medium"
                           >
                             <svg
                               className="w-4 h-4"
@@ -580,12 +580,15 @@ export const ManageService = () => {
                                 d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
                               />
                             </svg>
-                            Delete Plan
+                            <span className="hidden sm:inline">
+                              Delete Plan
+                            </span>
+                            <span className="sm:hidden">Delete</span>
                           </button>
                         </div>
 
                         {/* Plan details */}
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6 w-screen md:w-auto">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-4 sm:mb-6">
                           <div className="space-y-2">
                             <label className="block text-sm font-semibold text-gray-700">
                               Plan Name
@@ -600,7 +603,7 @@ export const ManageService = () => {
                                   e.target.value
                                 )
                               }
-                              className="w-full bg-white border-2 border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-purple-500 focus:ring-4 focus:ring-purple-500/20 transition-all duration-300"
+                              className="w-full bg-white border-2 border-gray-200 rounded-xl px-3 py-2.5 sm:px-4 sm:py-3 focus:outline-none focus:border-purple-500 focus:ring-4 focus:ring-purple-500/20 transition-all duration-300 text-sm sm:text-base"
                               placeholder="Enter plan name..."
                             />
                           </div>
@@ -619,18 +622,18 @@ export const ManageService = () => {
                                   e.target.value
                                 )
                               }
-                              className="w-full bg-white border-2 border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-purple-500 focus:ring-4 focus:ring-purple-500/20 transition-all duration-300"
+                              className="w-full bg-white border-2 border-gray-200 rounded-xl px-3 py-2.5 sm:px-4 sm:py-3 focus:outline-none focus:border-purple-500 focus:ring-4 focus:ring-purple-500/20 transition-all duration-300 text-sm sm:text-base"
                               placeholder="0.00"
                             />
                           </div>
                         </div>
 
                         {/* Features */}
-                        <div className="space-y-4 w-screen md:w-auto">
+                        <div className="space-y-3 sm:space-y-4">
                           <div className="flex items-center gap-2">
-                            <div className="w-6 h-6 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center">
+                            <div className="w-5 h-5 sm:w-6 sm:h-6 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center flex-shrink-0">
                               <svg
-                                className="w-3 h-3 text-white"
+                                className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-white"
                                 fill="none"
                                 stroke="currentColor"
                                 viewBox="0 0 24 24"
@@ -648,13 +651,13 @@ export const ManageService = () => {
                             </label>
                           </div>
 
-                          <div className="space-y-3 bg-gray-50/50 rounded-xl p-4">
+                          <div className="space-y-2 sm:space-y-3 bg-gray-50/50 rounded-xl p-3 sm:p-4">
                             {plan.features.map((feature, featureIndex) => (
                               <div
                                 key={featureIndex}
-                                className="flex items-center gap-3 bg-white rounded-lg p-3 shadow-sm border border-gray-100"
+                                className="flex items-center gap-2 sm:gap-3 bg-white rounded-lg p-2 sm:p-3 shadow-sm border border-gray-100"
                               >
-                                <div className="w-2 h-2 bg-gradient-to-r from-green-500 to-teal-500 rounded-full"></div>
+                                <div className="w-2 h-2 bg-gradient-to-r from-green-500 to-teal-500 rounded-full flex-shrink-0"></div>
                                 <input
                                   type="text"
                                   value={feature}
@@ -667,7 +670,7 @@ export const ManageService = () => {
                                       newFeatures
                                     );
                                   }}
-                                  className="flex-1 bg-transparent border-none focus:outline-none text-sm"
+                                  className="flex-1 bg-transparent border-none focus:outline-none text-xs sm:text-sm min-w-0"
                                   placeholder="Enter feature description..."
                                 />
                                 <button
@@ -677,10 +680,10 @@ export const ManageService = () => {
                                       featureIndex
                                     )
                                   }
-                                  className="text-red-500 hover:text-red-700 hover:bg-red-50 p-2 rounded-lg transition-all duration-300"
+                                  className="text-red-500 hover:text-red-700 hover:bg-red-50 p-1.5 sm:p-2 rounded-lg transition-all duration-300 flex-shrink-0"
                                 >
                                   <svg
-                                    className="w-4 h-4"
+                                    className="w-3 h-3 sm:w-4 sm:h-4"
                                     fill="none"
                                     stroke="currentColor"
                                     viewBox="0 0 24 24"
@@ -706,10 +709,10 @@ export const ManageService = () => {
                                   );
                                 }
                               }}
-                              className="w-full flex items-center justify-center gap-2 text-blue-600 hover:text-blue-800 hover:bg-blue-50 py-3 rounded-lg border-2 border-dashed border-blue-200 hover:border-blue-300 transition-all duration-300 font-medium"
+                              className="w-full flex items-center justify-center gap-2 text-blue-600 hover:text-blue-800 hover:bg-blue-50 py-2.5 sm:py-3 rounded-lg border-2 border-dashed border-blue-200 hover:border-blue-300 transition-all duration-300 font-medium text-xs sm:text-sm"
                             >
                               <svg
-                                className="w-5 h-5"
+                                className="w-4 h-4 sm:w-5 sm:h-5"
                                 fill="none"
                                 stroke="currentColor"
                                 viewBox="0 0 24 24"
@@ -733,22 +736,22 @@ export const ManageService = () => {
             )}
 
             {/* Action Buttons */}
-            <div className="flex flex-col md:flex-row justify-end gap-4 pt-6 border-t border-gradient-to-r from-transparent via-gray-200 to-transparent">
+            <div className="flex flex-col sm:flex-row justify-end gap-3 sm:gap-4 pt-4 sm:pt-6 border-t border-gradient-to-r from-transparent via-gray-200 to-transparent">
               <button
                 type="button"
                 onClick={resetServiceForm}
-                className="px-6 py-3 bg-white border-2 border-gray-300 rounded-xl text-gray-700 font-semibold hover:bg-gray-50 hover:border-gray-400 transition-all duration-300 shadow-sm"
+                className="w-full sm:w-auto px-4 sm:px-6 py-3 bg-white border-2 border-gray-300 rounded-xl text-gray-700 font-semibold hover:bg-gray-50 hover:border-gray-400 transition-all duration-300 shadow-sm text-sm sm:text-base"
               >
                 Cancel
               </button>
               <button
                 type="button"
                 onClick={handleServiceSubmit}
-                className="relative overflow-hidden px-6 py-3 bg-gradient-to-r from-purple-500 to-indigo-600 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 group"
+                className="w-full sm:w-auto relative overflow-hidden px-4 sm:px-6 py-3 bg-gradient-to-r from-purple-500 to-indigo-600 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 group text-sm sm:text-base"
               >
-                <span className="relative z-10 flex items-center gap-2">
+                <span className="relative z-10 flex items-center justify-center gap-2">
                   <svg
-                    className="w-5 h-5"
+                    className="w-4 h-4 sm:w-5 sm:h-5"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -760,7 +763,14 @@ export const ManageService = () => {
                       d="M5 13l4 4L19 7"
                     />
                   </svg>
-                  {editingService ? "Update Service & Plans" : "Create Service"}
+                  <span className="hidden sm:inline">
+                    {editingService
+                      ? "Update Service & Plans"
+                      : "Create Service"}
+                  </span>
+                  <span className="sm:hidden">
+                    {editingService ? "Update" : "Create"}
+                  </span>
                 </span>
                 <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-indigo-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </button>
