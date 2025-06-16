@@ -39,7 +39,7 @@ const StatBox = ({ icon: Icon, end, suffix, label }) => {
 
 const Impact = () => {
   return (
-    <div className="py-10 mt-10 px-4">
+    <div className="py-10 mt-10 px-4 max-w-7xl mx-auto ">
       <div className="space-y-3 text-center">
         <h1 className="text-2xl md:text-3xl font-bold">
           Turning Ideas Into{" "}

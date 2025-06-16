@@ -6,17 +6,17 @@ import ScrollToTop from "./Utils/ScrollToTop";
 import ScrollToTopButton from "./Utils/ScrollToTopButton";
 
 const App = () => {
-	return (
-		<div className="max-w-7xl mx-auto">
-			<Navbar />
-			<ScrollToTop />
-			<div className="min-h-screen px-4">
-				<Outlet />
-			</div>
-			<ScrollToTopButton />
-			<Footer />
-		</div>
-	);
+  return (
+    <div className="">
+      <Navbar />
+      <ScrollToTop />
+      <div className="min-h-screen px-4">
+        <Outlet />
+      </div>
+      <ScrollToTopButton />
+      <Footer />
+    </div>
+  );
 };
 
 export default App;

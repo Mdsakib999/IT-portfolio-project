@@ -17,7 +17,7 @@ export const AlcalineWorks = () => {
       </div>
 
       {/* Desktop Timeline Layout */}
-      <div className="hidden lg:block relative w-full py-16 px-4 bg-[#f9f9fc]">
+      <div className="hidden lg:block relative w-full py-16 px-4">
         {/* Horizontal Line */}
         <div className="absolute top-1/2 left-0 right-0 max-w-6xl mx-auto h-[2px] bg-pink-400 z-0" />
 
@@ -42,7 +42,7 @@ export const AlcalineWorks = () => {
         </div>
 
         {/* Trophy */}
-        <div className="absolute right-6 top-1/2 -translate-y-1/2 z-10">
+        <div className="absolute right-[16%] top-1/2 -translate-y-1/2 z-10 ">
           <span className="text-4xl">🏆</span>
         </div>
       </div>

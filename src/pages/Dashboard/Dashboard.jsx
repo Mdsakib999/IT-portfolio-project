@@ -8,10 +8,10 @@ export const Dashboard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className="max-w-7xl mx-auto">
+    <div>
       <ScrollToTop />
       <Navbar />
-      <div className="flex min-h-screen relative  pt-18">
+      <div className="flex min-h-screen relative  pt-18  max-w-7xl mx-auto">
         {/* Mobile toggle - Fixed positioning and z-index */}
         {!sidebarOpen && (
           <button

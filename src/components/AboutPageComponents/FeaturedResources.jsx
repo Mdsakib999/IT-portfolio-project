@@ -42,9 +42,9 @@ export const FeaturedResources = () => {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto px-6 py-16 bg-gray-50">
+    <div className="px-6 py-16 bg-gray-50">
       {/* Header Section */}
-      <div className="flex flex-col items-start justify-start mb-4">
+      <div className="flex flex-col items-start justify-start mb-4 max-w-7xl mx-auto ">
         <Bar />
         <h2 className="text-4xl font-bold text-gray-900 mb-2">
           Featured Resources
@@ -52,7 +52,7 @@ export const FeaturedResources = () => {
       </div>
 
       {/* Resources Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 max-w-7xl mx-auto ">
         {resources.map((resource) => (
           <div
             key={resource.id}

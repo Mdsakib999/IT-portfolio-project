@@ -4,7 +4,7 @@ import { PrimaryButton } from "../Shared/PrimaryButton";
 
 const HomeBanner = () => {
   return (
-    <div className="scrollbar-hide overflow-x-scroll flex flex-col md:flex-row items-center justify-center md:justify-between py-10 bg-[#ffffff] text-center md:text-start pt-28">
+    <div className="scrollbar-hide overflow-x-scroll flex flex-col md:flex-row items-center justify-center md:justify-between py-10 bg-[#ffffff] text-center md:text-start pt-28 max-w-7xl mx-auto ">
       <Slide className="w-full" direction="left">
         <div className="space-y-6">
           <div className="space-y-3">
