@@ -11,7 +11,7 @@ export const AboutSection = () => {
       <h2 className="text-4xl font-semibold mb-6">About Us</h2>
       <hr className="mb-10 border-gray-300" />
 
-      <div className="grid md:grid-cols-2 gap-12 items-start">
+      <div className="grid md:grid-cols-2 gap-12 items-center">
         {/* Left Content */}
         <div>
           <p className="text-base leading-relaxed mb-6">

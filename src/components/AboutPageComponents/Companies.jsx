@@ -50,7 +50,7 @@ export const Companies = () => {
       </div>
 
       {/* Companies Marquee */}
-      <div className="relative overflow-hidden bg-gray-50 rounded-2xl py-8">
+      <div className="relative overflow-hidden bg-gray-50 rounded-2xl py-8 mt-5 lg:mt-8">
         <Marquee pauseOnHover speed={50} gradient={false}>
           {companies.map((company, index) => (
             <div

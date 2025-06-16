@@ -11,7 +11,7 @@ export const ValuesSection = () => {
           <Bar />
           <h2 className="text-4xl font-semibold">Values</h2>
         </div>
-        <p className="text-sm text-gray-600 mt-2 md:mt-0 max-w-md">
+        <p className="text-sm text-gray-600 mt-2 md:mt-0 max-w-lg">
           Software or hardware, we excel in executing projects, enhancing
           processes, and products through innovative technology at company name
         </p>
