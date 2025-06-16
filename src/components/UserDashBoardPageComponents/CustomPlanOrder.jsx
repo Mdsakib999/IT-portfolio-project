@@ -30,7 +30,7 @@ export const CustomPlanOrder = () => {
   const fetchCustomPlans = useCallback(async () => {
     try {
       setLoading(true);
-      const response = await axiosInstance.get(`/custom-plans/${userId}`);
+      const response = await axiosInstance.get(`/custom-plans/user/${userId}`);
       setCustomPlans(response.data);
       setError(null);
     } catch (err) {

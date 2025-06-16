@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { useAuth } from "../../provider/AuthProvider";
 import axiosInstance from "../../Utils/axios";
+import Loading from "../../Utils/Loading";
 
 export const HireEliteRequest = () => {
   const [requests, setRequests] = useState([]);
@@ -80,51 +81,15 @@ export const HireEliteRequest = () => {
   };
 
   if (loading) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-cyan-50 p-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex items-center justify-center min-h-[400px]">
-            <div className="text-center">
-              <div className="w-16 h-16 border-4 border-purple-200 border-t-purple-600 rounded-full animate-spin mx-auto mb-4"></div>
-              <p className="text-lg text-gray-600">
-                Loading your hire requests...
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
+    return <Loading/>
   }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-cyan-50 p-6">
       <div className="max-w-7xl mx-auto">
-        <div className="bg-white rounded-3xl shadow-xl p-8 mb-8 border border-purple-100">
-          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6">
-            <div>
-              <h1 className="text-4xl font-bold bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent mb-2">
-                My Hire Requests
-              </h1>
-              <p className="text-gray-600 text-lg">
-                Track and manage your developer hiring requests
-              </p>
-            </div>
-            <div className="flex items-center gap-4">
-              <div className="bg-gradient-to-r from-purple-500 to-blue-500 text-white px-6 py-3 rounded-2xl shadow-lg">
-                <div className="flex items-center gap-2">
-                  <Briefcase className="w-5 h-5" />
-                  <span className="font-semibold">
-                    {requests.length} Total Requests
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
         {/* Request List */}
         {requests.length === 0 ? (
-          <div className="bg-white rounded-3xl shadow-xl p-12 text-center border border-purple-100">
+          <div className="bg-white rounded-3xl shadow-xl p-12 text-center border border-purple-100 mt-20">
             <div className="w-24 h-24 bg-gradient-to-r from-purple-100 to-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
               <Sparkles className="w-12 h-12 text-purple-500" />
             </div>
