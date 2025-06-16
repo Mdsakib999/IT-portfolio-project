@@ -123,7 +123,7 @@ export const Testimonials = () => {
           <button
             key={testimonial.id}
             onClick={() => goToSlide(index)}
-            className={`md:w-16 md:h-16 h-12 rounded-full overflow-hidden border-2 transition-all duration-300 ${
+            className={`cursor-pointer md:w-16 md:h-16 h-12 rounded-full overflow-hidden border-2 transition-all duration-300 ${
               index === currentSlide
                 ? "border-purple-500 scale-110"
                 : "border-gray-300 opacity-70 hover:opacity-100"

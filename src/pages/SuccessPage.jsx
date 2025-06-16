@@ -87,7 +87,7 @@ const SuccessPage = () => {
   }
 
   return (
-    <div className="p-4 pt-32 font-inknut">
+    <div className="p-4 pt-32 font-serif">
       <div className="max-w-2xl mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden animate-fade-in">
         {/* Header Section */}
         <div className="bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 p-8 text-center text-white">
@@ -138,18 +138,6 @@ const SuccessPage = () => {
                     ${order.price}
                 </span>
               </div>
-
-              {order.description && (
-                <div className="mt-4">
-                    <span className="text-gray-600 font-semibold block mb-2">
-                    Description:
-                    </span>
-                    <p className="text-gray-700 bg-gray-50 p-4 rounded-lg border border-gray-200 leading-relaxed">
-                    {order.description}
-                    </p>
-                </div>
-              )}
-
             </div>
           </div>
 
@@ -177,14 +165,6 @@ const SuccessPage = () => {
               </div>
             </div>
           )}
-
-          {/* Footer Message */}
-          <div className="text-center p-6 bg-gray-50 rounded-xl border border-gray-200">
-            <p className="text-gray-600 italic">
-              You will soon receive a confirmation email. Enjoy your new
-              features! 
-            </p>
-          </div>
         </div>
       </div>
     </div>
