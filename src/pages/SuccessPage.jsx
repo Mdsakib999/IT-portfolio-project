@@ -87,8 +87,8 @@ const SuccessPage = () => {
   }
 
   return (
-    <div className="p-4 pt-32 font-serif">
-      <div className="max-w-2xl mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden animate-fade-in">
+    <div className="p-4 pt-32 font-roboto">
+      <div className="max-w-2xl mx-auto bg-white rounded-2xl shadow-2xl shadow-purple-200 overflow-hidden animate-fade-in lg:mb-16 ">
         {/* Header Section */}
         <div className="bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 p-8 text-center text-white">
           <div className="rounded-full flex items-center justify-center mx-auto mb-4">

@@ -47,7 +47,7 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen  pt-16 sm:pt-20 md:pt-28 px-2 sm:px-4 md:px-6 lg:px-10 mb-10">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto lg:mb-24 ">
         {/* Header Section */}
         <Slide direction="up">
           <div className="text-center mb-8 sm:mb-12 lg:mb-16">
@@ -137,7 +137,7 @@ const Contact = () => {
                       type="text"
                       placeholder="Your Name"
                       {...register("name", { required: "Name is required" })}
-                      className={`w-full pl-10 sm:pl-12 pr-4 py-3 sm:py-4 border-2 rounded-xl sm:rounded-2xl transition-all duration-300 text-sm sm:text-base placeholder:text-xs sm:placeholder:text-sm focus:outline-none focus:ring-4 focus:ring-primary/20 ${
+                      className={`w-full pl-10 sm:pl-12 pr-4 py-3 sm:py-4 border-2 rounded-xl sm:rounded-2xl transition-all duration-300 text-sm sm:text-base placeholder:text-xs sm:placeholder:text-sm focus:outline-none  ${
                         errors.name
                           ? "border-red-300 focus:border-red-500"
                           : "border-gray-200 focus:border-primary hover:border-gray-300"
@@ -165,7 +165,7 @@ const Contact = () => {
                           message: "Invalid email address",
                         },
                       })}
-                      className={`w-full pl-10 sm:pl-12 pr-4 py-3 sm:py-4 border-2 rounded-xl sm:rounded-2xl transition-all duration-300 text-sm sm:text-base placeholder:text-xs sm:placeholder:text-sm focus:outline-none focus:ring-4 focus:ring-primary/20 ${
+                      className={`w-full pl-10 sm:pl-12 pr-4 py-3 sm:py-4 border-2 rounded-xl sm:rounded-2xl transition-all duration-300 text-sm sm:text-base placeholder:text-xs sm:placeholder:text-sm focus:outline-none  ${
                         errors.email
                           ? "border-red-300 focus:border-red-500"
                           : "border-gray-200 focus:border-primary hover:border-gray-300"
@@ -189,7 +189,7 @@ const Contact = () => {
                       {...register("subject", {
                         required: "Subject is required",
                       })}
-                      className={`w-full pl-10 sm:pl-12 pr-4 py-3 sm:py-4 border-2 rounded-xl sm:rounded-2xl transition-all duration-300 text-sm sm:text-base placeholder:text-xs sm:placeholder:text-sm focus:outline-none focus:ring-4 focus:ring-primary/20 ${
+                      className={`w-full pl-10 sm:pl-12 pr-4 py-3 sm:py-4 border-2 rounded-xl sm:rounded-2xl transition-all duration-300 text-sm sm:text-base placeholder:text-xs sm:placeholder:text-sm focus:outline-none  ${
                         errors.subject
                           ? "border-red-300 focus:border-red-500"
                           : "border-gray-200 focus:border-primary hover:border-gray-300"
@@ -213,7 +213,7 @@ const Contact = () => {
                       {...register("message", {
                         required: "Message is required",
                       })}
-                      className={`w-full pl-10 sm:pl-12 pr-4 py-3 sm:py-4 border-2 rounded-xl sm:rounded-2xl transition-all duration-300 text-sm sm:text-base placeholder:text-xs sm:placeholder:text-sm focus:outline-none focus:ring-4 focus:ring-primary/20 resize-none ${
+                      className={`w-full pl-10 sm:pl-12 pr-4 py-3 sm:py-4 border-2 rounded-xl sm:rounded-2xl transition-all duration-300 text-sm sm:text-base placeholder:text-xs sm:placeholder:text-sm focus:outline-none  resize-none ${
                         errors.message
                           ? "border-red-300 focus:border-red-500"
                           : "border-gray-200 focus:border-primary hover:border-gray-300"
@@ -230,7 +230,7 @@ const Contact = () => {
                   <button
                     onClick={handleSubmit(onSubmit)}
                     disabled={isSubmitting}
-                    className="cursor-pointer w-full bg-gradient-to-br from-[#DE4396] to-[#0D1C9F] hover:to-purple-800 text-white py-3 sm:py-4 rounded-xl sm:rounded-2xl transition-all duration-300 font-semibold text-sm sm:text-base shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center gap-2 sm:gap-3"
+                    className="cursor-pointer w-full bg-gradient-to-br from-[#DE4396] to-[#0D1C9F] hover:to-purple-800 text-white py-3 sm:py-4 rounded-xl sm:rounded-2xl transition-all duration-300 font-semibold text-sm sm:text-base shadow-lg hover:shadow-xl transform active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center gap-2 sm:gap-3"
                   >
                     {isSubmitting ? (
                       <>

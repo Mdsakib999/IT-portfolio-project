@@ -235,7 +235,7 @@ const PaymentForm = ({
         className={`w-full py-4 rounded-xl font-semibold text-white cursor-pointer ${
           isProcessing || !isValid || !allCardComplete
             ? "bg-gray-400 cursor-not-allowed"
-            : "bg-gradient-to-r from-[#DE4396] to-[#0D1C9F] hover:shadow-lg hover:scale-105"
+            : "bg-gradient-to-r from-[#DE4396] to-[#0D1C9F] hover:shadow-lg "
         }`}
       >
         {isProcessing ? (

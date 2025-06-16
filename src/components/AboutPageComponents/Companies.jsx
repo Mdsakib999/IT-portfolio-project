@@ -39,7 +39,7 @@ export const Companies = () => {
   return (
     <div className="my-10 max-w-7xl mx-auto">
       {/* Header Section */}
-      <div className="flex flex-col items-start p-5">
+      <div className="flex flex-col items-start py-5">
         <Bar />
         <h3 className="text-4xl font-bold text-gray-900 mb-2">
           Meet the People
@@ -50,14 +50,14 @@ export const Companies = () => {
       </div>
 
       {/* Companies Marquee */}
-      <div className="relative overflow-hidden py-8">
-        <Marquee pauseOnHover speed={200} gradient={false}>
+      <div className="relative overflow-hidden py-10">
+        <Marquee pauseOnHover speed={100} gradient={false}>
           {companies.map((company, index) => (
             <div
               key={index}
               className="mx-8 flex items-center justify-center cursor-pointer"
             >
-              <div className="p-4 hover:shadow-lg transition-all duration-300 group-hover:scale-105">
+              <div className="p-4 hover:shadow-lg hover:border border-gray-200 rounded-md transition-all duration-300 group-hover:scale-105">
                 <img
                   src={company.logo}
                   alt={company.name}

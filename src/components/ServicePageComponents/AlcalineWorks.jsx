@@ -11,8 +11,8 @@ export const AlcalineWorks = () => {
       <Bar />
       <div className="flex justify-center items-center mb-8 px-4">
         <h1 className="text-2xl md:text-3xl text-center">
-          <span className="block mb-2 md:mb-4">How development</span>
-          <span className="block font-bold">through Alcaline works</span>
+          <span className="block mb-2 md:mb-4">How Development</span>
+          <span className="block font-bold">Through Alkaline Works</span>
         </h1>
       </div>
 

@@ -123,7 +123,7 @@ const SignIn = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 font-serif pt-28">
+    <div className="min-h-screen flex items-center justify-center bg-slate-100 font-serif pt-28 pb-16">
       <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-lg">
         <div className="text-center">
           <h1 className="text-4xl font-extrabold bg-gradient-to-br from-[#DE4396] to-[#0D1C9F] bg-clip-text text-transparent tracking-tight">
@@ -149,7 +149,7 @@ const SignIn = () => {
                 type="email"
                 className={`w-full pl-10 pr-3 py-2 border ${
                   errors.email ? "border-red-500" : "border-gray-300"
-                } rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                } rounded-lg focus:outline-none focus:ring-1 focus:ring-purple-600`}
                 placeholder="Email address"
                 {...register("email", {
                   required: "Email is required",
@@ -180,7 +180,7 @@ const SignIn = () => {
                 type={showPassword ? "text" : "password"}
                 className={`w-full pl-10 pr-10 py-2 border ${
                   errors.password ? "border-red-500" : "border-gray-300"
-                } rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                } rounded-lg focus:outline-none focus:ring-1 focus:ring-purple-600`}
                 placeholder="Password"
                 {...register("password", {
                   required: "Password is required",
