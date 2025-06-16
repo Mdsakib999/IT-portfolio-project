@@ -241,7 +241,7 @@ export const CustomPlan = () => {
                 >
                   {/* Card Header */}
                   <div className="p-6 border-b border-gray-100 bg-white/50">
-                    <div className="flex justify-between items-start">
+                    <div className="flex flex-col md:flex-row gap-3  justify-between items-start">
                       <div className="flex-1">
                         <div className="flex items-center gap-3 mb-2">
                           <h2 className="text-xl font-bold text-gray-900">

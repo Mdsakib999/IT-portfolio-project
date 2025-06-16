@@ -239,7 +239,7 @@ export const HireRequest = () => {
                 className="group bg-white rounded-3xl p-8 shadow-sm border border-gray-100 hover:shadow-xl hover:border-indigo-100 transition-all duration-300 hover:-translate-y-1"
               >
                 {/* Header with Avatar and Status */}
-                <div className="flex items-start justify-between mb-6">
+                <div className="flex flex-col md:flex-row gap-3  items-start justify-between mb-6">
                   <div className="flex items-center gap-4">
                     <div className="relative">
                       <div className="w-16 h-16 bg-gradient-to-tr from-indigo-500 via-purple-500 to-pink-500 rounded-2xl flex items-center justify-center text-white font-bold text-xl shadow-lg">

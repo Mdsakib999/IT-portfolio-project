@@ -362,7 +362,7 @@ export const ManageService = () => {
         title={"Edit Service"}
         className="max-w-7xl"
       >
-        <div className="relative bg-gradient-to-br from-white via-gray-50 to-blue-50/30 rounded-2xl">
+        <div className="relative bg-gradient-to-br from-white via-gray-50 to-blue-50/30 rounded-2xl w-screen md:w-auto">
           {/* Decorative background elements */}
           <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-purple-200/20 to-blue-200/20 rounded-full blur-3xl"></div>
           <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-indigo-200/20 to-purple-200/20 rounded-full blur-2xl"></div>
@@ -396,7 +396,7 @@ export const ManageService = () => {
             </div>
 
             {/* Service Details Section */}
-            <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/50">
+            <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/50 w-screen md:w-auto">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center">
                   <svg
@@ -489,7 +489,7 @@ export const ManageService = () => {
 
             {/* Plans Section - Only show when editing */}
             {editingService && (
-              <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/50">
+              <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/50 w-screen md:w-auto">
                 <div className="flex items-center justify-between mb-6">
                   <div className="flex items-center gap-3">
                     <div className="w-8 h-8 bg-gradient-to-br from-green-500 to-teal-600 rounded-lg flex items-center justify-center">
@@ -545,7 +545,7 @@ export const ManageService = () => {
                     </p>
                   </div>
                 ) : (
-                  <div className="space-y-6 max-h-96 overflow-y-auto custom-scrollbar">
+                  <div className="space-y-6 max-h-96 overflow-y-auto custom-scrollbar w-screen md:w-auto">
                     {editingPlans.map((plan, planIndex) => (
                       <div
                         key={plan._id || planIndex}
@@ -585,7 +585,7 @@ export const ManageService = () => {
                         </div>
 
                         {/* Plan details */}
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6 w-screen md:w-auto">
                           <div className="space-y-2">
                             <label className="block text-sm font-semibold text-gray-700">
                               Plan Name
@@ -626,7 +626,7 @@ export const ManageService = () => {
                         </div>
 
                         {/* Features */}
-                        <div className="space-y-4">
+                        <div className="space-y-4 w-screen md:w-auto">
                           <div className="flex items-center gap-2">
                             <div className="w-6 h-6 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center">
                               <svg
@@ -733,7 +733,7 @@ export const ManageService = () => {
             )}
 
             {/* Action Buttons */}
-            <div className="flex justify-end gap-4 pt-6 border-t border-gradient-to-r from-transparent via-gray-200 to-transparent">
+            <div className="flex flex-col md:flex-row justify-end gap-4 pt-6 border-t border-gradient-to-r from-transparent via-gray-200 to-transparent">
               <button
                 type="button"
                 onClick={resetServiceForm}

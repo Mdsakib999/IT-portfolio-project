@@ -15,6 +15,7 @@ import {
   FiX,
 } from "react-icons/fi";
 import { formatDate } from "../../Utils/formatDate";
+import Loading from "../../Utils/Loading";
 
 export const OrderHistory = () => {
   const { user } = useAuth();
@@ -101,16 +102,7 @@ export const OrderHistory = () => {
   };
 
   if (loading) {
-    return (
-      <div className="min-h-screen bg-white py-8 px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex items-center justify-center py-12">
-            <FiLoader className="w-6 h-6 animate-spin text-gray-600" />
-            <span className="ml-2 text-gray-600">Loading orders...</span>
-          </div>
-        </div>
-      </div>
-    );
+    return <Loading />;
   }
 
   return (

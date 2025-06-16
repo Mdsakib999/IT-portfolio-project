@@ -20,6 +20,8 @@ import Loading from "../../Utils/Loading";
 export const HireEliteRequest = () => {
   const [requests, setRequests] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [selectedDescription, setSelectedDescription] = useState("");
+  const [showModal, setShowModal] = useState(false);
   const { user } = useAuth();
   const userId = user?._id;
 
@@ -81,7 +83,7 @@ export const HireEliteRequest = () => {
   };
 
   if (loading) {
-    return <Loading/>
+    return <Loading />;
   }
 
   return (
@@ -110,7 +112,7 @@ export const HireEliteRequest = () => {
                 <div className="flex flex-col lg:flex-row gap-6">
                   {/* Main Info */}
                   <div className="flex-1">
-                    <div className="flex items-start justify-between mb-4">
+                    <div className="flex flex-col md:flex-row gap-4 items-start justify-between mb-4">
                       <div className="flex items-center gap-3">
                         <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-blue-500 rounded-xl flex items-center justify-center text-white font-bold text-lg">
                           {req.name.charAt(0)}
@@ -145,8 +147,21 @@ export const HireEliteRequest = () => {
                           Project Description
                         </span>
                       </div>
-                      <p className="text-gray-700 leading-relaxed bg-gray-50 rounded-xl p-4">
-                        {req.description}
+                      <p className="text-gray-700 leading-relaxed">
+                        {req.description.length > 100
+                          ? `${req.description.slice(0, 100)}... `
+                          : req.description}
+                        {req.description.length > 100 && (
+                          <button
+                            onClick={() => {
+                              setSelectedDescription(req.description);
+                              setShowModal(true);
+                            }}
+                            className="text-indigo-600 font-medium hover:underline ml-1"
+                          >
+                            Read More
+                          </button>
+                        )}
                       </p>
                     </div>
                   </div>
@@ -192,6 +207,30 @@ export const HireEliteRequest = () => {
           </div>
         )}
       </div>
+      {showModal && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
+          <div className="relative bg-white w-full max-w-2xl mx-4 md:mx-0 p-6 md:p-8 rounded-2xl shadow-xl transition-all duration-300 ease-out animate-fade-in">
+            {/* Close Button */}
+            <button
+              onClick={() => setShowModal(false)}
+              className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-2xl"
+              aria-label="Close Modal"
+            >
+              &times;
+            </button>
+
+            {/* Modal Content */}
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">
+              Full Description
+            </h2>
+            <div className="max-h-[60vh] overflow-y-auto pr-1">
+              <p className="text-gray-700 leading-relaxed whitespace-pre-line">
+                {selectedDescription}
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
