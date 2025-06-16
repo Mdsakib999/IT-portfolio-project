@@ -391,7 +391,7 @@ export const ManageService = () => {
               <p className="text-gray-600 mt-2 text-sm sm:text-base px-2">
                 {editingService
                   ? "Update your service details and manage plans"
-                  : "Add a new service to your portfolio"}
+                  : "Add a new service"}
               </p>
             </div>
 
