@@ -3,6 +3,7 @@ import { Outlet } from "react-router-dom";
 import { DashBoardLeftNav } from "./DasboardLeftNav";
 import Navbar from "../../components/Navbar";
 import ScrollToTop from "../../Utils/ScrollToTop";
+import { PrimaryButton } from "../../components/Shared/PrimaryButton";
 
 export const Dashboard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -14,12 +15,12 @@ export const Dashboard = () => {
       <div className="flex min-h-screen relative  pt-18  max-w-7xl mx-auto">
         {/* Mobile toggle - Fixed positioning and z-index */}
         {!sidebarOpen && (
-          <button
-            className="fixed top-20 left-4 z-50 lg:hidden bg-gradient-to-l from-black to-gray-500 rounded-lg shadow-md py-2 px-4 text-white text-sm font-medium mt-2"
+          <PrimaryButton
+            className="fixed top-20 left-4 z-50 lg:hidden py-2 px-4 text-sm font-medium mt-2 bg-gradient-to-bl from-primary to-secondary"
             onClick={() => setSidebarOpen(true)}
           >
             Open Sidebar
-          </button>
+          </PrimaryButton>
         )}
 
         {/* Sidebar */}
