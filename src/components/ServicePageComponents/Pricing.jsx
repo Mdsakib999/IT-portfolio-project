@@ -48,11 +48,11 @@ const Pricing = () => {
   };
 
   const onSubmit = async (formData) => {
-    if(!user){
+    if (!user) {
       toast.error(<h1 className="font-serif">Please login First</h1>);
-      return
+      return;
     }
-    console.log(formData)
+    console.log(formData);
     try {
       const payload = {
         name: formData.name,
@@ -251,7 +251,6 @@ const Pricing = () => {
                   </p>
                 )}
               </div>
-
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Email Address *
@@ -325,7 +324,6 @@ const Pricing = () => {
                   </p>
                 )}
               </div>
-
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Project Requirements *
@@ -344,15 +342,14 @@ const Pricing = () => {
                   </p>
                 )}
               </div>
-
-              <div className="pt-4">
-                <button
-                  onClick={handleSubmit(onSubmit)}
-                  className="cursor-pointer w-full bg-gradient-to-r from-[#DE4396] to-[#0D1C9F] text-white py-3 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg hover:scale-105"
-                >
-                  Submit Proposal Request
-                </button>
-              </div>
+              <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+                  <button
+                    type="submit"
+                    className="cursor-pointer w-full bg-gradient-to-r from-[#DE4396] to-[#0D1C9F] text-white py-3 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg hover:scale-105"
+                  >
+                    Submit Proposal Request
+                  </button>
+              </form>
             </div>
           </div>
         </div>
