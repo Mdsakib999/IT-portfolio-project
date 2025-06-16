@@ -103,7 +103,7 @@ const Pricing = () => {
     <div className="py-8 sm:py-12 md:py-16 lg:py-28 px-4 sm:px-6 lg:px-8">
       <div className="text-center space-y-3 mb-12 md:mb-16">
         <h1 className="text-2xl sm:text-3xl md:text-4xl bg-gradient-to-br from-[#DE4396] to-[#0D1C9F] bg-clip-text text-transparent font-bold">
-          Pricing
+          {state.serviceName || ''} Pricing
         </h1>
         <p className="text-base md:text-lg font-semibold text-gray-500 font-serif mt-2">
           Choose a Plan That Fits Your Growth
@@ -200,24 +200,66 @@ const Pricing = () => {
       </div>
 
       {/* Custom Plan Section */}
-      <div className="mt-16 text-center">
-        <div className="bg-gray-50 rounded-2xl p-8 max-w-2xl mx-auto border border-gray-200">
-          <h3 className="text-xl md:text-2xl font-bold text-gray-800 mb-4">
-            Need Something Different?
-          </h3>
-          <p className="text-base text-gray-600 mb-8 leading-relaxed">
-            Our standard plans don't fit your requirements? Let's create a
-            custom solution tailored specifically to your business needs and
-            budget.
-          </p>
-          <button
-            onClick={openModal}
-            className="cursor-pointer bg-gradient-to-r from-[#DE4396] to-[#0D1C9F] text-white px-8 py-4 rounded-full font-semibold text-base transition-all duration-300 hover:shadow-lg hover:scale-105"
-          >
-            Request Custom Plan
-          </button>
-        </div>
+     <div className="mt-16 text-center relative px-4 sm:px-6 lg:px-8">
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-4 -left-4 w-24 sm:w-32 h-24 sm:h-32 bg-gradient-to-br from-purple-400/10 to-pink-400/10 rounded-full blur-2xl"></div>
+        <div className="absolute -bottom-4 -right-4 w-32 sm:w-40 h-32 sm:h-40 bg-gradient-to-br from-blue-400/20 to-indigo-400/20 rounded-full blur-2xl"></div>
       </div>
+      
+      <div className="relative bg-gradient-to-br from-gray-900 via-gray-700/70 to-gray-900/95 rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-10 w-full max-w-5xl mx-auto border border-gray-600/40 shadow-2xl backdrop-blur-sm hover:shadow-purple-500/10 hover:shadow-2xl transition-all duration-500 group">
+        {/* Animated border glow */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#DE4396]/30 via-purple-500/30 to-[#0D1C9F]/30 rounded-2xl sm:rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"></div>
+        
+        {/* Sparkle decorations */}
+        <div className="absolute top-4 sm:top-6 right-6 sm:right-8 w-2 h-2 bg-gradient-to-r from-[#DE4396] to-[#0D1C9F] rounded-full animate-pulse"></div>
+        <div className="absolute top-8 sm:top-12 left-8 sm:left-12 w-1.5 h-1.5 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full animate-pulse delay-300"></div>
+        <div className="absolute bottom-6 sm:bottom-8 right-12 sm:right-16 w-1 h-1 bg-gradient-to-r from-blue-400 to-indigo-400 rounded-full animate-pulse delay-700"></div>
+        
+        {/* Icon */}
+        <div className="mb-4 sm:mb-6 relative">
+          <div className="w-12 h-12 sm:w-16 sm:h-16 mx-auto bg-gradient-to-br from-[#DE4396] to-[#0D1C9F] rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform duration-300">
+            <svg className="w-6 h-6 sm:w-8 sm:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <div className="absolute inset-0 w-12 h-12 sm:w-16 sm:h-16 mx-auto bg-gradient-to-br from-[#DE4396] to-[#0D1C9F] rounded-xl sm:rounded-2xl blur-lg opacity-30 animate-pulse"></div>
+        </div>
+        
+        <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text text-transparent mb-4 sm:mb-6 leading-tight px-2">
+          Need Something Different?
+        </h3>
+        
+        <p className="text-base sm:text-lg text-gray-300 mb-6 sm:mb-8 lg:mb-10 leading-relaxed max-w-4xl mx-auto px-2">
+          Our standard plans don't fit your requirements? Let's create a custom solution
+          tailored specifically to your business needs and budget.
+        </p>
+        
+        <button
+          onClick={openModal}
+          className="relative cursor-pointer bg-gradient-to-r from-[#DE4396] via-purple-500 to-[#0D1C9F] text-white px-6 sm:px-8 lg:px-10 py-3 sm:py-4 lg:py-5 rounded-full font-semibold text-base sm:text-lg transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/25 hover:scale-105 transform group/btn overflow-hidden w-full max-w-xs mx-auto"
+        >
+          {/* Button shine effect */}
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 -translate-x-full group-hover/btn:translate-x-full transition-transform duration-1000"></div>
+          
+          {/* Button content */}
+          <span className="relative flex items-center justify-center gap-2">
+            Request Custom Plan
+            <svg className="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 group-hover/btn:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </span>
+          
+          {/* Button glow */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#DE4396] via-purple-500 to-[#0D1C9F] rounded-full blur-lg opacity-50 group-hover/btn:opacity-75 transition-opacity duration-300 -z-10"></div>
+        </button>
+        
+        {/* Floating particles */}
+        <div className="absolute top-16 sm:top-20 left-6 sm:left-8 w-2 sm:w-3 h-2 sm:h-3 bg-gradient-to-r from-pink-400 to-purple-400 rounded-full animate-bounce opacity-60" style={{animationDelay: '0s', animationDuration: '3s'}}></div>
+        <div className="absolute bottom-16 sm:bottom-20 right-8 sm:right-10 w-1.5 sm:w-2 h-1.5 sm:h-2 bg-gradient-to-r from-blue-400 to-indigo-400 rounded-full animate-bounce opacity-60" style={{animationDelay: '1s', animationDuration: '2.5s'}}></div>
+        <div className="absolute top-24 sm:top-32 right-4 sm:right-6 w-1 sm:w-1.5 h-1 sm:h-1.5 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full animate-bounce opacity-60" style={{animationDelay: '2s', animationDuration: '2s'}}></div>
+      </div>
+    </div>
 
       {/* Modal */}
       {isModalOpen && (
@@ -225,7 +267,7 @@ const Pricing = () => {
           className="fixed inset-0 bg-black/75 flex items-center justify-center z-50 p-4"
           onClick={handleModalBackdropClick}
         >
-          <div className="bg-white rounded-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto">
+          <div className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto scrollbar-hide">
             <div className="flex justify-between items-center p-6 border-b border-gray-200">
               <h2 className="text-xl font-bold text-gray-800">
                 Request Custom Plan
@@ -353,8 +395,8 @@ const Pricing = () => {
                   disabled={isSubmitting}
                   className={`w-full py-3 rounded-lg font-semibold transition-all duration-300 ${
                     isSubmitting
-                      ? "bg-gray-400 cursor-not-allowed"
-                      : "cursor-pointer bg-gradient-to-r from-[#DE4396] to-[#0D1C9F] text-white hover:shadow-lg hover:scale-105"
+                      ? "bg-gray-400 cursor-not-allowed hover:bg-purple-600"
+                      : "cursor-pointer bg-gradient-to-r from-[#DE4396] to-[#0D1C9F] text-white hover:shadow-lg hover:bg-purple-600"
                   }`}
                 >
                   {isSubmitting ? "Submitting..." : "Submit Proposal Request"}
