@@ -99,7 +99,7 @@ export const DashBoardLeftNav = ({ closeSidebar }) => {
             return (
               <Link to={path} onClick={closeSidebar} key={label}>
                 <button
-                  className={`flex items-center gap-3 px-3 py-2 rounded-md transition w-full font-medium ${
+                  className={`cursor-pointer flex items-center gap-3 px-3 py-2 rounded-md transition w-full font-medium ${
                     isActive
                       ? "bg-gradient-to-b from-[var(--color-primary)] to-[var(--color-secondary)] text-white shadow"
                       : "text-black"
