@@ -49,8 +49,8 @@ export const OfferedServices = () => {
   return (
     <div className="bg-slate-50 px-4 relative overflow-hidden my-10 py-4">
       {/* Decorative Elements */}
-      <div className="absolute -top-10 left-10 w-20 h-20 bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-secondary)] rounded-full z-10" />
-      <div className="absolute -bottom-10 right-10 w-20 h-20 bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-secondary)] rounded-full z-10" />
+      <div className="absolute -top-10 left-[15%] w-20 h-20 bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-secondary)] rounded-full z-10" />
+      <div className="absolute -bottom-10 right-[15%] w-20 h-20 bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-secondary)] rounded-full z-10" />
 
       <div className="max-w-7xl mx-auto mt-20 md:mt-0">
         {/* Header */}

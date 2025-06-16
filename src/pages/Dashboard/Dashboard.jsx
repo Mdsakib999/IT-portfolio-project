@@ -12,8 +12,8 @@ export const Dashboard = () => {
     <div>
       <ScrollToTop />
       <Navbar />
-      <div className="flex min-h-screen relative  pt-18  max-w-7xl mx-auto">
-        {/* Mobile toggle - Fixed positioning and z-index */}
+      <div className="flex min-h-screen relative pt-18 max-w-7xl mx-auto">
+        {/* Mobile toggle button */}
         {!sidebarOpen && (
           <PrimaryButton
             className="fixed top-20 left-4 z-50 lg:hidden py-2 px-4 text-sm font-medium mt-2 bg-gradient-to-bl from-primary to-secondary"
@@ -25,25 +25,32 @@ export const Dashboard = () => {
 
         {/* Sidebar */}
         <div
-          className={`fixed inset-y-0 left-0 z-40 lg:z-0 w-64 lg:w-96 bg-white shadow-md transform transition-transform duration-300 ease-in-out mt-10 md:mt-0 ${
-            sidebarOpen ? "translate-x-0 " : "-translate-x-full"
-          } lg:relative lg:translate-x-0`}
+          className={`${
+            sidebarOpen
+              ? "fixed inset-y-0 left-0 z-40 w-64 bg-white shadow-md transform translate-x-0 transition-transform duration-300 ease-in-out lg:hidden"
+              : "fixed inset-y-0 left-0 z-40 w-64 bg-white shadow-md transform -translate-x-full transition-transform duration-300 ease-in-out lg:hidden"
+          }`}
         >
           <DashBoardLeftNav closeSidebar={() => setSidebarOpen(false)} />
         </div>
 
-        {/* Overlay */}
+        {/* Desktop Sidebar - always visible */}
+        <div className="hidden lg:block lg:sticky lg:top-20 lg:h-[calc(100vh-5rem)] lg:w-72 lg:shrink-0">
+          <DashBoardLeftNav />
+        </div>
+
+        {/* Main content area */}
+        <div className="flex-1 w-full px-4 py-4 overflow-y-auto">
+          <Outlet />
+        </div>
+
+        {/* Overlay for mobile */}
         {sidebarOpen && (
           <div
             className="fixed inset-0 bg-black bg-opacity-40 z-30 lg:hidden"
             onClick={() => setSidebarOpen(false)}
           />
         )}
-
-        {/* Main content */}
-        <div className="w-full lg:ml-0 mt-10 md:mt-0">
-          <Outlet />
-        </div>
       </div>
     </div>
   );
