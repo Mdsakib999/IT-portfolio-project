@@ -1,4 +1,4 @@
-import { use, useState } from "react";
+import { useState } from "react";
 import {
   Star,
   Code,
@@ -110,7 +110,7 @@ export const HireBest = () => {
   return (
     <>
       {/* Main Hero Section */}
-      <div className="relative overflow-hidden bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 rounded-3xl my-10 shadow-2xl">
+      <div className="relative overflow-hidden bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 mt-10 shadow-2xl">
         {/* Animated Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-pink-400 to-purple-600 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse"></div>
@@ -203,54 +203,6 @@ export const HireBest = () => {
           </div>
         </div>
       </div>
-
-      {/* Why Choose Us Section */}
-      <div className="bg-gradient-to-r from-gray-50 to-gray-100 rounded-3xl p-8 my-8">
-        <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">
-          Why Top Companies Choose Us
-        </h2>
-        <div className="grid md:grid-cols-3 gap-6">
-          <div className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
-            <div className="w-12 h-12 bg-gradient-to-r from-green-400 to-blue-500 rounded-xl flex items-center justify-center mb-4">
-              <CheckCircle className="w-6 h-6 text-white" />
-            </div>
-            <h3 className="text-xl font-semibold text-gray-800 mb-2">
-              Vetted Professionals
-            </h3>
-            <p className="text-gray-600">
-              Only the top 3% of applicants make it through our rigorous
-              screening process.
-            </p>
-          </div>
-
-          <div className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
-            <div className="w-12 h-12 bg-gradient-to-r from-purple-400 to-pink-500 rounded-xl flex items-center justify-center mb-4">
-              <Zap className="w-6 h-6 text-white" />
-            </div>
-            <h3 className="text-xl font-semibold text-gray-800 mb-2">
-              Lightning Fast
-            </h3>
-            <p className="text-gray-600">
-              Get matched with the perfect talent and start your project within
-              24 hours.
-            </p>
-          </div>
-
-          <div className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
-            <div className="w-12 h-12 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-xl flex items-center justify-center mb-4">
-              <Award className="w-6 h-6 text-white" />
-            </div>
-            <h3 className="text-xl font-semibold text-gray-800 mb-2">
-              Guaranteed Results
-            </h3>
-            <p className="text-gray-600">
-              99% success rate with unlimited revisions until you're completely
-              satisfied.
-            </p>
-          </div>
-        </div>
-      </div>
-
       {/* Enhanced Modal */}
       {showModal && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-2 sm:p-4 overflow-y-auto">

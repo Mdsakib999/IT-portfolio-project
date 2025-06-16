@@ -13,6 +13,7 @@ import {
 } from "react-icons/fi";
 import { toast } from "react-hot-toast";
 import { formatDate } from "../../Utils/formatDate";
+import { PrimaryButton } from "../Shared/PrimaryButton";
 
 export const ContactMessageRequest = () => {
   const [messages, setMessages] = useState([]);
@@ -167,9 +168,9 @@ export const ContactMessageRequest = () => {
               </div>
             </div>
 
-            <button
+            <PrimaryButton
               onClick={toggleSortOrder}
-              className="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-3 rounded-xl font-medium transition-colors"
+              className="flex items-center gap-2 transition-colors"
             >
               {sortOrder === "desc" ? (
                 <FiArrowDown className="w-4 h-4" />
@@ -177,7 +178,7 @@ export const ContactMessageRequest = () => {
                 <FiArrowUp className="w-4 h-4" />
               )}
               Sort {sortOrder === "desc" ? "Newest First" : "Oldest First"}
-            </button>
+            </PrimaryButton>
           </div>
         </div>
 
@@ -204,7 +205,7 @@ export const ContactMessageRequest = () => {
                 }`}
               >
                 {/* Header */}
-                <div className="bg-gradient-to-r from-indigo-500 to-purple-600 p-6 text-white">
+                <div className="bg-gradient-to-r from-primary to-secondary p-6 text-white">
                   <div className="flex items-start justify-between mb-3">
                     <div className="flex items-center gap-3">
                       <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">

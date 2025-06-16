@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { TiTick } from "react-icons/ti";
 import { MdLock } from "react-icons/md";
 import { useLocation } from "react-router-dom";
@@ -10,12 +10,22 @@ const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
 
 const CheckOut = () => {
   const [isProcessing, setIsProcessing] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState(null);
   const { state } = useLocation();
 
-  // TODO
-  let plan = state?.plan;
+  useEffect(()=>{
+    const stored = localStorage.getItem("selectedPlan");
 
-  let serviceName = state?.serviceName;
+    if (stored) {
+      setSelectedPlan(JSON.parse(stored));
+    } 
+
+  },[])
+
+  let plan = state?.plan || selectedPlan?.plan;
+  console.log(selectedPlan)
+
+  let serviceName = state?.serviceName || selectedPlan?.serviceName;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-28 px-4">
@@ -47,7 +57,7 @@ const CheckOut = () => {
                   <h3 className="text-lg font-bold text-black mb-1">
                     Plan:{" "}
                     <span className="text-lg font-bold bg-gradient-to-br from-[#DE4396] to-[#0D1C9F] bg-clip-text text-transparent">
-                      {plan.title || plan}
+                      {plan?.title || plan}
                     </span>
                   </h3>
                 </div>
@@ -77,7 +87,7 @@ const CheckOut = () => {
             <div className="border-t pt-4 space-y-2">
               <div className="flex justify-between text-gray-600">
                 <span>Subtotal</span>
-                <span>${plan.price || state?.amount}</span>
+                <span>${plan?.price || state?.amount}</span>
               </div>
               <div className="flex justify-between text-gray-600">
                 <span>Tax</span>
@@ -85,7 +95,7 @@ const CheckOut = () => {
               </div>
               <div className="flex justify-between font-bold text-lg text-gray-800 border-t pt-2">
                 <span>Total</span>
-                <span>${plan.price || state?.amount}</span>
+                <span>${plan?.price || state?.amount}</span>
               </div>
             </div>
           </div>
@@ -102,8 +112,8 @@ const CheckOut = () => {
               <PaymentForm
                 plan={plan}
                 customPlanId={state?.customPlanId}
-                serviceId={state?.serviceId}
-                serviceName={state?.serviceName}
+                serviceId={state?.serviceId || selectedPlan?.serviceId}
+                serviceName={serviceName}
                 amount={state?.amount}
                 description={state?.description}
                 isProcessing={isProcessing}

@@ -1,17 +1,17 @@
 import React from "react";
-import { Briefcase, Users, MessageCircle, ExternalLink } from "lucide-react"; // Use lucide-react for icons
+import { Briefcase, Users, MessageCircle, ExternalLink } from "lucide-react";
 import { Bar } from "../Shared/Bar";
 
 export const ValuesSection = () => {
   return (
-    <section className="md:py-16 px-4 md:px-20 bg-white text-gray-800">
+    <section className="md:py-16 px-4 md:px-20 bg-white text-gray-800 max-w-7xl mx-auto">
       {/* Header */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12">
         <div className="flex flex-col items-start justify-start">
           <Bar />
           <h2 className="text-4xl font-semibold">Values</h2>
         </div>
-        <p className="text-sm text-gray-600 mt-2 md:mt-0 max-w-lg">
+        <p className="text-lg font-bold bg-gradient-to-l from-primary to-secondary bg-clip-text text-transparent mt-2 md:mt-0 max-w-lg">
           Software or hardware, we excel in executing projects, enhancing
           processes, and products through innovative technology at company name
         </p>

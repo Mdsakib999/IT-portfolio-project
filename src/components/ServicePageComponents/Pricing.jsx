@@ -48,13 +48,18 @@ const Pricing = () => {
   };
 
   const onSubmit = async (formData) => {
+    if(!user){
+      toast.error(<h1 className="font-serif">Please login First</h1>);
+      return
+    }
+    console.log(formData)
     try {
       const payload = {
         name: formData.name,
         email: formData.email,
         service: formData.service,
         description: formData.requirements || "No description provided",
-        proposedPrice: Number(formData.budget),
+        proposedPrice: parseFloat(formData.budget),
       };
 
       await createCustomPlan(user._id, payload);
@@ -71,6 +76,15 @@ const Pricing = () => {
   };
 
   const handleCheckout = (plan) => {
+    localStorage.setItem(
+      "selectedPlan",
+      JSON.stringify({
+        plan,
+        serviceId: state?.serviceId,
+        serviceName: state?.serviceName,
+      })
+    );
+
     navigate("/checkout", {
       state: {
         plan,
@@ -228,7 +242,6 @@ const Pricing = () => {
                   {...register("name", { required: "Name is required" })}
                   type="text"
                   defaultValue={user?.name}
-                  readOnly
                   className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
                   placeholder="Enter your full name"
                 />
@@ -252,7 +265,6 @@ const Pricing = () => {
                     },
                   })}
                   type="email"
-                  readOnly
                   defaultValue={user?.email}
                   className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
                   placeholder="Enter your email"
