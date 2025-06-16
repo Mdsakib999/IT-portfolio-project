@@ -10,6 +10,8 @@ import toast from "react-hot-toast";
 const Pricing = () => {
   const [selectedPlan, setSelectedPlan] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const navigate = useNavigate();
   const { user } = useAuth();
   const { createCustomPlan } = useService();
@@ -52,7 +54,8 @@ const Pricing = () => {
       toast.error(<h1 className="font-serif">Please login First</h1>);
       return;
     }
-    console.log(formData);
+    setIsSubmitting(true);
+
     try {
       const payload = {
         name: formData.name,
@@ -68,6 +71,8 @@ const Pricing = () => {
       reset();
     } catch (error) {
       toast.error("Failed to submit custom plan.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -342,14 +347,19 @@ const Pricing = () => {
                   </p>
                 )}
               </div>
-              <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-                  <button
-                    type="submit"
-                    className="cursor-pointer w-full bg-gradient-to-r from-[#DE4396] to-[#0D1C9F] text-white py-3 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg hover:scale-105"
-                  >
-                    Submit Proposal Request
-                  </button>
-              </form>
+              <div className="pt-4">
+                <button
+                  onClick={handleSubmit(onSubmit)}
+                  disabled={isSubmitting}
+                  className={`w-full py-3 rounded-lg font-semibold transition-all duration-300 ${
+                    isSubmitting
+                      ? "bg-gray-400 cursor-not-allowed"
+                      : "cursor-pointer bg-gradient-to-r from-[#DE4396] to-[#0D1C9F] text-white hover:shadow-lg hover:scale-105"
+                  }`}
+                >
+                  {isSubmitting ? "Submitting..." : "Submit Proposal Request"}
+                </button>
+              </div>{" "}
             </div>
           </div>
         </div>
