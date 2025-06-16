@@ -419,7 +419,7 @@ export const AddService = () => {
                       <label className="text-sm font-medium">Features *</label>
                       <div className="space-y-3">
                         {plan.features.map((feature, featureIndex) => (
-                          <div key={featureIndex} className="flex gap-3">
+                          <div key={featureIndex} className="relative w-full">
                             <input
                               type="text"
                               value={feature}
@@ -430,7 +430,7 @@ export const AddService = () => {
                                   e.target.value
                                 )
                               }
-                              className="flex-1 px-4 py-3 border border-gray-300 rounded-xl placeholder-gray-400 focus:ring-2 focus:ring-primary bg-white transition-all"
+                              className="w-full pr-10 px-3 py-2 xs:px-4 xs:py-3 border border-gray-300 rounded-xl placeholder-gray-400 focus:ring-2 focus:ring-primary bg-white transition-all text-sm xs:text-base"
                               placeholder={`Feature ${featureIndex + 1}`}
                             />
                             {plan.features.length > 1 && (
@@ -439,9 +439,10 @@ export const AddService = () => {
                                 onClick={() =>
                                   removeFeature(planIndex, featureIndex)
                                 }
-                                className="p-3 text-red-500 hover:bg-red-100 rounded-xl transition-colors"
+                                className="cursor-pointer absolute right-2 top-1/2 -translate-y-1/2 p-1 text-red-500 hover:bg-red-100 rounded-full transition-colors"
+                                tabIndex={-1}
                               >
-                                <X className="w-5 h-5" />
+                                <X className="w-4 h-4" />
                               </button>
                             )}
                           </div>
@@ -449,7 +450,7 @@ export const AddService = () => {
                         <button
                           type="button"
                           onClick={() => addFeature(planIndex)}
-                          className="w-full py-3 text-purple-600 hover:text-purple-700 border border-dashed border-purple-300 hover:border-purple-400 rounded-xl font-medium transition-all duration-200 hover:bg-purple-50"
+                          className="cursor-pointer w-full py-2 xs:py-3 text-purple-600 hover:text-purple-700 border border-dashed border-purple-300 hover:border-purple-400 rounded-xl font-medium transition-all duration-200 hover:bg-purple-50 text-sm xs:text-base"
                         >
                           + Add Feature
                         </button>
@@ -467,7 +468,7 @@ export const AddService = () => {
                 <button
                   type="button"
                   onClick={addPlan}
-                  className="w-full py-4 bg-gradient-to-r from-purple-100 to-pink-100 hover:from-purple-200 hover:to-pink-200 border border-purple-200 hover:border-purple-300 text-purple-600 rounded-2xl font-semibold flex items-center justify-center gap-2 transition-all duration-300"
+                  className="cursor-pointer w-full py-4 bg-gradient-to-r from-purple-100 to-pink-100 hover:from-purple-200 hover:to-pink-200 border border-purple-200 hover:border-purple-300 text-purple-600 rounded-2xl font-semibold flex items-center justify-center gap-2 transition-all duration-300"
                 >
                   <Plus className="w-5 h-5" />
                   Add Another Plan
@@ -480,7 +481,7 @@ export const AddService = () => {
                   type="button"
                   onClick={handleSubmit}
                   disabled={isSubmitting || loading}
-                  className="flex-1 bg-gradient-to-b from-[var(--color-primary)] to-[var(--color-secondary)] py-4 px-8 rounded-2xl font-bold text-lg text-white shadow-md focus:ring-4 focus:ring-purple-300 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3 group"
+                  className="cursor-pointer flex-1 bg-gradient-to-b from-[var(--color-primary)] to-[var(--color-secondary)] py-4 px-8 rounded-2xl font-bold text-lg text-white shadow-md focus:ring-4 focus:ring-purple-300 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3 group"
                 >
                   {isSubmitting || loading ? (
                     <>
