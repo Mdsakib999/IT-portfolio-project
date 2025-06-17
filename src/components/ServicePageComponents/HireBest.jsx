@@ -170,8 +170,11 @@ export const HireBest = () => {
               {/* CTA Button */}
               <div className="relative inline-block">
                 <button
+                  disabled={!user}
                   onClick={() => setShowModal(true)}
-                  className="group relative px-8 py-4 bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 text-white font-bold text-lg rounded-2xl shadow-2xl hover:bg-primary hover:text-white"
+                  className={`group relative px-8 py-4 bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 text-gray-50 font-semibold text-lg rounded-2xl shadow-2xl hover:bg-primary hover:text-gray-50 ${
+                    !user ? "cursor-not-allowed opacity-50" : "cursor-pointer"
+                  }`}
                 >
                   <span className="relative z-10 flex items-center gap-3">
                     <Users className="w-6 h-6" />
