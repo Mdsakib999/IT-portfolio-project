@@ -46,7 +46,7 @@ const Contact = () => {
   ];
 
   return (
-    <div className="min-h-screen  pt-16 sm:pt-20 md:pt-28 px-2 sm:px-4 md:px-6 lg:px-10 mb-10">
+    <div className="min-h-screen  pt-24 sm:pt-20 md:pt-28 px-2 sm:px-4 md:px-6 lg:px-10 mb-10">
       <div className="max-w-6xl mx-auto lg:mb-24 ">
         {/* Header Section */}
         <Slide direction="up">

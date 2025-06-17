@@ -206,7 +206,7 @@ export const ContactMessageRequest = () => {
               >
                 {/* Header */}
                 <div className="bg-gradient-to-r from-primary to-secondary p-6 text-white">
-                  <div className="flex items-start justify-between mb-3">
+                  <div className="flex flex-col md:flex-row gap-3 items-start justify-between mb-3">
                     <div className="flex items-center gap-3">
                       <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
                         <FiUser className="w-6 h-6" />

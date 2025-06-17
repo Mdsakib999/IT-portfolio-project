@@ -10,6 +10,8 @@ import toast from "react-hot-toast";
 const Pricing = () => {
   const [selectedPlan, setSelectedPlan] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const navigate = useNavigate();
   const { user } = useAuth();
   const { createCustomPlan } = useService();
@@ -48,11 +50,12 @@ const Pricing = () => {
   };
 
   const onSubmit = async (formData) => {
-    if(!user){
+    if (!user) {
       toast.error(<h1 className="font-serif">Please login First</h1>);
-      return
+      return;
     }
-    console.log(formData)
+    setIsSubmitting(true);
+
     try {
       const payload = {
         name: formData.name,
@@ -68,6 +71,8 @@ const Pricing = () => {
       reset();
     } catch (error) {
       toast.error("Failed to submit custom plan.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -251,7 +256,6 @@ const Pricing = () => {
                   </p>
                 )}
               </div>
-
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Email Address *
@@ -325,7 +329,6 @@ const Pricing = () => {
                   </p>
                 )}
               </div>
-
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Project Requirements *
@@ -344,15 +347,19 @@ const Pricing = () => {
                   </p>
                 )}
               </div>
-
               <div className="pt-4">
                 <button
                   onClick={handleSubmit(onSubmit)}
-                  className="cursor-pointer w-full bg-gradient-to-r from-[#DE4396] to-[#0D1C9F] text-white py-3 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg hover:scale-105"
+                  disabled={isSubmitting}
+                  className={`w-full py-3 rounded-lg font-semibold transition-all duration-300 ${
+                    isSubmitting
+                      ? "bg-gray-400 cursor-not-allowed"
+                      : "cursor-pointer bg-gradient-to-r from-[#DE4396] to-[#0D1C9F] text-white hover:shadow-lg hover:scale-105"
+                  }`}
                 >
-                  Submit Proposal Request
+                  {isSubmitting ? "Submitting..." : "Submit Proposal Request"}
                 </button>
-              </div>
+              </div>{" "}
             </div>
           </div>
         </div>
