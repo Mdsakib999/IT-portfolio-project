@@ -1,45 +1,55 @@
-/* eslint-disable no-unused-vars */
 import { IoIosPeople } from "react-icons/io";
 import { TiTick } from "react-icons/ti";
 import { FaLaptopCode } from "react-icons/fa";
 import { FaClock } from "react-icons/fa6";
 import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";
+import { useEffect, useState } from "react";
 
-const StatBox = ({ icon: Icon, end, suffix, label }) => {
-  const { ref, inView } = useInView({
-    threshold: 0.3,
-    triggerOnce: false, // allow retrigger
-  });
-
-  return (
-    <div ref={ref} className="flex flex-col items-center min-w-[120px]">
-      <Icon size={40} className="text-purple" />
-      <div className="text-center mt-5">
-        {inView ? (
-          <CountUp key={Date.now()} start={0} end={end} delay={0}>
-            {({ countUpRef }) => (
-              <div>
-                <span
-                  className="font-bold text-lg font-sans mb-2"
-                  ref={countUpRef}
-                />
-                {suffix}
-              </div>
-            )}
-          </CountUp>
-        ) : (
-          <div className="font-bold text-lg font-sans mb-2">0{suffix}</div>
-        )}
-        <p className="text-sm">{label}</p>
-      </div>
-    </div>
-  );
-};
+const milestones = [
+  {
+    icon: IoIosPeople,
+    value: 1000,
+    suffix: "+",
+    description: "Happy Clients",
+  },
+  {
+    icon: FaLaptopCode,
+    value: 100,
+    suffix: "+",
+    description: "Finished Projects",
+  },
+  {
+    icon: TiTick,
+    value: 99,
+    suffix: "%",
+    description: "Satisfaction Rate",
+  },
+  {
+    icon: FaClock,
+    value: 10,
+    suffix: "+",
+    description: "Years of Experience",
+  },
+];
 
 const Impact = () => {
+  const [hasViewed, setHasViewed] = useState(false);
+  const { ref, inView } = useInView({
+    triggerOnce: false,
+    threshold: 0.3,
+  });
+
+  useEffect(() => {
+    if (inView) {
+      setHasViewed(true);
+    } else {
+      setHasViewed(false);
+    }
+  }, [inView]);
+
   return (
-    <div className="py-10 mt-10 px-4 max-w-7xl mx-auto ">
+    <div className="py-10 mt-10 px-4 max-w-7xl mx-auto">
       <div className="space-y-3 text-center">
         <h1 className="text-2xl md:text-3xl font-bold">
           Turning Ideas Into{" "}
@@ -53,26 +63,33 @@ const Impact = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mt-12 lg:px-16">
-        <StatBox
-          icon={IoIosPeople}
-          end={1000}
-          suffix="+"
-          label="Happy Clients"
-        />
-        <StatBox
-          icon={FaLaptopCode}
-          end={100}
-          suffix="+"
-          label="Finished Projects"
-        />
-        <StatBox icon={TiTick} end={99} suffix="%" label="Satisfaction Rate" />
-        <StatBox
-          icon={FaClock}
-          end={10}
-          suffix="+"
-          label="Years of Experience"
-        />
+      <div
+        ref={ref}
+        className="grid grid-cols-2 md:grid-cols-4 gap-10 mt-12 lg:px-16"
+      >
+        {milestones.map((item, index) => {
+          const Icon = item.icon;
+          return (
+            <div
+              key={index}
+              className="flex flex-col items-center text-center group hover:transform hover:scale-105 transition-all duration-300 text-5xl font-bold "
+            >
+              <Icon size={40} className="text-purple-600 mb-4 text-5xl" />
+              <div className="font-doto text-gray-900 mb-2">
+                {hasViewed ? (
+                  <CountUp
+                    end={item.value}
+                    suffix={item.suffix}
+                    duration={2.5 + index * 0.2}
+                  />
+                ) : (
+                  `0${item.suffix}`
+                )}
+              </div>
+              <p className="text-gray-600 text-sm">{item.description}</p>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

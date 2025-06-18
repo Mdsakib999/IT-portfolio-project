@@ -15,7 +15,8 @@ import axiosInstance from "../../Utils/axios";
 import { useAuth } from "../../provider/AuthProvider";
 import Loading from "../../Utils/Loading";
 import { formatDate } from "../../Utils/formatDate";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { PrimaryButton } from "../Shared/PrimaryButton";
 
 export const CustomPlanOrder = () => {
   const [customPlans, setCustomPlans] = useState([]);
@@ -171,9 +172,12 @@ export const CustomPlanOrder = () => {
             <p className="text-gray-600 mb-6">
               You haven't submitted any custom plan requests yet.
             </p>
-            <button className="px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors font-medium">
-              Create Custom Plan
-            </button>
+            <Link to="/service">
+              {" "}
+              <PrimaryButton className="hover:bg-indigo-700 transition-colors font-medium">
+                Create Custom Plan
+              </PrimaryButton>
+            </Link>
           </div>
         ) : (
           <div className="space-y-6">

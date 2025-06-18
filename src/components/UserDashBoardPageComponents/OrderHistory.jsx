@@ -16,6 +16,8 @@ import {
 } from "react-icons/fi";
 import { formatDate } from "../../Utils/formatDate";
 import Loading from "../../Utils/Loading";
+import { Link } from "react-router-dom";
+import { PrimaryButton } from "../Shared/PrimaryButton";
 
 export const OrderHistory = () => {
   const { user } = useAuth();
@@ -128,10 +130,13 @@ export const OrderHistory = () => {
             <p className="text-gray-500 mb-4">
               Your orders will appear here once you place them.
             </p>
-            <button className="inline-flex items-center gap-2 px-4 py-2 bg-gray-900 text-white rounded hover:bg-gray-800">
-              <FiShoppingBag className="w-4 h-4" />
-              Browse Services
-            </button>
+            <Link to="/service">
+              {" "}
+              <PrimaryButton className="inline-flex items-center gap-2">
+                <FiShoppingBag className="w-4 h-4" />
+                Browse Services
+              </PrimaryButton>
+            </Link>
           </div>
         ) : (
           /* Orders Table */

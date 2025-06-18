@@ -171,7 +171,7 @@ export const HireBest = () => {
               <div className="relative inline-block">
                 <button
                   onClick={() => setShowModal(true)}
-                  className="group relative px-8 py-4 bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 text-white font-bold text-lg rounded-2xl shadow-2xl hover:shadow-pink-500/25 transition-all duration-500 hover:scale-110 hover:-translate-y-2"
+                  className="group relative px-8 py-4 bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 text-white font-bold text-lg rounded-2xl shadow-2xl hover:bg-primary hover:text-white hover:cursor-pointer"
                 >
                   <span className="relative z-10 flex items-center gap-3">
                     <Users className="w-6 h-6" />
@@ -315,7 +315,7 @@ export const HireBest = () => {
                 <PrimaryButton
                   onClick={handleSubmit}
                   disabled={loading}
-                  className="w-full py-4 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 hover:scale-[1.02] hover:shadow-lg"
+                  className="w-full py-4 disabled:opacity-50 disabled:cursor-not-allowed  hover:shadow-lg"
                 >
                   {loading ? (
                     <span className="flex items-center justify-center gap-2">
